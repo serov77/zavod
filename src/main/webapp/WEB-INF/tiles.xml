@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd"> 
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/views/layout/layout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/views/main_menu.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="" />
+    </definition>
+    <definition name="one" template="/WEB-INF/views/layout/one.jsp">
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="home" extends="baseLayout">
+        <put-attribute name="title" value="ОАО 'СолИКом'" />
+        <put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+        <!--<put-attribute name="menu" value="/WEB-INF/views/left_menu_sbit.jsp"/>-->
+    </definition>
+    <definition name="sbit_home" extends="baseLayout">
+        <put-attribute name="title" value="ОАО 'СолИКом' | Сбыт" />
+        <put-attribute name="body" value="/WEB-INF/views/sbit/sbit_home.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/sbit/left_menu_sbit.jsp"/>
+    </definition>
+    <definition name="rod_vagona" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/rod_vagona/table_rod_vagona.jsp" />
+    </definition>
+    <definition name="vagon" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/vagon/vagon.jsp" />
+    </definition>
+    <definition name="station" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/station/station.jsp" />
+    </definition>
+    <definition name="vagon_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/vagon/vagon_edit.jsp" />
+    </definition>
+    <definition name="station_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/station/station_edit.jsp" />
+    </definition>
+    <definition name="pokupatel" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pokupatel/pokupatel.jsp" />
+    </definition>
+    <definition name="pokupatel_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pokupatel/pokupatel_edit.jsp" />
+    </definition>
+    <definition name="sertificat" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/sertificat.jsp" />
+    </definition>
+    <definition name="sertificatIK_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/sertificatIK/sertificatIK_edit.jsp" />
+    </definition>
+    <definition name="sertificatIM_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/SertificatIM/sertificatIM_edit.jsp" />
+    </definition>
+</tiles-definitions>
