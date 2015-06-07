@@ -10,17 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
+import ru.solicom.zavod.domain.base.BaseDomainEntity;
 
 @Entity
 @Table(name = "pokupatel")
-public class Pokupatel implements Serializable {
+public class Pokupatel extends BaseDomainEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column(name = "name")
-    @NotBlank
-    private String name;
     @Column(name = "kod")
     @NotBlank
     private String kod;
@@ -33,22 +28,6 @@ public class Pokupatel implements Serializable {
 
     public Pokupatel() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getKod() {

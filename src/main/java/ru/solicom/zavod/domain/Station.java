@@ -7,39 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
+import ru.solicom.zavod.domain.base.BaseDomainEntity;
 
 @Entity
 @Table(name = "station")
-public class Station implements Serializable {
+public class Station extends BaseDomainEntity implements Serializable {
 
-    @Id
-    @GeneratedValue
-    private int id;
-    @Column(name = "name", unique = true, nullable = false)
-    @NotBlank
-    private String nameStation;
     @Column(name = "kod", unique = true, nullable = false)
     @NotBlank
     private String kod;
 
     public Station() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNameStation() {
-        return nameStation;
-    }
-
-    public void setNameStation(String nameStation) {
-        this.nameStation = nameStation;
     }
 
     public String getKod() {

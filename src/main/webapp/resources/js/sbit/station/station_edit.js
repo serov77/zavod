@@ -32,11 +32,11 @@ $(document).ready(function () {
 });
 function edit() {
     var id = $('input#id').val();
-    var nameStation = $('textarea#nameStation').val();
+    var name = $('textarea#name').val();
     var kod = $('input#kod').val();
     var station = {
         id: id,
-        nameStation: nameStation,
+        name: name,
         kod: kod
     };
 

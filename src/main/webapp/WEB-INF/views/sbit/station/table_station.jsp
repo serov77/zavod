@@ -18,7 +18,7 @@
             <c:forEach items="${stationList}" var="station">
                 <tr class="t_${station.id}">
                     <td>${station.id}</td>
-                    <td>${station.nameStation}</td>
+                    <td>${station.name}</td>
                     <td>${station.kod}</td>
                     <td>
                         <button class="btn btn-default btn-xs butt" rel="${station.id}" type="button">

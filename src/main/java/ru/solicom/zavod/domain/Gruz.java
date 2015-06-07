@@ -4,27 +4,10 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 import org.hibernate.validator.constraints.NotBlank;
+import ru.solicom.zavod.domain.base.BaseDomainEntity;
+
 @Entity
 @Table(name = "gruz")
-public class Gruz implements Serializable {
+public class Gruz extends BaseDomainEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    @Column(name = "imya", nullable = false, unique = true)
-    @NotBlank
-    private String imya;
-    
-    public Gruz(){
-
-    }
-
-    public String getImya() {
-        return imya;
-    }
-
-    public void setImya(String imya) {
-        this.imya = imya;
-    }
 }

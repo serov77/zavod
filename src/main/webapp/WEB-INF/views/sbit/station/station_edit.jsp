@@ -10,7 +10,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Вагон</h4>
+        <h4 class="modal-title" id="myModalLabel">Станция</h4>
     </div>
     <form:form id="edit_form" class="form-horizontal" method="post"
                action="javascript: edit();"
@@ -20,9 +20,9 @@
             </br>
             <form:hidden path="id" />
             <div class="form-group">
-                <form:label path="nameStation" class="col-xs-4 control-label">Название станции</form:label>
+                <form:label path="name" class="col-xs-4 control-label">Название станции</form:label>
                     <div class="col-xs-8">
-                    <form:textarea path="nameStation" class="form-control" />
+                    <form:textarea path="name" class="form-control" />
                 </div>
             </div>
             <div class="form-group">

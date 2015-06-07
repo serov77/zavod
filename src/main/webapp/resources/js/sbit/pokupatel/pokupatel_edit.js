@@ -55,7 +55,7 @@ function edit() {
     var station_id = $('select#station option:selected').val();
     var station = {
         id: station_id,
-        nameStation: '',
+        name: '',
         kod: ''
     };
     var pokupatel = {

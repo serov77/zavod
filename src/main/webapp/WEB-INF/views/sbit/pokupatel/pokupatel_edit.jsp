@@ -38,7 +38,7 @@
                     <div class="col-xs-8">
                     <form:select path="station.id" id="station" class="form-control">
                         <form:option value="1" label="" />
-                        <form:options items="${stationList}" itemValue="id" itemLabel="nameStation"/>
+                        <form:options items="${stationList}" itemValue="id" itemLabel="name"/>
                     </form:select>
                 </div>
             </div>    

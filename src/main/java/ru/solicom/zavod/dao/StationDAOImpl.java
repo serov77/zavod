@@ -18,7 +18,7 @@ public class StationDAOImpl implements StationDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Station> stationList() {
-        return sessionFactory.getCurrentSession().createCriteria(Station.class).add(Restrictions.gt("id", 1)).addOrder(Order.asc("nameStation")).list();
+        return sessionFactory.getCurrentSession().createCriteria(Station.class).add(Restrictions.gt("id", 1)).addOrder(Order.asc("name")).list();
     }
 
     @Override

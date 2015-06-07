@@ -73,7 +73,7 @@ public class StationController {
 
     @RequestMapping("/search")
     public String searchStationAll(@ModelAttribute("searchStation") Station station, Model model) {
-        model.addAttribute("stationList", stationService.searchStationList(station.getNameStation()));
+        model.addAttribute("stationList", stationService.searchStationList(station.getName()));
         model.addAttribute("station", station);
         return "station";
     }

@@ -13,16 +13,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.DecimalMin;
 import org.hibernate.validator.constraints.NotEmpty;
+import ru.solicom.zavod.domain.base.BaseDomain;
 
 
 @Entity
 @Table(name = "vagon")
-public class Vagon implements Serializable {
+public class Vagon extends BaseDomain implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     @ManyToOne
     @JoinColumn(name = "id_rod_vagona")
     private RodVagona rodVagona;

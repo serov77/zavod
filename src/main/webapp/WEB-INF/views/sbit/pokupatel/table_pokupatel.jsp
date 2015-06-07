@@ -23,7 +23,7 @@
                 <td>${pokupatel.name}</td>
                 <td>${pokupatel.kod}</td>
                 <td>${pokupatel.okpo}</td>
-                <td>${pokupatel.station.nameStation}</td>
+                <td>${pokupatel.station.name}</td>
                 <td>
                     <button class="btn btn-default btn-xs butt" rel="${pokupatel.id}" type="button">
                         <span class="glyphicon glyphicon-pencil"></span>
