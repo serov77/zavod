@@ -11,12 +11,13 @@ $(document).ready(function () {
                 sFirst: "Первая",
                 sLast: "Последняя",
                 sNext: "Вперед",
-                sPrevious: "Назад"},
+                sPrevious: "Назад"
+            },
             "infoFiltered": "(Фильтр из _MAX_ записей)"
         },
         "order": [[0, "desc"]]
     });
-    $('.butt').click(function () {
+    $('body').on('click', '.butt', function () {
         var x = $(this).attr("rel");
         var url = "station/edit/" + x;
         editVagon(url);
