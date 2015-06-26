@@ -11,17 +11,19 @@ $(document).ready(function () {
                 sFirst: "Первая",
                 sLast: "Последняя",
                 sNext: "Вперед",
-                sPrevious: "Назад"},
+                sPrevious: "Назад"
+            },
             "infoFiltered": "(Фильтр из _MAX_ записей)"
         },
         "order": [[0, "desc"]]
     });
-    $('.butt').click(function () {
-        var x = $(this).attr("rel");
-        var url = "vagon/edit/" + x;
-        editVagon(url);
-        $("#myModal").modal();
-    });
+
+    //$('.butt').click(function () {
+    //    var x = $(this).attr("rel");
+    //    var url = "vagon/edit/" + x;
+    //    editVagon(url);
+    //    $("#myModal").modal();
+    //});
 
     $('.butt_add').click(function () {
         editVagon('vagon/add');
@@ -48,6 +50,12 @@ $(document).ready(function () {
         $(this).toggleClass('selected');
     });
 
+    $('body').on('click','.butt', function () {
+        var x = $(this).attr("rel");
+        var url = "vagon/edit/" + x;
+        editVagon(url);
+        $("#myModal").modal();
+    });
 });
 
 
