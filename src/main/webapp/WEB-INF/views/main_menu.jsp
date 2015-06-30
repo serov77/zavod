@@ -17,7 +17,7 @@
             <li id="li3"><a href="#">Пункт 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Войти</a></li>
+            <li><a href="#" onclick="login()">Войти</a></li>
         </ul>
     </div>
 </nav>
