@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.UserDAO;
-import ru.solicom.zavod.domain.User;
 
 @Service
 @Transactional
@@ -16,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        return userDAO.loadUserByUsername(login);
     }
 }
