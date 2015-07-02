@@ -1,6 +1,7 @@
 package ru.solicom.zavod.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +22,11 @@ public class MainController {
     private StationService stationService;
     @Autowired
     private PokupatelService pokupatelService;
-    @Autowired
-    private UserService userService;
+    //@Autowired
+    //private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
-        //User user = userService.searchUserByLogin("serov77");
-
         model.addAttribute("list", rodVagonaService.rodVagonaList());
         return "home";
     }

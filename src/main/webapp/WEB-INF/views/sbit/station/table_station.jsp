@@ -22,11 +22,9 @@
             <td>${station.name}</td>
             <td>${station.kod}</td>
             <td>
-                <sec:authorize access="isAuthenticated()">
                     <button class="btn btn-default btn-xs butt" rel="${station.id}" type="button">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                </sec:authorize>
             </td>
 
         </tr>

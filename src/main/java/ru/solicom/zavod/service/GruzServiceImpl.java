@@ -10,7 +10,7 @@ import ru.solicom.zavod.domain.Gruz;
 @Service
 public class GruzServiceImpl implements GruzService {
 
-    @Autowired
+    @Autowired(required = true)
     private GruzDAO gruzDAO;
 
 
