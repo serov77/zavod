@@ -13,5 +13,7 @@
         <mapping class="ru.solicom.zavod.domain.SertificatIK"/>
         <mapping class="ru.solicom.zavod.domain.SertificatIM"/>
         <mapping class="ru.solicom.zavod.domain.SertificatMPN"/>
+        <mapping class="ru.solicom.zavod.domain.RoleUser"/>
+        <mapping class="ru.solicom.zavod.domain.User"/>
     </session-factory>
 </hibernate-configuration>
