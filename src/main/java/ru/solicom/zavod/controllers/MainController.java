@@ -26,7 +26,7 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
-        User user = userService.searchUserByLogin("serov77");
+        //User user = userService.searchUserByLogin("serov77");
 
         model.addAttribute("list", rodVagonaService.rodVagonaList());
         return "home";
