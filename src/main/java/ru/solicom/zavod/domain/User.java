@@ -91,7 +91,7 @@ public class User implements Serializable {
         this.last_name = last_name;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = RoleUser.class)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = RoleUser.class)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<RoleUser> getRoles() {
         return roles;

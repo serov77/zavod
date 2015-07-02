@@ -7,10 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ru.solicom.zavod.service.PokupatelService;
-import ru.solicom.zavod.service.RodVagonaService;
-import ru.solicom.zavod.service.StationService;
-import ru.solicom.zavod.service.VagonService;
+import ru.solicom.zavod.domain.User;
+import ru.solicom.zavod.service.*;
 
 @Controller
 public class MainController {
@@ -23,9 +21,12 @@ public class MainController {
     private StationService stationService;
     @Autowired
     private PokupatelService pokupatelService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
+        User user = userService.searchUserByLogin("serov77");
 
         model.addAttribute("list", rodVagonaService.rodVagonaList());
         return "home";

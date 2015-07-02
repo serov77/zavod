@@ -50,7 +50,7 @@ public class RoleUser implements Serializable {
         this.name = name;
     }
 
-    @ManyToMany(targetEntity = User.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "roles")
+    @ManyToMany(targetEntity = User.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "roles")
     public Set<User> getUsers() {
         return users;
     }
