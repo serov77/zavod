@@ -10,13 +10,13 @@
     <http pattern="/resources/**" security="none"/>
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/sbit/**" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/sbit/**" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
     </http>
 
     <authentication-manager>
         <authentication-provider user-service-ref="userServiceImpl">
-            <password-encoder ref="passwordHelper"/>
+
         </authentication-provider>
     </authentication-manager>
 </beans:beans>
