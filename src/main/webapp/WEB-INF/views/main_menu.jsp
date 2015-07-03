@@ -1,6 +1,7 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<nav role="navigation" class="navbar navbar-default">	
+<nav role="navigation" class="navbar navbar-default">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -17,7 +18,15 @@
             <li id="li3"><a href="#">Пункт 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" onclick="login()">Войти</a></li>
+            <sec:authorize access="isAuthenticated()">
+                <li><a href="#" onclick="">Добро пожаловать | </a></li>
+            </sec:authorize>
+            <sec:authorize access="isAnonymous()">
+                <li><a href="#" onclick="login()">Войти</a></li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <li><a href="#" onclick="">Выйти</a></li>
+            </sec:authorize>
         </ul>
     </div>
 </nav>
