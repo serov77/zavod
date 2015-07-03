@@ -9,12 +9,11 @@
 	<http pattern="resources/**" security="none" />
 
 	<http auto-config="true" use-expressions="true">
-		<!--<intercept-url pattern="/sbit/**" access="hasRole()" />
-		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />-->
+		<intercept-url pattern="/sbit/**" access="hasRole('ROLE_ADMIN1')" />
+		<!--<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />-->
 		<!-- 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" /> -->
 		<!-- 		<form-login login-page="/signin" -->
 		<!-- 			authentication-failure-url="/signin-failure" default-target-url="/" /> -->
-		<http-basic />
 	</http>
 
 	<authentication-manager>

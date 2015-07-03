@@ -27,6 +27,7 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
+        //String user = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getFirstName();
         model.addAttribute("list", rodVagonaService.rodVagonaList());
         return "home";
     }
