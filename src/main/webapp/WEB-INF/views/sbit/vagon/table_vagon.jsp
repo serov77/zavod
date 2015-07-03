@@ -30,7 +30,7 @@
             <td>${vagon.kolichestvoZpu}</td>
             <td><fmt:formatDate value="${vagon.dataDobavleniya}" pattern="dd.MM.yyyy"/></td>
             <td>
-                <sec:authorize access="isAuthenticated()">
+                <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
                     <button class="btn btn-default btn-xs butt" rel="${vagon.id}" type="button">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>

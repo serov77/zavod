@@ -54,7 +54,7 @@
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <form class="form-horizontal login-form" method="post"
-                  action="j_spring_security_check">
+                  action="zavod/j_spring_security_check">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="j_username" class="col-xs-4 control-label">Логин: </label>
