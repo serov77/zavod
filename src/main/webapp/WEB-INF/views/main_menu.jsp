@@ -1,6 +1,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page session="false"%>
 
 <nav role="navigation" class="navbar navbar-default">
     <div class="navbar-header">
@@ -19,6 +20,7 @@
             <li id="li3"><a href="#">Пункт 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li><a href="<c:url value="/j_spring_security_logout"/>">${user}</a></li>
             <sec:authorize access="isAuthenticated()">
                 <li><a href="#" onclick="">Добро пожаловать | </a></li>
             </sec:authorize>

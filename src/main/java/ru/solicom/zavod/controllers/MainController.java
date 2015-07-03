@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ru.solicom.zavod.domain.User;
-import ru.solicom.zavod.service.*;
+import ru.solicom.zavod.service.PokupatelService;
+import ru.solicom.zavod.service.RodVagonaService;
+import ru.solicom.zavod.service.StationService;
+import ru.solicom.zavod.service.VagonService;
 
 @Controller
 public class MainController {
@@ -27,8 +30,14 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
-        //String user = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getFirstName();
+
+        Object o =SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String user = "Гость";
+        if (!o.toString().equals("anonymousUser")) {
+            user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getLogin();
+        }
         model.addAttribute("list", rodVagonaService.rodVagonaList());
+        model.addAttribute("user", user);
         return "home";
     }
 
