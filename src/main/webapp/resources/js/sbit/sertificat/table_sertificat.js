@@ -19,7 +19,7 @@ $(document).ready(function () {
     $('body').on('click','.butt',function () {
         var x = $(this).attr("rel");
         var url = "sertificat/edit/" + x;
-        editVagon(url);
+        editSertificat(url);
         $("#myModal").modal();
     });
 
@@ -28,7 +28,7 @@ $(document).ready(function () {
         $("#myModal").modal();
     });
 
-    function editVagon(url) {
+    function editSertificat(url) {
         $.ajax({
             url: url,
             //type: 'POST',

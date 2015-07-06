@@ -3,47 +3,24 @@ $(document).ready(function () {
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
         fields: {
-            name: {
+            nomer: {
                 validators: {
                     notEmpty: {
                         message: 'Поле не может быть пустым'
-                    }
-                }
-            },
-            kod: {
-                validators: {
-                    notEmpty: {
-                        message: 'Поле не может быть пустым!'
                     },
                     remote: {
-                        url: 'valid_pokupatel_kod',
+                        url: 'valid_sertificat_nomer',
                         data: function (validator) {
                             return {
-                                id: validator.getFieldElements('id').val()
+                                id: validator.getFieldElements('id').val(),
+                                data: validator.getFieldElements('data').val()
                             };
                         },
-                        message: 'Покупатель с таким кодом есть в базе',
+                        message: 'Сертификат с таким номером уже есть в этом году!',
                         type: 'GET'
                     }
                 }
             },
-            okpo: {
-                validators: {
-                    notEmpty: {
-                        message: 'Поле не может быть пустым!'
-                    },
-                    remote: {
-                        url: 'valid_pokupatel_okpo',
-                        data: function (validator) {
-                            return {
-                                id: validator.getFieldElements('id').val()
-                            };
-                        },
-                        message: 'Покупатель с таким ОКПО есть в базе',
-                        type: 'GET'
-                    }
-                }
-            }
         }
     });
 });

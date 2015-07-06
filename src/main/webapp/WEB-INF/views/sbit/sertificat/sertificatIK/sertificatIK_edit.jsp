@@ -1,8 +1,8 @@
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <div class="modal-content">
     <div class="modal-header">
@@ -15,11 +15,11 @@
     <div class="modal-body" id="mesto_body">
         <h3>${title_modal}</h3>
         </br>
-        <form:hidden path="id" />
+        <form:hidden path="id"/>
         <div class="form-group">
             <form:label path="nomer" class="col-xs-4 control-label">Номер Сертификата</form:label>
             <div class="col-xs-8">
-                <form:input path="nomer" class="form-control" />
+                <form:input path="nomer" class="form-control"/>
             </div>
         </div>
         <div class="form-group">
@@ -32,8 +32,8 @@
             <form:label path="pokupatel" class="col-xs-4 control-label">Получатель</form:label>
             <div class="col-xs-8">
                 <form:select path="pokupatel.id" id="pokupatel" class="form-control">
-                    <form:option value="1" label="" />
-                    <form:options items="${pokupatelList}" itemValue="id" itemLabel="name" />
+                    <form:option value="1" label=""/>
+                    <form:options items="${pokupatelList}" itemValue="id" itemLabel="name"/>
                 </form:select>
             </div>
         </div>
@@ -65,6 +65,7 @@
             <div class="form-group">
                 <form:label path="data" class="col-xs-4 control-label">Дата добавления</form:label>
                 <div class="col-xs-8">
+                    <form:hidden path="data" class="form-control"/>
                     <div class="form-control"><fmt:formatDate value="${sertificat.data}" pattern="dd.MM.yyyy"/></div>
                 </div>
             </div>
