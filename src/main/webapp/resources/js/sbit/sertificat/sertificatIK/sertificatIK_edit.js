@@ -21,6 +21,13 @@ $(document).ready(function () {
                     }
                 }
             },
+            aktivnost: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    }
+                }
+            },
         }
     });
 });
