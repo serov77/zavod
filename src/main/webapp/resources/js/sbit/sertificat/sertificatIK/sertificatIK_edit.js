@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    var x = $('#id').val();
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
         fields: {
@@ -91,28 +90,20 @@ $(document).ready(function () {
 });
 function edit() {
     var id = $('input#id').val();
-    var name = $('input#name').val();
-    var kod = $('input#kod').val();
-    var okpo = $('input#okpo').val();
-    var station_id = $('select#station option:selected').val();
-    var station = {
-        id: station_id,
-        name: '',
-        kod: ''
-    };
+    var nomer = $('input#nomer').val();
     var pokupatel = {
-        id: id,
-        name: name,
-        kod: kod,
-        okpo: okpo,
-        station: station
+        id: $('select#pokupatel option:selected').val()
     };
-
+    var vremyaGascheniya = $('input#vremyaGascheniya').val();
+    var temperaturaGascheniya = $('input#temperaturaGascheniya').val();
+    var soderNepogZeren = $('input#soderNepogZeren').val();
+    var soderUglekisloti = $('input#soderUglekisloti').val();
+    var data = $('input#data').val();
     $.ajax({
-        url: '/zavod/pokupatel/save',
+        url: '/zavod/sertifikat/ik/save',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
-        data: JSON.stringify(pokupatel),
+        data: JSON.stringify(sertifikatIK),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
