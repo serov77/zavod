@@ -25,6 +25,64 @@ $(document).ready(function () {
                 validators: {
                     notEmpty: {
                         message: 'Поле не может быть пустым'
+                    },
+                    numeric: {
+                        message: 'В поле можно вводить только цифры!'
+                    },
+                    between: {
+                        min: 0,
+                        max: 100,
+                        message: 'Введенное число должно быть в пределах от 0 до 100'
+                    }
+                }
+            },
+            vremyaGascheniya: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    },
+                    numeric: {
+                        message: 'В поле можно вводить только цифры!'
+                    }
+                }
+            },
+            temperaturaGascheniya: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    },
+                    numeric: {
+                        message: 'В поле можно вводить только цифры!'
+                    }
+                }
+            },
+            soderNepogZeren: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    },
+                    numeric: {
+                        message: 'В поле можно вводить только цифры!'
+                    },
+                    between: {
+                        min: 0,
+                        max: 100,
+                        message: 'Введенное число должно быть в пределах от 0 до 100'
+                    }
+                }
+            },
+            soderUglekisloti: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    },
+                    numeric: {
+                        message: 'В поле можно вводить только цифры!'
+                    },
+                    between: {
+                        min: 0,
+                        max: 100,
+                        message: 'Введенное число должно быть в пределах от 0 до 100'
                     }
                 }
             },
