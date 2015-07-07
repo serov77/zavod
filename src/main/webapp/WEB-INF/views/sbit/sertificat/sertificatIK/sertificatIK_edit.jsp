@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="form-group">
-            <form:label path="soderUglekisloti" class="col-xs-4 control-label">Содержание углекислоты</form:label>
+            <form:label path="soderUglekisloti"  class="col-xs-4 control-label">Содержание углекислоты</form:label>
             <div class="col-xs-8">
                 <form:input path="soderUglekisloti" class="form-control"/>
             </div>
