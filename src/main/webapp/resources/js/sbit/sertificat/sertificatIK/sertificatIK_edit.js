@@ -91,6 +91,7 @@ $(document).ready(function () {
 function edit() {
     var id = $('input#id').val();
     var nomer = $('input#nomer').val();
+    var aktivnost = $('input#aktivnost').val();
     var pokupatel = {
         id: $('select#pokupatel option:selected').val()
     };
@@ -99,15 +100,26 @@ function edit() {
     var soderNepogZeren = $('input#soderNepogZeren').val();
     var soderUglekisloti = $('input#soderUglekisloti').val();
     var data = $('input#data').val();
+    var sertifikatIK = {
+        id: id,
+        nomer: nomer,
+        data: data,
+        pokupatel: pokupatel,
+        aktivnost: aktivnost,
+        vremyaGascheniya: vremyaGascheniya,
+        temperaturaGascheniya: temperaturaGascheniya,
+        soderUglekisloti: soderUglekisloti,
+        soderNepogZeren: soderNepogZeren
+    }
     $.ajax({
-        url: '/zavod/sertifikat/ik/save',
+        url: '/zavod/sertificat/ik/save',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
         data: JSON.stringify(sertifikatIK),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('pokupatel/all');
+            showSbit('sertificat/all');
         }
     });
 }

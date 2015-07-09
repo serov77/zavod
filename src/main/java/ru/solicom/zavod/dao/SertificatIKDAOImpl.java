@@ -33,6 +33,7 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
     @Override
     public void saveSertificatIK(SertificatIK sertificatIK) {
         sessionFactory.getCurrentSession().saveOrUpdate(sertificatIK);
+        int id=2;
     }
 
     @Override

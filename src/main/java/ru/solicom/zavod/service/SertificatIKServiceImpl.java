@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.SertificatIKDAO;
+import ru.solicom.zavod.domain.Pokupatel;
 import ru.solicom.zavod.domain.SertificatIK;
 
 import java.util.Date;
@@ -14,6 +15,8 @@ public class SertificatIKServiceImpl implements SertificatIKService {
 
     @Autowired
     private SertificatIKDAO sertificatIKDAO;
+    @Autowired
+    private PokupatelService pokupatelService;
 
     @Transactional
     @Override
@@ -34,6 +37,7 @@ public class SertificatIKServiceImpl implements SertificatIKService {
             Date today = new Date();
             sertificatIK.setData(today);
         }
+        sertificatIK.setPokupatel(pokupatelService.retrivePokupatel(sertificatIK.getPokupatel().getId()));
         sertificatIKDAO.saveSertificatIK(sertificatIK);
     }
 

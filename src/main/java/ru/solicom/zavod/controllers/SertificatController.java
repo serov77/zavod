@@ -92,6 +92,13 @@ public class SertificatController {
         return sertificatService.selectSertificat(gruz, id, model);
     }
 
+    @RequestMapping(value = "/ik/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String sertificatSave(@RequestBody SertificatIK sertificatIK) {
+        sertificatIKService.saveSertficatIK(sertificatIK);
+        return "Изминения успешно внесены!";
+    }
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
