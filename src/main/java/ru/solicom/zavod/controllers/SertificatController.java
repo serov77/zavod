@@ -46,7 +46,7 @@ public class SertificatController {
         return "sertificat";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    /**@RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addSertificatGet(Model model) {
         SertificatIK sertificatIK = new SertificatIK();
         //sertificatIzvestKomovaya.setGruz(new Gruz());
@@ -57,7 +57,7 @@ public class SertificatController {
         model.addAttribute("gruzList", gruzService.gruzList());
         model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
         return "sertificat_add";
-    }
+    }**/
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveSertificat(@ModelAttribute("sertificatIK") @Valid SertificatIK sertificatIK, BindingResult result, Model model) throws JRException {
@@ -97,6 +97,14 @@ public class SertificatController {
     public String sertificatSave(@RequestBody SertificatIK sertificatIK) {
         sertificatIKService.saveSertficatIK(sertificatIK);
         return "Изминения успешно внесены!";
+    }
+
+    @RequestMapping(value = "/ik/add", method = RequestMethod.GET)
+    public String addSertificatGet(Model model) {
+        model.addAttribute("title_modal","Добавление Сертификата на известь комовую");
+        model.addAttribute("sertificat", new SertificatIK());
+        model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
+        return "sertificatIK_edit";
     }
 
     @InitBinder

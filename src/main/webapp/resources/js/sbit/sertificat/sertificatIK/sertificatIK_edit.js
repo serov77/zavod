@@ -8,7 +8,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым'
                     },
                     remote: {
-                        url: 'valid_sertificat_nomer',
+                        url: 'valid_sertificat_nomer/ik',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val(),
@@ -29,7 +29,7 @@ $(document).ready(function () {
                         message: 'В поле можно вводить только цифры!'
                     },
                     between: {
-                        min: 0,
+                        min: 0.0001,
                         max: 100,
                         message: 'Введенное число должно быть в пределах от 0 до 100'
                     }
@@ -42,6 +42,10 @@ $(document).ready(function () {
                     },
                     numeric: {
                         message: 'В поле можно вводить только цифры!'
+                    },
+                    greaterThan: {
+                        value: 0.0001,
+                        message: 'Введенное число должно быть больше 0!'
                     }
                 }
             },
@@ -52,6 +56,10 @@ $(document).ready(function () {
                     },
                     numeric: {
                         message: 'В поле можно вводить только цифры!'
+                    },
+                    greaterThan: {
+                        value: 0.0001,
+                        message: 'Введенное число должно быть больше 0!'
                     }
                 }
             },
@@ -64,7 +72,7 @@ $(document).ready(function () {
                         message: 'В поле можно вводить только цифры!'
                     },
                     between: {
-                        min: 0,
+                        min: 0.0001,
                         max: 100,
                         message: 'Введенное число должно быть в пределах от 0 до 100'
                     }
@@ -79,7 +87,7 @@ $(document).ready(function () {
                         message: 'В поле можно вводить только цифры!'
                     },
                     between: {
-                        min: 0,
+                        min: 0.0001,
                         max: 100,
                         message: 'Введенное число должно быть в пределах от 0 до 100'
                     }
@@ -89,6 +97,7 @@ $(document).ready(function () {
     });
 });
 function edit() {
+
     var id = $('input#id').val();
     var nomer = $('input#nomer').val();
     var aktivnost = $('input#aktivnost').val();
@@ -139,4 +148,3 @@ function editVagon(url) {
     });
 
 }
-

@@ -67,6 +67,7 @@
                 <form:input path="sito008" class="form-control"/>
             </div>
         </div>
+        <form:hidden path="data" class="form-control"/>
         <c:if test="${!empty sertificat.data}">
             <div class="form-group">
                 <form:label path="data" class="col-xs-4 control-label">Дата добавления</form:label>

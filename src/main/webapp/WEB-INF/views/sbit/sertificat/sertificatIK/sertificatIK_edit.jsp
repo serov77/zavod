@@ -61,11 +61,11 @@
                 <form:input path="soderUglekisloti" class="form-control"/>
             </div>
         </div>
+        <form:hidden path="data" class="form-control"/>
         <c:if test="${!empty sertificat.data}">
             <div class="form-group">
                 <form:label path="data" class="col-xs-4 control-label">Дата добавления</form:label>
                 <div class="col-xs-8">
-                    <form:hidden path="data" class="form-control"/>
                     <div class="form-control"><fmt:formatDate value="${sertificat.data}" pattern="dd.MM.yyyy"/></div>
                 </div>
             </div>

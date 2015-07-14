@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.solicom.zavod.domain.User;
 import ru.solicom.zavod.service.*;
 
@@ -28,11 +25,13 @@ public class MainController {
     private PokupatelService pokupatelService;
     @Autowired
     private SertificatIKService sertificatIKService;
+    @Autowired
+    private SertificatIMService sertificatIMService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
 
-        Object o =SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String user = "Гость";
         if (!o.toString().equals("anonymousUser")) {
             user = ((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getLogin();
@@ -75,13 +74,26 @@ public class MainController {
         return "{ \"valid\": " + x + " }";
     }
 
-    @RequestMapping(value = "/valid_sertificat_nomer", method = RequestMethod.GET)
+    @RequestMapping(value = "/valid_sertificat_nomer/{y}", method = RequestMethod.GET)
     @ResponseBody
-    public String searchSertificatByNomerID( @RequestParam int id, @RequestParam String data, @RequestParam String nomer) throws ParseException {
-        String sd = data;
+    public String searchSertificatByNomerID(@PathVariable String y, @RequestParam int id, @RequestParam String data, @RequestParam String nomer) throws ParseException {
+        Boolean x = false;
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = format.parse(sd);
-        Boolean x = sertificatIKService.searchSertificatIKByNomerAndGod(id, nomer, date);
+        Date date = new Date();
+        String sd = format.format(date);
+        if (data != "") {
+            sd = data;
+        }
+        date = format.parse(sd);
+        switch (y){
+            case "ik":
+                x = sertificatIKService.searchSertificatIKByNomerAndGod(id, nomer, date);
+                break;
+            case "im":
+                x=sertificatIMService.searchSertificatIMByNomerAndGod(id,nomer,date);
+
+        }
+
         return "{ \"valid\": " + x + " }";
     }
 

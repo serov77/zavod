@@ -11,27 +11,29 @@ $(document).ready(function () {
                 sFirst: "Первая",
                 sLast: "Последняя",
                 sNext: "Вперед",
-                sPrevious: "Назад"},
+                sPrevious: "Назад"
+            },
             "infoFiltered": "(Фильтр из _MAX_ записей)"
         },
         "order": [[0, "desc"]]
     });
-    $('body').on('click','.butt',function () {
+    $('body').on('click', '.butt', function () {
         var x = $(this).attr("rel");
         var url = "sertificat/edit/" + x;
         editSertificat(url);
         $("#myModal").modal();
     });
 
-    $('.butt_add').click(function () {
-        editVagon('sertificat/add');
+    $('body').on('click', '.butt_add', function () {
+        var x = $(this).attr("rel");
+        var url = 'sertificat/' + x + '/add';
+        editSertificat(url);
         $("#myModal").modal();
     });
 
     function editSertificat(url) {
         $.ajax({
             url: url,
-            //type: 'POST',
             beforeSend: function () {
                 $('#mesto').html('<img src="/zavod/resources/img/ajax-loader.gif" />');
             },
