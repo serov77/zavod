@@ -54,7 +54,7 @@
                     <h3>Нет Данных</h3>
                 </c:if>
                 <div class="block">
-                    <button class="btn btn-info btn-lg butt_add" type="button">Добавить Сертификат</button>
+                    <button class="btn btn-info btn-lg butt_add" type="button" rel="im">Добавить Сертификат</button>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                     <h3>Нет Данных</h3>
                 </c:if>
                 <div class="block">
-                    <button class="btn btn-info btn-lg butt_add" type="button">Добавить Сертификат</button>
+                    <button class="btn btn-info btn-lg butt_add" type="button" rel="mpn">Добавить Сертификат</button>
                 </div>
             </div>
         </div>

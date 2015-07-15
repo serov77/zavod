@@ -52,4 +52,7 @@
     <definition name="sertificatIM_edit" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/SertificatIM/sertificatIM_edit.jsp" />
     </definition>
+    <definition name="sertificatMPN_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/SertificatMPN/sertificatMPN_edit.jsp" />
+    </definition>
 </tiles-definitions>

@@ -3,6 +3,7 @@ package ru.solicom.zavod.dao;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.SertificatMPN;
@@ -17,12 +18,12 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
 
     @Override
     public List<SertificatMPN> sertificatMPNList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).addOrder(Order.desc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.gt("id", 1)).addOrder(Order.desc("id")).list();
     }
 
     @Override
     public SertificatMPN retriveSertificatMPN(int id) {
-        return (SertificatMPN) sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).addOrder(Order.desc("id")).list();
+        return (SertificatMPN) sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.eq("id", id)).uniqueResult();
 
     }
 

@@ -22,7 +22,7 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
 
     @Override
     public List<SertificatIK> sertificatIKList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).addOrder(Order.desc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.gt("id", 1)).addOrder(Order.desc("id")).list();
     }
 
     @Override

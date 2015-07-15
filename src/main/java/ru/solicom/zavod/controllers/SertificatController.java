@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.solicom.zavod.domain.Pokupatel;
 import ru.solicom.zavod.domain.SertificatIK;
+import ru.solicom.zavod.domain.SertificatIM;
+import ru.solicom.zavod.domain.SertificatMPN;
 import ru.solicom.zavod.fasade.SertificatService;
 import ru.solicom.zavod.service.*;
 
@@ -94,17 +96,47 @@ public class SertificatController {
 
     @RequestMapping(value = "/ik/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String sertificatSave(@RequestBody SertificatIK sertificatIK) {
+    public String sertificatIKSave(@RequestBody SertificatIK sertificatIK) {
         sertificatIKService.saveSertficatIK(sertificatIK);
         return "Изминения успешно внесены!";
     }
 
+    @RequestMapping(value = "/im/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String sertificatIMSave(@RequestBody SertificatIM sertificatIM) {
+        sertificatIMService.saveSertficatIM(sertificatIM);
+        return "Изминения успешно внесены!";
+    }
+
+    @RequestMapping(value = "/mpn/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String sertificatMPNSave(@RequestBody SertificatMPN sertificatMPN) {
+        sertificatMPNService.saveSertificatMPN(sertificatMPN);
+        return "Изминения успешно внесены!";
+    }
+
     @RequestMapping(value = "/ik/add", method = RequestMethod.GET)
-    public String addSertificatGet(Model model) {
+    public String addSertificatIK(Model model) {
         model.addAttribute("title_modal","Добавление Сертификата на известь комовую");
         model.addAttribute("sertificat", new SertificatIK());
         model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
         return "sertificatIK_edit";
+    }
+
+    @RequestMapping(value = "/im/add", method = RequestMethod.GET)
+    public String addSertificatIM(Model model) {
+        model.addAttribute("title_modal","Добавление Сертификата на известь молотую");
+        model.addAttribute("sertificat", new SertificatIM());
+        model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
+        return "sertificatIM_edit";
+    }
+
+    @RequestMapping(value = "/mpn/add", method = RequestMethod.GET)
+    public String addSertificatMPN(Model model) {
+        model.addAttribute("title_modal","Добавление Сертификата на минеральный порошок неактивированный");
+        model.addAttribute("sertificat", new SertificatMPN());
+        model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
+        return "sertificatMPN_edit";
     }
 
     @InitBinder

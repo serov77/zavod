@@ -1,23 +1,16 @@
 package ru.solicom.zavod.domain;
 
-import org.hibernate.validator.constraints.NotBlank;
+import ru.solicom.zavod.domain.base.BaseDomainSertificat;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.DecimalMin;
-import java.util.Date;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "sertificat_min_poroshok_neakt")
-public class SertificatMPN {
-    @Id
-    @GeneratedValue
-    private int id;
-    @Column(name = "nomer", nullable = false)
-    @NotBlank
-    private String nomer;
-    @Column(name = "data", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data;
+public class SertificatMPN extends BaseDomainSertificat implements Serializable {
     @Column(name = "mass_dolya_vlagi", nullable = false)
     @DecimalMin("0.001")
     private float massovayaDolyaVlagi;
@@ -30,33 +23,6 @@ public class SertificatMPN {
     @Column(name = "zern_sost_0071", nullable = false)
     @DecimalMin("0.001")
     private float zerovoySostav0071;
-    @ManyToOne
-    @JoinColumn(name = "id_pokupatel")
-    private Pokupatel pokupatel;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNomer() {
-        return nomer;
-    }
-
-    public void setNomer(String nomer) {
-        this.nomer = nomer;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 
     public float getMassovayaDolyaVlagi() {
         return massovayaDolyaVlagi;
@@ -90,11 +56,4 @@ public class SertificatMPN {
         this.zerovoySostav0071 = zerovoySostav0071;
     }
 
-    public Pokupatel getPokupatel() {
-        return pokupatel;
-    }
-
-    public void setPokupatel(Pokupatel pokupatel) {
-        this.pokupatel = pokupatel;
-    }
 }

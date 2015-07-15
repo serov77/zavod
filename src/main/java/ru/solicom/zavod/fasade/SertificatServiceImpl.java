@@ -35,7 +35,7 @@ public class SertificatServiceImpl implements SertificatService {
                 view = "sertificatIM_edit";
                 break;
             case "MPN":
-                model.addObject("sertifikat", sertificatMPNService.retriveSertificatMPN(id));
+                model.addObject("sertificat", sertificatMPNService.retriveSertificatMPN(id));
                 title = "Редактирование Сертификата на Порошок Минеральный Неактивированный";
                 view = "sertificatMPN_edit";
         }

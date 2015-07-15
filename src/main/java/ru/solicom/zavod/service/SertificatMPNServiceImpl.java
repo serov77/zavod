@@ -29,6 +29,10 @@ public class SertificatMPNServiceImpl implements SertificatMPNService {
     @Transactional
     @Override
     public void saveSertificatMPN(SertificatMPN sertificatMPN) {
+        if (sertificatMPN.getData() == null) {
+            Date today = new Date();
+            sertificatMPN.setData(today);
+        }
         sertificatMPNDAO.saveSertificatMPN(sertificatMPN);
     }
 

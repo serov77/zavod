@@ -27,6 +27,8 @@ public class MainController {
     private SertificatIKService sertificatIKService;
     @Autowired
     private SertificatIMService sertificatIMService;
+    @Autowired
+    private SertificatMPNService sertificatMPNService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
@@ -85,15 +87,16 @@ public class MainController {
             sd = data;
         }
         date = format.parse(sd);
-        switch (y){
+        switch (y) {
             case "ik":
                 x = sertificatIKService.searchSertificatIKByNomerAndGod(id, nomer, date);
                 break;
             case "im":
-                x=sertificatIMService.searchSertificatIMByNomerAndGod(id,nomer,date);
-
+                x = sertificatIMService.searchSertificatIMByNomerAndGod(id, nomer, date);
+                break;
+            case "mpn":
+                x = sertificatMPNService.searchSertificatMPNByNomerAndGod(id, nomer, date);
         }
-
         return "{ \"valid\": " + x + " }";
     }
 
