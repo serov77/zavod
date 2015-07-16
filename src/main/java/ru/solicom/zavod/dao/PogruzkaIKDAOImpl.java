@@ -17,11 +17,11 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
 
     @Override
     public List<PogruzkaIK> pogruzkaIKList() {
-        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.ne("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
     }
 
     @Override
     public List<PogruzkaIK> pogruzkaIKNaLiniiList() {
-        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.ne("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
     }
 }

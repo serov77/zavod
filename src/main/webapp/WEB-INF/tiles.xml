@@ -55,4 +55,7 @@
     <definition name="sertificatMPN_edit" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/sertificat/SertificatMPN/sertificatMPN_edit.jsp" />
     </definition>
+    <definition name="pogruzka" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka.jsp" />
+    </definition>
 </tiles-definitions>
