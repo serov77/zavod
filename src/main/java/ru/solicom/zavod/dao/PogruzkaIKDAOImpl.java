@@ -1,0 +1,27 @@
+package ru.solicom.zavod.dao;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import ru.solicom.zavod.domain.PogruzkaIK;
+import ru.solicom.zavod.domain.Pokupatel;
+
+import java.util.List;
+
+@Repository
+public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public List<PogruzkaIK> pogruzkaIKList() {
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
+    }
+
+    @Override
+    public List<PogruzkaIK> pogruzkaIKNaLiniiList() {
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.ne("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
+    }
+}

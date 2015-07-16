@@ -18,7 +18,7 @@ public class BaseDomainPogruzka extends BaseDomain{
     protected Vagon vagon;
     @Column(name = "brutto", nullable = false)
     @NotBlank
-    protected Float brutto;
+    protected float brutto;
     @Column(name = "data_pogruzki")
     protected Date dataPogruzki;
     @Column(name = "data_otpravleniya")

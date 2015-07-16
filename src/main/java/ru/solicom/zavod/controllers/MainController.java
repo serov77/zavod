@@ -5,12 +5,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.solicom.zavod.domain.PogruzkaIK;
 import ru.solicom.zavod.domain.User;
 import ru.solicom.zavod.service.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -29,10 +31,11 @@ public class MainController {
     private SertificatIMService sertificatIMService;
     @Autowired
     private SertificatMPNService sertificatMPNService;
+    @Autowired
+    private PogruzkaIKService pogruzkaIKService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
-
         Object o = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String user = "Гость";
         if (!o.toString().equals("anonymousUser")) {
@@ -45,6 +48,8 @@ public class MainController {
 
     @RequestMapping(value = "/sbit", method = RequestMethod.GET)
     public String sbitHome() {
+        List<PogruzkaIK> pogruzkaIKList = pogruzkaIKService.pogruzkaIKList();
+        List<PogruzkaIK> pogruzkaIKList2 = pogruzkaIKService.pogruzkaIKNaLiniiList();
         return "sbit_home";
     }
 
