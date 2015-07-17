@@ -1,7 +1,5 @@
 package ru.solicom.zavod.dao;
 
-import java.util.Date;
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -9,6 +7,9 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.SertificatIK;
+
+import java.util.Date;
+import java.util.List;
 
 @Repository
 public class SertificatIKDAOImpl implements SertificatIKDAO {
@@ -22,7 +23,13 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
 
     @Override
     public List<SertificatIK> sertificatIKList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.gt("id", 1)).addOrder(Order.desc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+    }
+
+    @Override
+    public List<SertificatIK> sertificatIKBezPoluchatelyaList() {
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.eq("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+
     }
 
     @Override
@@ -33,7 +40,7 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
     @Override
     public void saveSertificatIK(SertificatIK sertificatIK) {
         sessionFactory.getCurrentSession().saveOrUpdate(sertificatIK);
-        int id=2;
+        int id = 2;
     }
 
     @Override

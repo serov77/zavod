@@ -21,12 +21,7 @@
         <div id="collapseOne" class="panel-collapse collapse in">
             <!-- Содержимое 1 панели -->
             <div class="panel-body">
-                <c:if test="${!empty pogruzkaIKList}">
-                    <jsp:include page="pogruzkaIK/table_pogruzkaIK.jsp"/>
-                </c:if>
-                <c:if test="${empty pogruzkaIKList}">
-                    <h3>Нет Данных</h3>
-                </c:if>
+                <jsp:include page="pogruzkaIK/table_pogruzkaIK.jsp"/>
             </div>
         </div>
     </div>

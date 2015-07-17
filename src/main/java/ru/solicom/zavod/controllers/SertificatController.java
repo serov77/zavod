@@ -41,7 +41,10 @@ public class SertificatController {
     public String listSertificat(Model model) {
 
         model.addAttribute("sertificatIKList", sertificatIKService.sertificatIKList());
+        model.addAttribute("sertificatIKNeIspList", sertificatIKService.sertificatIKNeIspList());
+        model.addAttribute("sertificatIKBezPoluchatelyaList", sertificatIKService.sertificatIKBezPoluchatelyaList());
         model.addAttribute("sertificatIMList", sertificatIMService.sertificatIMList());
+        model.addAttribute("sertificatIMBezPoluchatelyaList", sertificatIMService.sertificatIMBezPoluchatelyaList());
         model.addAttribute("sertificatMPNList", sertificatMPNService.sertificatMPNList());
         //model.addAttribute("searchSertificat", new SertificatIK());
         //model.addAttribute("v", sertificatService.kolichectvoSertificatov());

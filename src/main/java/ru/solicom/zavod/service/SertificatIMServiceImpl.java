@@ -24,6 +24,12 @@ public class SertificatIMServiceImpl implements SertificatIMService {
 
     @Transactional
     @Override
+    public List<SertificatIM> sertificatIMBezPoluchatelyaList() {
+        return sertificatIMDAO.sertificatIMBezPoluchatelyaList();
+    }
+
+    @Transactional
+    @Override
     public SertificatIM retriveSertificatIM(int id) {
         return sertificatIMDAO.retriveSertificatIM(id);
     }

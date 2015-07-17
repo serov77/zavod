@@ -29,7 +29,7 @@ public class BaseDomainPogruzka extends BaseDomain{
     @Column(name = "dopolneniya")
     protected String dopolneniya;
 
-    public Float getBrutto() {
+    public float getBrutto() {
         return brutto;
     }
 
@@ -49,7 +49,7 @@ public class BaseDomainPogruzka extends BaseDomain{
         return dataPogruzki;
     }
 
-    public void setBrutto(Float brutto) {
+    public void setBrutto(float brutto) {
         this.brutto = brutto;
     }
 
@@ -67,5 +67,13 @@ public class BaseDomainPogruzka extends BaseDomain{
 
     public void setDataPogruzki(Date dataPogruzki) {
         this.dataPogruzki = dataPogruzki;
+    }
+
+    public Vagon getVagon() {
+        return vagon;
+    }
+
+    public void setVagon(Vagon vagon) {
+        this.vagon = vagon;
     }
 }

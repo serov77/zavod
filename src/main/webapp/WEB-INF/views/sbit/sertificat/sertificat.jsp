@@ -19,15 +19,10 @@
                     комовую</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse">
             <!-- Содержимое 1 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatIKList}">
-                    <jsp:include page="sertificatIK/table_sertificatIK.jsp"/>
-                </c:if>
-                <c:if test="${empty sertificatIKList}">
-                    <h3>Нет Данных</h3>
-                </c:if>
+                <jsp:include page="sertificatIK/table_sertificatIK.jsp"/>
                 <div class="block">
                     <button class="btn btn-info btn-lg butt_add" type="button" rel="ik">Добавить Сертификат</button>
                 </div>
@@ -47,12 +42,7 @@
         <div id="collapseTwo" class="panel-collapse collapse">
             <!-- Содержимое 2 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatIMList}">
-                    <jsp:include page="SertificatIM/table_sertificatIM.jsp"/>
-                </c:if>
-                <c:if test="${empty sertificatIMList}">
-                    <h3>Нет Данных</h3>
-                </c:if>
+                <jsp:include page="SertificatIM/table_sertificatIM.jsp"/>
                 <div class="block">
                     <button class="btn btn-info btn-lg butt_add" type="button" rel="im">Добавить Сертификат</button>
                 </div>
@@ -64,7 +54,8 @@
         <!-- Заголовок 3 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Сертификаты на минеральный порошок неактивированный</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Сертификаты на минеральный
+                    порошок неактивированный</a>
             </h4>
         </div>
         <div id="collapseThree" class="panel-collapse collapse">

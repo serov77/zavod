@@ -9,6 +9,10 @@ public interface SertificatIKService {
 
     public List<SertificatIK> sertificatIKList();
 
+    public List<SertificatIK> sertificatIKNeIspList();
+
+    public List<SertificatIK> sertificatIKBezPoluchatelyaList();
+
     public SertificatIK retriveSertificatIK(int id);
 
     public void saveSertficatIK(SertificatIK sertificatIK);

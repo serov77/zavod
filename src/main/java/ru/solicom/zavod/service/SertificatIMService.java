@@ -8,6 +8,8 @@ import java.util.List;
 public interface SertificatIMService {
     public List<SertificatIM> sertificatIMList();
 
+    public List<SertificatIM> sertificatIMBezPoluchatelyaList();
+
     public SertificatIM retriveSertificatIM(int id);
 
     public void saveSertficatIM(SertificatIM sertificatIM);

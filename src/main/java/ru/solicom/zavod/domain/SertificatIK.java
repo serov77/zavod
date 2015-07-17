@@ -1,18 +1,12 @@
 package ru.solicom.zavod.domain;
 
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.validation.constraints.DecimalMin;
-import org.hibernate.validator.constraints.NotBlank;
 import ru.solicom.zavod.domain.base.BaseDomainSertificatIzvest;
+
+import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "sertificat_izvest_komovaya")
@@ -23,8 +17,10 @@ public class SertificatIK extends BaseDomainSertificatIzvest implements Serializ
     @DecimalMin("0.001")
     private float soderNepogZeren;
 
-    public SertificatIK() {
+    @OneToMany(mappedBy = "sertificatIK", fetch = FetchType.EAGER)
+    private Set<PogruzkaIK> pogruzkaIKs = new HashSet<>();
 
+    public SertificatIK() {
     }
 
     public float getSoderNepogZeren() {
@@ -35,4 +31,11 @@ public class SertificatIK extends BaseDomainSertificatIzvest implements Serializ
         this.soderNepogZeren = soderNepogZeren;
     }
 
+    public Set<PogruzkaIK> getPogruzkaIKs() {
+        return pogruzkaIKs;
+    }
+
+    public void setPogruzkaIKs(Set<PogruzkaIK> pogruzkaIKs) {
+        this.pogruzkaIKs = pogruzkaIKs;
+    }
 }

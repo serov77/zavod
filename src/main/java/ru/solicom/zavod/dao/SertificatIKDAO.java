@@ -9,6 +9,8 @@ public interface SertificatIKDAO {
 
     public List<SertificatIK> sertificatIKList();
 
+    public List<SertificatIK> sertificatIKBezPoluchatelyaList();
+
     public SertificatIK retriveSertificatIK(int id);
 
     public void saveSertificatIK(SertificatIK sertificatIK);

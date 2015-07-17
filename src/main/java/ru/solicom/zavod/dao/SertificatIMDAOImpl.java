@@ -20,7 +20,12 @@ public class SertificatIMDAOImpl implements SertificatIMDAO {
 
     @Override
     public List<SertificatIM> sertificatIMList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.gt("id", 1)).addOrder(Order.desc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+    }
+
+    @Override
+    public List<SertificatIM> sertificatIMBezPoluchatelyaList() {
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.eq("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
 
     }
 
