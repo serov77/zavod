@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.SertificatIMDAO;
 import ru.solicom.zavod.domain.SertificatIM;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,11 +16,29 @@ public class SertificatIMServiceImpl implements SertificatIMService {
 
     @Autowired
     private SertificatIMDAO sertificatIMDAO;
+    private List<SertificatIM> sertificatIMNeIspList = new ArrayList<>();
+    private List<SertificatIM> sertificatIMList = new ArrayList<>();
+
+    @Transactional
+    @Override
+    public List<SertificatIM> sertificatIMNeIspList() {
+        return sertificatIMNeIspList;
+    }
 
     @Transactional
     @Override
     public List<SertificatIM> sertificatIMList() {
-        return sertificatIMDAO.sertificatIMList();
+        sertificatIMList.clear();
+        sertificatIMNeIspList.clear();
+        List<SertificatIM> list = sertificatIMDAO.sertificatIMList();
+        for (SertificatIM s : list) {
+            if (s.getPogruzkaIMs().size() == 0) {
+                sertificatIMNeIspList.add(s);
+            } else {
+                sertificatIMList.add(s);
+            }
+        }
+        return sertificatIMList;
     }
 
     @Transactional

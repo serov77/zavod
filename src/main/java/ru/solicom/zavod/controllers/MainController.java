@@ -48,8 +48,6 @@ public class MainController {
 
     @RequestMapping(value = "/sbit", method = RequestMethod.GET)
     public String sbitHome() {
-        List<PogruzkaIK> pogruzkaIKList = pogruzkaIKService.pogruzkaIKList();
-        List<PogruzkaIK> pogruzkaIKList2 = pogruzkaIKService.pogruzkaIKNaLiniiList();
         return "sbit_home";
     }
 

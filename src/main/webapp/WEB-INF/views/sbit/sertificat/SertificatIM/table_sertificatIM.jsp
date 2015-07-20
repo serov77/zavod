@@ -75,7 +75,7 @@
         <div id="collapseOne_6" class="panel-collapse collapse">
             <!-- Содержимое 2 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatIMList}">
+                <c:if test="${!empty sertificatIMNeIspList}">
                     <table id="sertificatsIMNeIsp"
                            class="table table-bordered table-hover table-striped table-condensed display">
                         <thead>
@@ -94,7 +94,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${sertificatIMList}" var="sertificat">
+                        <c:forEach items="${sertificatIMNeIspList}" var="sertificat">
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
@@ -116,7 +116,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty sertificatIMList}">
+                <c:if test="${empty sertificatIMNeIspList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>

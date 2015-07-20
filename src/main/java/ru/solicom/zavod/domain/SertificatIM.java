@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "sertificat_izvest_molotaya")
@@ -18,6 +20,8 @@ public class SertificatIM extends BaseDomainSertificatIzvest implements Serializ
     @Column(name = "sito_008", nullable = false)
     @DecimalMin("0.001")
     private float sito008;
+    @OneToMany(mappedBy = "sertificatIM", fetch = FetchType.EAGER)
+    private Set<PogruzkaIM> pogruzkaIMs = new HashSet<>();
 
 
     public float getSito02() {
@@ -36,4 +40,11 @@ public class SertificatIM extends BaseDomainSertificatIzvest implements Serializ
         this.sito008 = sito008;
     }
 
+    public Set<PogruzkaIM> getPogruzkaIMs() {
+        return pogruzkaIMs;
+    }
+
+    public void setPogruzkaIMs(Set<PogruzkaIM> pogruzkaIMs) {
+        this.pogruzkaIMs = pogruzkaIMs;
+    }
 }

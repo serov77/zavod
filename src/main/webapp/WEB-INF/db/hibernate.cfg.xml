@@ -17,5 +17,6 @@
         <mapping class="ru.solicom.zavod.domain.User"/>
         <mapping class="ru.solicom.zavod.domain.Tara"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaIK"/>
+        <mapping class="ru.solicom.zavod.domain.PogruzkaIM"/>
     </session-factory>
 </hibernate-configuration>
