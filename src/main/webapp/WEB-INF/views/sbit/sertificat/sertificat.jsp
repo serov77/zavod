@@ -61,12 +61,7 @@
         <div id="collapseThree" class="panel-collapse collapse">
             <!-- Содержимое 3 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatMPNList}">
-                    <jsp:include page="SertificatMPN/table_sertificatMPN.jsp"/>
-                </c:if>
-                <c:if test="${empty sertificatMPNList}">
-                    <h3>Нет Данных</h3>
-                </c:if>
+                <jsp:include page="SertificatMPN/table_sertificatMPN.jsp"/>
                 <div class="block">
                     <button class="btn btn-info btn-lg butt_add" type="button" rel="mpn">Добавить Сертификат</button>
                 </div>

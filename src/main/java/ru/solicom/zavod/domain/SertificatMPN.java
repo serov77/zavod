@@ -2,11 +2,11 @@ package ru.solicom.zavod.domain;
 
 import ru.solicom.zavod.domain.base.BaseDomainSertificat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "sertificat_min_poroshok_neakt")
@@ -23,6 +23,8 @@ public class SertificatMPN extends BaseDomainSertificat implements Serializable 
     @Column(name = "zern_sost_0071", nullable = false)
     @DecimalMin("0.001")
     private float zerovoySostav0071;
+    @OneToMany(mappedBy = "sertificatMPN", fetch = FetchType.EAGER)
+    private Set<PogruzkaMPN> pogruzkaMPNs = new HashSet<>();
 
     public float getMassovayaDolyaVlagi() {
         return massovayaDolyaVlagi;
@@ -56,4 +58,11 @@ public class SertificatMPN extends BaseDomainSertificat implements Serializable 
         this.zerovoySostav0071 = zerovoySostav0071;
     }
 
+    public Set<PogruzkaMPN> getPogruzkaMPNs() {
+        return pogruzkaMPNs;
+    }
+
+    public void setPogruzkaMPNs(Set<PogruzkaMPN> pogruzkaMPNs) {
+        this.pogruzkaMPNs = pogruzkaMPNs;
+    }
 }

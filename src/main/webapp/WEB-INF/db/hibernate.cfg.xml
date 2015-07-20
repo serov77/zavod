@@ -18,5 +18,6 @@
         <mapping class="ru.solicom.zavod.domain.Tara"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaIK"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaIM"/>
+        <mapping class="ru.solicom.zavod.domain.PogruzkaMPN"/>
     </session-factory>
 </hibernate-configuration>
