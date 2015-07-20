@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.SertificatMPNDAO;
 import ru.solicom.zavod.domain.SertificatMPN;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +14,36 @@ import java.util.List;
 public class SertificatMPNServiceImpl implements SertificatMPNService {
     @Autowired
     private SertificatMPNDAO sertificatMPNDAO;
+    private List<SertificatMPN> sertificatMPNNeIspList = new ArrayList<>();
+    private List<SertificatMPN> sertificatMPNList = new ArrayList<>();
+
 
     @Transactional
     @Override
     public List<SertificatMPN> sertificatMPNList() {
-        return sertificatMPNDAO.sertificatMPNList();
+        sertificatMPNList.clear();
+        sertificatMPNNeIspList.clear();
+        List<SertificatMPN> list = sertificatMPNDAO.sertificatMPNList();
+        for (SertificatMPN s : list) {
+            if (s.getPogruzkaMPNs().size() == 0) {
+                sertificatMPNNeIspList.add(s);
+            } else {
+                sertificatMPNList.add(s);
+            }
+        }
+        return sertificatMPNList;
+    }
+
+    @Transactional
+    @Override
+    public List<SertificatMPN> sertificatMPNNeIspList() {
+        return sertificatMPNNeIspList;
+    }
+
+    @Transactional
+    @Override
+    public List<SertificatMPN> sertificatMPNBezPoluchatelyaList() {
+        return sertificatMPNDAO.sertificatMPNBezPoluchatelyaList();
     }
 
     @Transactional

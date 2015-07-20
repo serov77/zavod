@@ -71,7 +71,7 @@
         <div id="collapseOne_9" class="panel-collapse collapse">
             <!-- Содержимое 2 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatMPNList}">
+                <c:if test="${!empty sertificatMPNNeIspList}">
                     <table id="sertificatsMPNNeIsp"
                            class="table table-bordered table-hover table-striped table-condensed display">
                         <thead>
@@ -88,7 +88,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${sertificatMPNList}" var="sertificat">
+                        <c:forEach items="${sertificatMPNNeIspList}" var="sertificat">
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
@@ -109,7 +109,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty sertificatIMList}">
+                <c:if test="${empty sertificatMPNNeIspList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>
@@ -126,7 +126,7 @@
         <div id="collapseOne_10" class="panel-collapse collapse">
             <!-- Содержимое 3 панели -->
             <div class="panel-body">
-                <c:if test="${!empty sertificatMPNList}">
+                <c:if test="${!empty sertificatMPNBezPoluchatelyaList}">
                     <table id="sertificatsMPNBezPol"
                            class="table table-bordered table-hover table-striped table-condensed display">
                         <thead>
@@ -142,7 +142,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${sertificatMPNList}" var="sertificat">
+                        <c:forEach items="${sertificatMPNBezPoluchatelyaList}" var="sertificat">
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
@@ -162,7 +162,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty sertificatIMList}">
+                <c:if test="${empty sertificatMPNBezPoluchatelyaList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>

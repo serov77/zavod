@@ -47,6 +47,8 @@ public class SertificatController {
         model.addAttribute("sertificatIMNeIspList", sertificatIMService.sertificatIMNeIspList());
         model.addAttribute("sertificatIMBezPoluchatelyaList", sertificatIMService.sertificatIMBezPoluchatelyaList());
         model.addAttribute("sertificatMPNList", sertificatMPNService.sertificatMPNList());
+        model.addAttribute("sertificatMPNNeIspList", sertificatMPNService.sertificatMPNNeIspList());
+        model.addAttribute("sertificatMPNBezPoluchatelyaList", sertificatMPNService.sertificatMPNBezPoluchatelyaList());
         //model.addAttribute("searchSertificat", new SertificatIK());
         //model.addAttribute("v", sertificatService.kolichectvoSertificatov());
         return "sertificat";

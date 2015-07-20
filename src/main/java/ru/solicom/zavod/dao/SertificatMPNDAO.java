@@ -9,6 +9,8 @@ import java.util.List;
 public interface SertificatMPNDAO {
     public List<SertificatMPN> sertificatMPNList();
 
+    public List<SertificatMPN> sertificatMPNBezPoluchatelyaList();
+
     public SertificatMPN retriveSertificatMPN(int id);
 
     void saveSertificatMPN(SertificatMPN sertificatMPN);
