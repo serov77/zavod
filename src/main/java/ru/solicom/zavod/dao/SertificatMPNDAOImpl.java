@@ -18,7 +18,7 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
 
     @Override
     public List<SertificatMPN> sertificatMPNList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).addOrder(Order.desc("id")).list();
+        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
     }
 
     @Override

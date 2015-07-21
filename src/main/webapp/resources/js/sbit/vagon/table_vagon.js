@@ -50,12 +50,34 @@ $(document).ready(function () {
         $(this).toggleClass('selected');
     });
 
-    $('body').on('click','.butt', function () {
+    $('body').on('click','.butt_edit', function () {
         var x = $(this).attr("rel");
         var url = "vagon/edit/" + x;
         editVagon(url);
         $("#myModal").modal();
     });
+
+    $('body').on('click','.butt_pogr', function () {
+        var x = $(this).attr("rel");
+        var url = "/pogruzka/add/" + x;
+        editVagon(url);
+        $("#myModal").modal();
+    });
+
+    function addPogruzka(url) {
+        $.ajax({
+            url: url,
+            beforeSend: function () {
+                $('#mesto').html('<img src="/zavod/resources/img/ajax-loader.gif" />');
+            },
+            complete: function () {
+                $('#mesto').show(100);
+            },
+            success: function (html) {
+                $('#mesto').html(html);
+            }
+        });
+    }
 });
 
 

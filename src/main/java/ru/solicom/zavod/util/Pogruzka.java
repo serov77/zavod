@@ -1,0 +1,72 @@
+package ru.solicom.zavod.util;
+
+import ru.solicom.zavod.domain.Tara;
+import ru.solicom.zavod.domain.Vagon;
+
+import java.util.Date;
+
+public class Pogruzka {
+    private int id;
+    private Vagon vagon;
+    private float brutto;
+    private Date dataPogruzki;
+    private Date dataOtpravleniya;
+    private Tara tara;
+    private String dopolneniya;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Vagon getVagon() {
+        return vagon;
+    }
+
+    public void setVagon(Vagon vagon) {
+        this.vagon = vagon;
+    }
+
+    public float getBrutto() {
+        return brutto;
+    }
+
+    public void setBrutto(float brutto) {
+        this.brutto = brutto;
+    }
+
+    public Date getDataPogruzki() {
+        return dataPogruzki;
+    }
+
+    public void setDataPogruzki(Date dataPogruzki) {
+        this.dataPogruzki = dataPogruzki;
+    }
+
+    public Date getDataOtpravleniya() {
+        return dataOtpravleniya;
+    }
+
+    public void setDataOtpravleniya(Date dataOtpravleniya) {
+        this.dataOtpravleniya = dataOtpravleniya;
+    }
+
+    public Tara getTara() {
+        return tara;
+    }
+
+    public void setTara(Tara tara) {
+        this.tara = tara;
+    }
+
+    public String getDopolneniya() {
+        return dopolneniya;
+    }
+
+    public void setDopolneniya(String dopolneniya) {
+        this.dopolneniya = dopolneniya;
+    }
+}

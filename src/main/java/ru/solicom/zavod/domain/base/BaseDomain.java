@@ -8,7 +8,6 @@ import javax.persistence.MappedSuperclass;
 public class BaseDomain {
     @Id
     @GeneratedValue
-
     protected int id;
 
     public int getId() {

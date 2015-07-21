@@ -58,4 +58,7 @@
     <definition name="pogruzka" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka.jsp" />
     </definition>
+    <definition name="pogruzka_add" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka_add.jsp" />
+    </definition>
 </tiles-definitions>
