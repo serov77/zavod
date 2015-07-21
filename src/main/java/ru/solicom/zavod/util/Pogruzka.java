@@ -1,5 +1,6 @@
 package ru.solicom.zavod.util;
 
+import ru.solicom.zavod.domain.Gruz;
 import ru.solicom.zavod.domain.Tara;
 import ru.solicom.zavod.domain.Vagon;
 
@@ -8,7 +9,9 @@ import java.util.Date;
 public class Pogruzka {
     private int id;
     private Vagon vagon;
+    private Gruz gruz;
     private float brutto;
+    private float netto;
     private Date dataPogruzki;
     private Date dataOtpravleniya;
     private Tara tara;
@@ -30,12 +33,28 @@ public class Pogruzka {
         this.vagon = vagon;
     }
 
+    public Gruz getGruz() {
+        return gruz;
+    }
+
+    public void setGruz(Gruz gruz) {
+        this.gruz = gruz;
+    }
+
     public float getBrutto() {
         return brutto;
     }
 
     public void setBrutto(float brutto) {
         this.brutto = brutto;
+    }
+
+    public float getNetto() {
+        return netto;
+    }
+
+    public void setNetto(float netto) {
+        this.netto = netto;
     }
 
     public Date getDataPogruzki() {

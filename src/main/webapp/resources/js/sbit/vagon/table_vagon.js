@@ -59,7 +59,7 @@ $(document).ready(function () {
 
     $('body').on('click','.butt_pogr', function () {
         var x = $(this).attr("rel");
-        var url = "/pogruzka/add/" + x;
+        var url = "pogruzka/add/" + x;
         editVagon(url);
         $("#myModal").modal();
     });

@@ -18,4 +18,9 @@ public class TaraServiceImpl implements TaraService {
     public List<Tara> taraList() {
         return taraDAO.taraList();
     }
+
+    @Override
+    public List<Tara> taraBezMKRList() {
+        return taraDAO.taraBezMKRList();
+    }
 }

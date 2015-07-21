@@ -2,6 +2,7 @@ package ru.solicom.zavod.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.Tara;
@@ -14,5 +15,10 @@ public class TaraDAOImpl implements TaraDAO{
     @Override
     public List<Tara> taraList() {
         return sessionFactory.getCurrentSession().createCriteria(Tara.class).addOrder(Order.asc("id")).list();
+    }
+
+    @Override
+    public List<Tara> taraBezMKRList() {
+        return sessionFactory.getCurrentSession().createCriteria(Tara.class).add(Restrictions.ne("name", "МКР")).addOrder(Order.asc("id")).list();
     }
 }

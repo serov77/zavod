@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TaraDAO {
     public List<Tara> taraList();
+
+    public List<Tara> taraBezMKRList();
 }
