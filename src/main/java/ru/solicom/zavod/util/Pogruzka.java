@@ -9,6 +9,7 @@ import java.util.Date;
 public class Pogruzka {
     private int id;
     private Vagon vagon;
+    private int idVagon;
     private Gruz gruz;
     private float brutto;
     private float netto;
@@ -87,5 +88,13 @@ public class Pogruzka {
 
     public void setDopolneniya(String dopolneniya) {
         this.dopolneniya = dopolneniya;
+    }
+
+    public int getIdVagon() {
+        return idVagon;
+    }
+
+    public void setIdVagon(int idVagon) {
+        this.idVagon = idVagon;
     }
 }

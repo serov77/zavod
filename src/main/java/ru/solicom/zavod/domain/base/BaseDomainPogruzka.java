@@ -5,10 +5,7 @@ import ru.solicom.zavod.domain.SertificatIK;
 import ru.solicom.zavod.domain.Tara;
 import ru.solicom.zavod.domain.Vagon;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
@@ -17,11 +14,12 @@ public class BaseDomainPogruzka extends BaseDomain{
     @JoinColumn(name = "id_vagon")
     protected Vagon vagon;
     @Column(name = "brutto", nullable = false)
-    @NotBlank
     protected float brutto;
     @Column(name = "data_pogruzki")
+    @Temporal(javax.persistence.TemporalType.DATE)
     protected Date dataPogruzki;
     @Column(name = "data_otpravleniya")
+    @Temporal(javax.persistence.TemporalType.DATE)
     protected Date dataOtpravleniya;
     @ManyToOne
     @JoinColumn(name = "id_tara")

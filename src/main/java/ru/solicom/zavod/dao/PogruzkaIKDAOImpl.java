@@ -24,4 +24,10 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
     public List<PogruzkaIK> pogruzkaIKNaLiniiList() {
         return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("sertificatIK.id", 1)).addOrder(Order.asc("id")).list();
     }
+
+    @Override
+    public void savePogruzkaIK(PogruzkaIK pogruzkaIK) {
+        sessionFactory.getCurrentSession().saveOrUpdate(pogruzkaIK);
+    }
+
 }

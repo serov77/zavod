@@ -30,6 +30,14 @@
                 <form:label path="vagon.tara" class="col-xs-4 control-label">Тара Вагона, т.</form:label>
                 <div class="col-xs-8">
                     <form:input id="taraVag" path="vagon.tara" class="form-control" readonly="true"/>
+                    <form:hidden id="idVag" path="vagon.id" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <form:label path="vagon.gruzopodyomnost"
+                            class="col-xs-4 control-label">Грузоподъемность Вагона, т.</form:label>
+                <div class="col-xs-8">
+                    <form:input path="vagon.gruzopodyomnost" class="form-control" readonly="true"/>
                 </div>
             </div>
             <div class="form-group">
@@ -58,7 +66,13 @@
             <div class="form-group">
                 <form:label path="netto" class="col-xs-4 control-label">Вес нетто, т.</form:label>
                 <div class="col-xs-8">
-                    <form:input path="netto" class="form-control" oninput="Ftest (this)" readonly="true"/>
+                    <form:input path="netto" class="form-control" readonly="true"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <form:label path="dopolneniya" class="col-xs-4 control-label">Дополнительные отметки</form:label>
+                <div class="col-xs-8">
+                    <form:textarea path="dopolneniya" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">
@@ -69,7 +83,7 @@
     </form:form>
 
 </div>
-<script src="<c:url value="/resources/js/sbit/pokupatel/pokupatel_edit.js"/>"></script>
+<script src="<c:url value="/resources/js/sbit/pogruzka/pogruzka_add.js"/>"></script>
 <script type="text/javascript">
     function Ftest(obj) {
         if (this.ST) return;
@@ -85,7 +99,7 @@
         this.ST = null;
         var tara = $("input#taraVag").val();
         var brutto = $("input#brutto").val()
-        $("input#netto").val(brutto-tara);
+        $("input#netto").val(brutto - tara);
     }
 
     function Fshowerror(obj) {

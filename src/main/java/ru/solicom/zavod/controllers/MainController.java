@@ -5,14 +5,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.solicom.zavod.domain.PogruzkaIK;
 import ru.solicom.zavod.domain.User;
 import ru.solicom.zavod.service.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class MainController {
@@ -103,4 +101,13 @@ public class MainController {
         return "{ \"valid\": " + x + " }";
     }
 
+    @RequestMapping(value = "/valid_pogruzka_netto", method = RequestMethod.GET)
+    @ResponseBody
+    public String validNetto(@RequestParam float taraVag, @RequestParam float brutto, @RequestParam float gruzopodyomnost) {
+        Boolean x = false;
+        if ((brutto - taraVag) > 0 && (gruzopodyomnost - (brutto - taraVag)) > 0) {
+            x = true;
+        }
+        return "{ \"valid\": " + x + " }";
+    }
 }

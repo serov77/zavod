@@ -23,4 +23,9 @@ public class PogruzkaIKServiceImpl implements PogruzkaIKService {
     public List<PogruzkaIK> pogruzkaIKNaLiniiList() {
         return pogruzkaIKDAO.pogruzkaIKNaLiniiList();
     }
+
+    @Override
+    public void savePogruzkaIK(PogruzkaIK pogruzkaIK) {
+        pogruzkaIKDAO.savePogruzkaIK(pogruzkaIK);
+    }
 }

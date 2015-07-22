@@ -9,4 +9,6 @@ public interface PogruzkaIKDAO {
     public List<PogruzkaIK> pogruzkaIKList();
 
     public List<PogruzkaIK> pogruzkaIKNaLiniiList();
+
+    public void savePogruzkaIK(PogruzkaIK pogruzkaIK);
 }
