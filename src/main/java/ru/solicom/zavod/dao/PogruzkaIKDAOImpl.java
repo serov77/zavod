@@ -6,8 +6,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.PogruzkaIK;
-import ru.solicom.zavod.domain.Pokupatel;
+import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.util.StatusVaiona;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,6 +30,18 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
     @Override
     public void savePogruzkaIK(PogruzkaIK pogruzkaIK) {
         sessionFactory.getCurrentSession().saveOrUpdate(pogruzkaIK);
+    }
+
+    @Override
+    public StatusVaiona searchPogruzkaIKVagonaZaDen(Vagon vagon, Date date) {
+        PogruzkaIK ik = (PogruzkaIK) sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.ne("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
+        PogruzkaIK ik_2 = (PogruzkaIK) sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();
+        if (ik != null) {
+            return StatusVaiona.PogSegodnyaIK;
+        } else if (ik_2 != null) {
+            return StatusVaiona.StoitNaLiniiIK;
+        }
+        return StatusVaiona.OK;
     }
 
 }

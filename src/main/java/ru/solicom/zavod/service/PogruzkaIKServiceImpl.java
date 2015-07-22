@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.PogruzkaIKDAO;
 import ru.solicom.zavod.domain.PogruzkaIK;
+import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.util.StatusVaiona;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,5 +30,10 @@ public class PogruzkaIKServiceImpl implements PogruzkaIKService {
     @Override
     public void savePogruzkaIK(PogruzkaIK pogruzkaIK) {
         pogruzkaIKDAO.savePogruzkaIK(pogruzkaIK);
+    }
+
+    @Override
+    public StatusVaiona searchPogruzkaIKVagonaZaDen(Vagon vagon, Date date) {
+        return pogruzkaIKDAO.searchPogruzkaIKVagonaZaDen(vagon, date);
     }
 }

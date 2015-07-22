@@ -8,6 +8,7 @@ import ru.solicom.zavod.domain.PogruzkaIK;
 import ru.solicom.zavod.domain.SertificatIK;
 import ru.solicom.zavod.domain.Tara;
 import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.fasade.PogruzkaService;
 import ru.solicom.zavod.service.*;
 import ru.solicom.zavod.util.Pogruzka;
 
@@ -17,6 +18,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/pogruzka")
 public class PogruzkaController {
+    @Autowired
+    private PogruzkaService pogruzkaService;
     @Autowired
     private PogruzkaIKService pogruzkaIKService;
     @Autowired
@@ -38,6 +41,7 @@ public class PogruzkaController {
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
     public String pogruzkaAdd(@PathVariable int id, Model model) {
         Vagon vagon = vagonService.retriveVagon(id);
+        Boolean x =  pogruzkaService.searchPogruzka(vagon);
         Pogruzka pogruzka = new Pogruzka();
         List<Tara> taraList;
         if (vagon.getRodVagona().getName().equals("полувагон")) {

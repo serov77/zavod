@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.PogruzkaIMDAO;
 import ru.solicom.zavod.domain.PogruzkaIM;
+import ru.solicom.zavod.domain.Vagon;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -22,5 +24,10 @@ public class PogruzkaIMServiceImpl implements PogruzkaIMService {
     @Override
     public List<PogruzkaIM> pogruzkaIMNaLiniiList() {
         return pogruzkaIMDAO.pogruzkaIMNaLiniiList();
+    }
+
+    @Override
+    public Boolean searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
+        return null;
     }
 }

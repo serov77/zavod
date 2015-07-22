@@ -6,7 +6,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.PogruzkaIM;
+import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.util.StatusVaiona;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -23,5 +26,10 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     public List<PogruzkaIM> pogruzkaIMNaLiniiList() {
         return sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("sertificatIM.id", 1)).addOrder(Order.asc("id")).list();
 
+    }
+
+    @Override
+    public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
+        return null;
     }
 }
