@@ -18,7 +18,6 @@ public class PogruzkaServiceimpl implements PogruzkaService {
     private PogruzkaIMService pogruzkaIMService;
     @Autowired
     private PogruzkaMPNService pogruzkaMPNService;
-
     @Override
     public PogruzkaIKService getPogruzkaIKService() {
         return pogruzkaIKService;
