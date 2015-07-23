@@ -30,6 +30,13 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
 
     @Override
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
-        return null;
+        PogruzkaIM ik = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.ne("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
+        PogruzkaIM ik_2 = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();
+        if (ik != null) {
+            return StatusVaiona.PogSegodnyaIM;
+        } else if (ik_2 != null) {
+            return StatusVaiona.StoitNaLiniiIM;
+        }
+        return StatusVaiona.OK;
     }
 }

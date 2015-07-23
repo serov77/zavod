@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.PogruzkaMPNDAO;
 import ru.solicom.zavod.domain.PogruzkaMPN;
 import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.util.StatusVaiona;
 
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
     }
 
     @Override
-    public Boolean searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
-        return null;
+    public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
+        return pogruzkaMPNDAO.searchPogruzkaMPNVagonaZaDen(vagon, date);
     }
 }

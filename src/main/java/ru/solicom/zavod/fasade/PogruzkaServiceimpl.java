@@ -9,6 +9,7 @@ import ru.solicom.zavod.service.PogruzkaMPNService;
 import ru.solicom.zavod.util.StatusVaiona;
 
 import java.util.Date;
+
 @Service
 public class PogruzkaServiceimpl implements PogruzkaService {
     @Autowired
@@ -19,10 +20,14 @@ public class PogruzkaServiceimpl implements PogruzkaService {
     private PogruzkaMPNService pogruzkaMPNService;
 
     @Override
-    public Boolean searchPogruzka(Vagon vagon) {
-       StatusVaiona x = pogruzkaIKService.searchPogruzkaIKVagonaZaDen(vagon, new Date());
-
-
-        return false;
+    public StatusVaiona searchPogruzka(Vagon vagon) {
+        StatusVaiona ik = pogruzkaIKService.searchPogruzkaIKVagonaZaDen(vagon, new Date());
+        StatusVaiona im = pogruzkaIMService.searchPogruzkaIMVagonaZaDen(vagon, new Date());
+        StatusVaiona mpn = pogruzkaMPNService.searchPogruzkaMPNVagonaZaDen(vagon, new Date());
+        StatusVaiona ok = StatusVaiona.LOST;
+        if (ik == StatusVaiona.OK && im == StatusVaiona.OK && mpn == StatusVaiona.OK) {
+            ok = StatusVaiona.OK;
+        }
+        return ok;
     }
 }

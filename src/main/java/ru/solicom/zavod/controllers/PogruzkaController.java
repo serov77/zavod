@@ -11,6 +11,7 @@ import ru.solicom.zavod.domain.Vagon;
 import ru.solicom.zavod.fasade.PogruzkaService;
 import ru.solicom.zavod.service.*;
 import ru.solicom.zavod.util.Pogruzka;
+import ru.solicom.zavod.util.StatusVaiona;
 
 import java.util.Date;
 import java.util.List;
@@ -41,7 +42,7 @@ public class PogruzkaController {
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
     public String pogruzkaAdd(@PathVariable int id, Model model) {
         Vagon vagon = vagonService.retriveVagon(id);
-        Boolean x =  pogruzkaService.searchPogruzka(vagon);
+        StatusVaiona x =  pogruzkaService.searchPogruzka(vagon);
         Pogruzka pogruzka = new Pogruzka();
         List<Tara> taraList;
         if (vagon.getRodVagona().getName().equals("полувагон")) {

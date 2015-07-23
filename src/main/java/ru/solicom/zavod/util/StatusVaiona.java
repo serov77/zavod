@@ -7,5 +7,6 @@ public enum StatusVaiona {
     StoitNaLiniiIK,
     StoitNaLiniiIM,
     StoitNaLiniiMPN,
-    OK
+    OK,
+    LOST;
 }

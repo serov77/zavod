@@ -31,6 +31,13 @@ public class PogruzkaMPNDAOImpl implements PogruzkaMPNDAO {
 
     @Override
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
-        return null;
+        PogruzkaMPN ik = (PogruzkaMPN) sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.ne("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
+        PogruzkaMPN ik_2 = (PogruzkaMPN) sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.eq("sertificatIK.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();
+        if (ik != null) {
+            return StatusVaiona.PogSegodnyaMPN;
+        } else if (ik_2 != null) {
+            return StatusVaiona.StoitNaLiniiMPN;
+        }
+        return StatusVaiona.OK;
     }
 }
