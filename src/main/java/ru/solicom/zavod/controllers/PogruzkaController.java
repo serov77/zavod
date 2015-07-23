@@ -9,7 +9,10 @@ import ru.solicom.zavod.domain.SertificatIK;
 import ru.solicom.zavod.domain.Tara;
 import ru.solicom.zavod.domain.Vagon;
 import ru.solicom.zavod.fasade.PogruzkaService;
-import ru.solicom.zavod.service.*;
+import ru.solicom.zavod.service.GruzService;
+import ru.solicom.zavod.service.SertificatIKService;
+import ru.solicom.zavod.service.TaraService;
+import ru.solicom.zavod.service.VagonService;
 import ru.solicom.zavod.util.Pogruzka;
 import ru.solicom.zavod.util.StatusVaiona;
 
@@ -22,8 +25,6 @@ public class PogruzkaController {
     @Autowired
     private PogruzkaService pogruzkaService;
     @Autowired
-    private PogruzkaIKService pogruzkaIKService;
-    @Autowired
     private VagonService vagonService;
     @Autowired
     private GruzService gruzService;
@@ -34,15 +35,18 @@ public class PogruzkaController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String listPogruzka(Model model) {
-        model.addAttribute("pogruzkaIKList", pogruzkaIKService.pogruzkaIKList());
-        model.addAttribute("pogruzkaIKNaLiniiList", pogruzkaIKService.pogruzkaIKNaLiniiList());
+        model.addAttribute("pogruzkaIKList", pogruzkaService.getPogruzkaIKService().pogruzkaIKList());
+        model.addAttribute("pogruzkaIKNaLiniiList", pogruzkaService.getPogruzkaIKService().pogruzkaIKNaLiniiList());
         return "pogruzka";
     }
 
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
     public String pogruzkaAdd(@PathVariable int id, Model model) {
         Vagon vagon = vagonService.retriveVagon(id);
-        StatusVaiona x =  pogruzkaService.searchPogruzka(vagon);
+        StatusVaiona x = pogruzkaService.searchPogruzka(vagon);
+        if (x == StatusVaiona.LOST) {
+            return "pogruzka_lost";
+        }
         Pogruzka pogruzka = new Pogruzka();
         List<Tara> taraList;
         if (vagon.getRodVagona().getName().equals("полувагон")) {
@@ -73,9 +77,9 @@ public class PogruzkaController {
                 pogruzkaIK.setDataPogruzki(pogruzka.getDataPogruzki());
                 pogruzkaIK.setDopolneniya(pogruzka.getDopolneniya());
                 pogruzkaIK.setTara(pogruzka.getTara());
-                SertificatIK sertificatIK=sertificatIKService.retriveSertificatIK(1);
+                SertificatIK sertificatIK = sertificatIKService.retriveSertificatIK(1);
                 pogruzkaIK.setSertificatIK(sertificatIK);
-                pogruzkaIKService.savePogruzkaIK(pogruzkaIK);
+                pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
         }
         return "Изминения успешно внесены!";

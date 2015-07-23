@@ -20,6 +20,21 @@ public class SertificatServiceImpl implements SertificatService {
     private PokupatelService pokupatelService;
 
     @Override
+    public SertificatIKService getSertificatIKService() {
+        return sertificatIKService;
+    }
+
+    @Override
+    public SertificatIMService getSertificatIMService() {
+        return sertificatIMService;
+    }
+
+    @Override
+    public SertificatMPNService getSertificatMPNService() {
+        return sertificatMPNService;
+    }
+
+    @Override
     public ModelAndView selectSertificat(String gruz, int id, ModelAndView model) {
         String title = "";
         String view = "";

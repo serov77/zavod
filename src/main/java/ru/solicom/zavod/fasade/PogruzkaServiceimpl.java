@@ -20,6 +20,21 @@ public class PogruzkaServiceimpl implements PogruzkaService {
     private PogruzkaMPNService pogruzkaMPNService;
 
     @Override
+    public PogruzkaIKService getPogruzkaIKService() {
+        return pogruzkaIKService;
+    }
+
+    @Override
+    public PogruzkaIMService getPogruzkaIMService() {
+        return pogruzkaIMService;
+    }
+
+    @Override
+    public PogruzkaMPNService getPogruzkaMPNService() {
+        return pogruzkaMPNService;
+    }
+
+    @Override
     public StatusVaiona searchPogruzka(Vagon vagon) {
         StatusVaiona ik = pogruzkaIKService.searchPogruzkaIKVagonaZaDen(vagon, new Date());
         StatusVaiona im = pogruzkaIMService.searchPogruzkaIMVagonaZaDen(vagon, new Date());
@@ -30,4 +45,5 @@ public class PogruzkaServiceimpl implements PogruzkaService {
         }
         return ok;
     }
+
 }

@@ -9,12 +9,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.solicom.zavod.domain.Pokupatel;
 import ru.solicom.zavod.domain.SertificatIK;
 import ru.solicom.zavod.domain.SertificatIM;
 import ru.solicom.zavod.domain.SertificatMPN;
 import ru.solicom.zavod.fasade.SertificatService;
-import ru.solicom.zavod.service.*;
+import ru.solicom.zavod.service.GruzService;
+import ru.solicom.zavod.service.PokupatelService;
+import ru.solicom.zavod.service.SertificatIMService;
+import ru.solicom.zavod.service.SertificatMPNService;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
@@ -27,8 +29,6 @@ public class SertificatController {
     @Autowired
     private SertificatService sertificatService;
     @Autowired
-    private SertificatIKService sertificatIKService;
-    @Autowired
     private SertificatIMService sertificatIMService;
     @Autowired
     private SertificatMPNService sertificatMPNService;
@@ -39,10 +39,9 @@ public class SertificatController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String listSertificat(Model model) {
-
-        model.addAttribute("sertificatIKList", sertificatIKService.sertificatIKList());
-        model.addAttribute("sertificatIKNeIspList", sertificatIKService.sertificatIKNeIspList());
-        model.addAttribute("sertificatIKBezPoluchatelyaList", sertificatIKService.sertificatIKBezPoluchatelyaList());
+        model.addAttribute("sertificatIKList", sertificatService.getSertificatIKService().sertificatIKList());
+        model.addAttribute("sertificatIKNeIspList", sertificatService.getSertificatIKService().sertificatIKNeIspList());
+        model.addAttribute("sertificatIKBezPoluchatelyaList", sertificatService.getSertificatIKService().sertificatIKBezPoluchatelyaList());
         model.addAttribute("sertificatIMList", sertificatIMService.sertificatIMList());
         model.addAttribute("sertificatIMNeIspList", sertificatIMService.sertificatIMNeIspList());
         model.addAttribute("sertificatIMBezPoluchatelyaList", sertificatIMService.sertificatIMBezPoluchatelyaList());
@@ -73,7 +72,7 @@ public class SertificatController {
         if (sertificatIK.getData() == null) {
             sertificatIK.setData(new Date());
         }
-        Boolean x = sertificatIKService.searchSertificatIKByNomerAndGod(sertificatIK.getId(), sertificatIK.getNomer(), sertificatIK.getData());
+        Boolean x = sertificatService.getSertificatIKService().searchSertificatIKByNomerAndGod(sertificatIK.getId(), sertificatIK.getNomer(), sertificatIK.getData());
 
 //        if (vagon.getRodVagona().getId() == 0) {
 //            adress = "vagon_add";
@@ -86,7 +85,7 @@ public class SertificatController {
             adress = "sertificat_add";
         }
         if ("".equals(adress)) {
-            sertificatIKService.saveSertficatIK(sertificatIK);
+            sertificatService.getSertificatIKService().saveSertficatIK(sertificatIK);
             adress = "redirect:/sertificat/all";
         } else {
             model.addAttribute("gruzList", gruzService.gruzList());
@@ -103,7 +102,7 @@ public class SertificatController {
     @RequestMapping(value = "/ik/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
     public String sertificatIKSave(@RequestBody SertificatIK sertificatIK) {
-        sertificatIKService.saveSertficatIK(sertificatIK);
+        sertificatService.getSertificatIKService().saveSertficatIK(sertificatIK);
         return "Изминения успешно внесены!";
     }
 

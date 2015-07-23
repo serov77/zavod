@@ -72,7 +72,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                    <button class="btn btn-default" id="button_submit" type="submit">Сохранить изменения</button>
+                    <button class="btn btn-default" id="button_submit" type="submit">Войти</button>
                 </div>
             </form>
         </div>
