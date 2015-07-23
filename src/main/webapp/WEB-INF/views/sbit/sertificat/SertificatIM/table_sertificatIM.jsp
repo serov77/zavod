@@ -49,7 +49,7 @@
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IM/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -107,7 +107,7 @@
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IM/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -163,7 +163,7 @@
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IM/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>

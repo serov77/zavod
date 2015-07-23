@@ -12,5 +12,7 @@ public interface PogruzkaIMDAO {
 
     public List<PogruzkaIM> pogruzkaIMNaLiniiList();
 
+    public void savePogruzkaIM(PogruzkaIM pogruzkaIM);
+
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date);
 }

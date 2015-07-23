@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.solicom.zavod.domain.PogruzkaIK;
-import ru.solicom.zavod.domain.SertificatIK;
-import ru.solicom.zavod.domain.Tara;
-import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.domain.*;
 import ru.solicom.zavod.fasade.PogruzkaService;
+import ru.solicom.zavod.fasade.SertificatService;
 import ru.solicom.zavod.service.GruzService;
 import ru.solicom.zavod.service.SertificatIKService;
 import ru.solicom.zavod.service.TaraService;
@@ -31,12 +29,16 @@ public class PogruzkaController {
     @Autowired
     private TaraService taraService;
     @Autowired
-    private SertificatIKService sertificatIKService;
+    private SertificatService sertificatService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String listPogruzka(Model model) {
         model.addAttribute("pogruzkaIKList", pogruzkaService.getPogruzkaIKService().pogruzkaIKList());
         model.addAttribute("pogruzkaIKNaLiniiList", pogruzkaService.getPogruzkaIKService().pogruzkaIKNaLiniiList());
+        model.addAttribute("pogruzkaIMList", pogruzkaService.getPogruzkaIMService().pogruzkaIMList());
+        model.addAttribute("pogruzkaIMNaLiniiList", pogruzkaService.getPogruzkaIMService().pogruzkaIMNaLiniiList());
+        model.addAttribute("pogruzkaMPNList", pogruzkaService.getPogruzkaMPNService().pogruzkaMPNList());
+        model.addAttribute("pogruzkaMPNNaLiniiList", pogruzkaService.getPogruzkaMPNService().pogruzkaMPNNaLiniiList());
         return "pogruzka";
     }
 
@@ -77,10 +79,31 @@ public class PogruzkaController {
                 pogruzkaIK.setDataPogruzki(pogruzka.getDataPogruzki());
                 pogruzkaIK.setDopolneniya(pogruzka.getDopolneniya());
                 pogruzkaIK.setTara(pogruzka.getTara());
-                SertificatIK sertificatIK = sertificatIKService.retriveSertificatIK(1);
+                SertificatIK sertificatIK = sertificatService.getSertificatIKService().retriveSertificatIK(1);
                 pogruzkaIK.setSertificatIK(sertificatIK);
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
+            case 2:
+                PogruzkaIM pogruzkaIM = new PogruzkaIM();
+                pogruzkaIM.setVagon(vagon);
+                pogruzkaIM.setBrutto(pogruzka.getBrutto());
+                pogruzkaIM.setDataPogruzki(pogruzka.getDataPogruzki());
+                pogruzkaIM.setDopolneniya(pogruzka.getDopolneniya());
+                pogruzkaIM.setTara(pogruzka.getTara());
+                SertificatIM sertificatIM = sertificatService.getSertificatIMService().retriveSertificatIM(1);
+                pogruzkaIM.setSertificatIM(sertificatIM);
+                pogruzkaService.getPogruzkaIMService().savePogruzkaIM(pogruzkaIM);
+                break;
+            case 3:
+                PogruzkaMPN pogruzkaMPN = new PogruzkaMPN();
+                pogruzkaMPN.setVagon(vagon);
+                pogruzkaMPN.setBrutto(pogruzka.getBrutto());
+                pogruzkaMPN.setDataPogruzki(pogruzka.getDataPogruzki());
+                pogruzkaMPN.setDopolneniya(pogruzka.getDopolneniya());
+                pogruzkaMPN.setTara(pogruzka.getTara());
+                SertificatMPN sertificatMPN = sertificatService.getSertificatMPNService().retriveSertificatMPN(1);
+                pogruzkaMPN.setSertificatMPN(sertificatMPN);
+                pogruzkaService.getPogruzkaMPNService().savePogruzkaMPN(pogruzkaMPN);
         }
         return "Изминения успешно внесены!";
     }

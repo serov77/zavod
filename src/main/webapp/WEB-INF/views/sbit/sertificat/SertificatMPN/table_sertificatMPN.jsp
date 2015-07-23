@@ -44,7 +44,7 @@
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="MPN/${sertificat.id}"
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
@@ -99,7 +99,7 @@
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="MPN/${sertificat.id}"
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
@@ -152,7 +152,7 @@
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="MPN/${sertificat.id}"
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>

@@ -28,6 +28,11 @@ public class PogruzkaIMServiceImpl implements PogruzkaIMService {
     }
 
     @Override
+    public void savePogruzkaIM(PogruzkaIM pogruzkaIM) {
+        pogruzkaIMDAO.savePogruzkaIM(pogruzkaIM);
+    }
+
+    @Override
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
         return pogruzkaIMDAO.searchPogruzkaIMVagonaZaDen(vagon, date);
     }

@@ -12,5 +12,7 @@ public interface PogruzkaMPNDAO {
 
     public List<PogruzkaMPN> pogruzkaMPNNaLiniiList();
 
+    public void savePogruzkaMPN(PogruzkaMPN pogruzkaMPN);
+
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date);
 }

@@ -16,7 +16,7 @@ $(document).ready(function () {
         },
         "order": [[0, "desc"]]
     });
-    $('body').on('click','.butt',function () {
+    $('body').on('click','.butt_pokupatel',function () {
         var x = $(this).attr("rel");
         var url = "pokupatel/edit/" + x;
         editVagon(url);

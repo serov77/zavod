@@ -3,22 +3,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<h3>Таблица "Погрузка Вагонов Известью Комовой"</h3>
+<h3>Таблица "Погрузка Вагонов Известью Молотой"</h3>
 </br>
-<div class="panel-group" id="accordion_2">
+<div class="panel-group" id="accordion_4">
     <!-- 1 панель -->
     <div class="panel panel-default">
         <!-- Заголовок 1 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_2" href="#collapseOne_2">Вагоны извести комовой отправленные</a>
+                <a data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4">Вагоны извести молотой отправленные</a>
             </h4>
         </div>
-        <div id="collapseOne_2" class="panel-collapse collapse">
+        <div id="collapseOne_4" class="panel-collapse collapse">
             <!-- Содержимое 1 панели -->
             <div class="panel-body">
-                <c:if test="${!empty pogruzkaIKList}">
-                    <table id="pogruzkaIK"
+                <c:if test="${!empty pogruzkaIMList}">
+                    <table id="pogruzkaIM"
                            class="table table-bordered table-hover table-striped table-condensed display">
                         <thead>
                         <tr>
@@ -35,7 +35,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${pogruzkaIKList}" var="pogr">
+                        <c:forEach items="${pogruzkaIMList}" var="pogr">
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
@@ -44,7 +44,7 @@
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td><fmt:formatDate value="${pogr.dataOtpravleniya}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
-                                <td>${pogr.sertificatIK.pokupatel.name}</td>
+                                <td>${pogr.sertificatIM.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
@@ -56,7 +56,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty pogruzkaIKList}">
+                <c:if test="${empty pogruzkaIMList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>
@@ -67,14 +67,14 @@
         <!-- Заголовок 2 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_3" href="#collapseOne_3">Вагоны извести комовой на линии</a>
+                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Вагоны извести комовой на линии</a>
             </h4>
         </div>
-        <div id="collapseOne_3" class="panel-collapse collapse">
+        <div id="collapseOne_5" class="panel-collapse collapse">
             <!-- Содержимое 2 панели -->
             <div class="panel-body">
-                <c:if test="${!empty pogruzkaIKNaLiniiList}">
-                    <table id="pogruzkaIK_2"
+                <c:if test="${!empty pogruzkaIMNaLiniiList}">
+                    <table id="pogruzkaIM_2"
                            class="table table-bordered table-hover table-striped table-condensed display">
                         <thead>
                         <tr>
@@ -89,15 +89,12 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <c:forEach items="${pogruzkaIKNaLiniiList}" var="pogr">
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
                                 <td><fmt:formatNumber value="${pogr.brutto}" type="number"  pattern="0.0" /></td>
-                                <td>
-                                    <fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" />
-                                </td>
+                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" /></td>
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.dopolneniya}</td>
@@ -111,7 +108,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty pogruzkaIKNaLiniiList}">
+                <c:if test="${empty pogruzkaIMNaLiniiList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>

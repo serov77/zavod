@@ -30,6 +30,11 @@ public class PogruzkaMPNDAOImpl implements PogruzkaMPNDAO {
     }
 
     @Override
+    public void savePogruzkaMPN(PogruzkaMPN pogruzkaMPN) {
+        sessionFactory.getCurrentSession().saveOrUpdate(pogruzkaMPN);
+    }
+
+    @Override
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
         PogruzkaMPN ik = (PogruzkaMPN) sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.ne("sertificatMPN.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
         PogruzkaMPN ik_2 = (PogruzkaMPN) sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.eq("sertificatMPN.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();

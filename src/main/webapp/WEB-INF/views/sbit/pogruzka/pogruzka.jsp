@@ -18,10 +18,40 @@
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Погружено извести комовой</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in">
+        <div id="collapseOne" class="panel-collapse collapse">
             <!-- Содержимое 1 панели -->
             <div class="panel-body">
                 <jsp:include page="pogruzkaIK/table_pogruzkaIK.jsp"/>
+            </div>
+        </div>
+    </div>
+    <!-- 2 панель -->
+    <div class="panel panel-default">
+        <!-- Заголовок 2 панели -->
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Погружено извести молотой</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <!-- Содержимое 2 панели -->
+            <div class="panel-body">
+                <jsp:include page="pogruzkaIM/table_pogruzkaIM.jsp"/>
+            </div>
+        </div>
+    </div>
+    <!-- 3 панель -->
+    <div class="panel panel-default">
+        <!-- Заголовок 3 панели -->
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFri">Погружено Минерального Порошка Неактивированного</a>
+            </h4>
+        </div>
+        <div id="collapseFri" class="panel-collapse collapse">
+            <!-- Содержимое 3 панели -->
+            <div class="panel-body">
+                <jsp:include page="pogruzkaMPN/table_pogruzkaMPN.jsp"/>
             </div>
         </div>
     </div>

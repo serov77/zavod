@@ -19,13 +19,13 @@
         <div class="form-group">
             <form:label path="nomer" class="col-xs-4 control-label">Номер Сертификата</form:label>
             <div class="col-xs-8">
-                <form:input path="nomer" class="form-control"/>
+                <form:input path="nomer" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="massovayaDolyaVlagi" class="col-xs-4 control-label">Влага, %</form:label>
             <div class="col-xs-8">
-                <form:input path="massovayaDolyaVlagi" class="form-control"/>
+                <form:input path="massovayaDolyaVlagi" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
@@ -40,19 +40,19 @@
         <div class="form-group">
             <form:label path="zerovoySostav1250" class="col-xs-4 control-label">Сито 1.25 мм</form:label>
             <div class="col-xs-8">
-                <form:input path="zerovoySostav1250" class="form-control"/>
+                <form:input path="zerovoySostav1250" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="zerovoySostav0315" class="col-xs-4 control-label">Сито 0.315 мм</form:label>
             <div class="col-xs-8">
-                <form:input path="zerovoySostav0315" class="form-control"/>
+                <form:input path="zerovoySostav0315" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="zerovoySostav0071" class="col-xs-4 control-label">Сито 0.071 мм</form:label>
             <div class="col-xs-8">
-                <form:input path="zerovoySostav0071" class="form-control"/>
+                <form:input path="zerovoySostav0071" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <form:hidden path="data" class="form-control"/>

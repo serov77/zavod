@@ -34,13 +34,13 @@
             <div class="form-group">
                 <form:label path="tara" class="col-xs-4 control-label">Тара</form:label>
                     <div class="col-xs-8">
-                    <form:input path="tara" class="form-control"/>
+                    <form:input path="tara" class="form-control" oninput="Ftest (this)"/>
                 </div>
             </div>
             <div class="form-group">
                 <form:label path="gruzopodyomnost" class="col-xs-4 control-label">Грузоподъемность</form:label>
                     <div class="col-xs-8">
-                    <form:input path="gruzopodyomnost" class="form-control"/>
+                    <form:input path="gruzopodyomnost" class="form-control" oninput="Ftest (this)"/>
                 </div>
             </div>
             <div class="form-group">

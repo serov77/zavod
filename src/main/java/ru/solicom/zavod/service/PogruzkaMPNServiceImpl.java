@@ -27,6 +27,11 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
     }
 
     @Override
+    public void savePogruzkaMPN(PogruzkaMPN pogruzkaMPN) {
+        pogruzkaMPNDAO.savePogruzkaMPN(pogruzkaMPN);
+    }
+
+    @Override
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
         return pogruzkaMPNDAO.searchPogruzkaMPNVagonaZaDen(vagon, date);
     }

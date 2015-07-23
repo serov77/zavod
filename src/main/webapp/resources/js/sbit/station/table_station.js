@@ -17,7 +17,7 @@ $(document).ready(function () {
         },
         "order": [[0, "desc"]]
     });
-    $('body').on('click', '.butt', function () {
+    $('body').on('click', '.butt_station', function () {
         var x = $(this).attr("rel");
         var url = "station/edit/" + x;
         editVagon(url);

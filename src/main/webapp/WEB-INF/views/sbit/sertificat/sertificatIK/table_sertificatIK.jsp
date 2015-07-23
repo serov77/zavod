@@ -47,7 +47,7 @@
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IK/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -103,7 +103,7 @@
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IK/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -157,7 +157,7 @@
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="IK/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>

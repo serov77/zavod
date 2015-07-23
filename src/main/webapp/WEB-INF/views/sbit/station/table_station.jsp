@@ -23,7 +23,7 @@
             <td>${station.kod}</td>
             <td>
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
-                    <button class="btn btn-default btn-xs butt" rel="${station.id}" type="button">
+                    <button class="btn btn-default btn-xs butt_station" rel="${station.id}" type="button">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </sec:authorize>

@@ -19,13 +19,13 @@
         <div class="form-group">
             <form:label path="nomer" class="col-xs-4 control-label">Номер Сертификата</form:label>
             <div class="col-xs-8">
-                <form:input path="nomer" class="form-control"/>
+                <form:input path="nomer" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="aktivnost" class="col-xs-4 control-label">CaO + MgO, %</form:label>
             <div class="col-xs-8">
-                <form:input path="aktivnost" class="form-control"/>
+                <form:input path="aktivnost" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
@@ -40,25 +40,25 @@
         <div class="form-group">
             <form:label path="vremyaGascheniya" class="col-xs-4 control-label">Время гашения</form:label>
             <div class="col-xs-8">
-                <form:input path="vremyaGascheniya" class="form-control"/>
+                <form:input path="vremyaGascheniya" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="temperaturaGascheniya" class="col-xs-4 control-label">Температура гашения</form:label>
             <div class="col-xs-8">
-                <form:input path="temperaturaGascheniya" class="form-control"/>
+                <form:input path="temperaturaGascheniya" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="soderNepogZeren" class="col-xs-4 control-label">Содержание непогашенных зерен</form:label>
             <div class="col-xs-8">
-                <form:input path="soderNepogZeren" class="form-control"/>
+                <form:input path="soderNepogZeren" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <div class="form-group">
             <form:label path="soderUglekisloti"  class="col-xs-4 control-label">Содержание углекислоты</form:label>
             <div class="col-xs-8">
-                <form:input path="soderUglekisloti" class="form-control"/>
+                <form:input path="soderUglekisloti" class="form-control" oninput="Ftest (this)"/>
             </div>
         </div>
         <form:hidden path="data" class="form-control"/>

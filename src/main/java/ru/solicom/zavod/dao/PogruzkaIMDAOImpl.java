@@ -29,6 +29,11 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     }
 
     @Override
+    public void savePogruzkaIM(PogruzkaIM pogruzkaIM) {
+        sessionFactory.getCurrentSession().saveOrUpdate(pogruzkaIM);
+    }
+
+    @Override
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
         PogruzkaIM ik = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.ne("sertificatIM.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
         PogruzkaIM ik_2 = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("sertificatIM.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();
