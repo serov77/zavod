@@ -11,7 +11,7 @@ import ru.solicom.zavod.util.StatusVaiona;
 import java.util.Date;
 
 @Service
-public class PogruzkaServiceImpl implements PogruzkaService {
+public class PogruzkaServiceimpl implements PogruzkaService {
     @Autowired
     private PogruzkaIKService pogruzkaIKService;
     @Autowired
