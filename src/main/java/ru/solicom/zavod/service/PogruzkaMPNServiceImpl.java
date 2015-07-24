@@ -35,4 +35,9 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date) {
         return pogruzkaMPNDAO.searchPogruzkaMPNVagonaZaDen(vagon, date);
     }
+
+    @Override
+    public Boolean searchPogruzkaMPNMKR(Vagon vagon) {
+        return pogruzkaMPNDAO.searchPogruzkaMPNMKR(vagon);
+    }
 }

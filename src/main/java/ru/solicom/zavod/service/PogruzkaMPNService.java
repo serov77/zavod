@@ -15,4 +15,6 @@ public interface PogruzkaMPNService {
     public void savePogruzkaMPN(PogruzkaMPN pogruzkaMPN);
 
     public StatusVaiona searchPogruzkaMPNVagonaZaDen(Vagon vagon, Date date);
+
+    public Boolean searchPogruzkaMPNMKR(Vagon vagon);
 }
