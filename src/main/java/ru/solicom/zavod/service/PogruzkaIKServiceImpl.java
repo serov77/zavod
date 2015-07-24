@@ -36,4 +36,9 @@ public class PogruzkaIKServiceImpl implements PogruzkaIKService {
     public StatusVaiona searchPogruzkaIKVagonaZaDen(Vagon vagon, Date date) {
         return pogruzkaIKDAO.searchPogruzkaIKVagonaZaDen(vagon, date);
     }
+
+    @Override
+    public Boolean searchPogruzkaIKMKR(Vagon vagon) {
+        return pogruzkaIKDAO.searchPogruzkaIKMKR(vagon);
+    }
 }

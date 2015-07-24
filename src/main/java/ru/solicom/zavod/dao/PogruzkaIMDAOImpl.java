@@ -44,4 +44,13 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
         }
         return StatusVaiona.OK;
     }
+
+    @Override
+    public Boolean searchPogruzkaIMMKR(Vagon vagon) {
+        List<PogruzkaIM> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("tara.name", "МКР")).list();
+        if (list == null) {
+            return true;
+        }
+        return false;
+    }
 }

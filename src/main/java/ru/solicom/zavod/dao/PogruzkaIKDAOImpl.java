@@ -44,4 +44,13 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
         return StatusVaiona.OK;
     }
 
+    @Override
+    public Boolean searchPogruzkaIKMKR(Vagon vagon) {
+        List<PogruzkaIK> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("tara.name", "МКР")).list();
+        if (list == null) {
+            return true;
+        }
+        return false;
+    }
+
 }

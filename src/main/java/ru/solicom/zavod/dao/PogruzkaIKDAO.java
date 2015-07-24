@@ -16,4 +16,6 @@ public interface PogruzkaIKDAO {
     public void savePogruzkaIK(PogruzkaIK pogruzkaIK);
 
     public StatusVaiona searchPogruzkaIKVagonaZaDen(Vagon vagon, Date date);
+
+    public Boolean searchPogruzkaIKMKR(Vagon vagon);
 }

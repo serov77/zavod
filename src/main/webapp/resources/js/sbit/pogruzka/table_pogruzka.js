@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //    Настройка и запуск таблицы Вагоны
-    $('#pogruzkaIK, #pogruzkaIK_2, #pogruzkaIM, #pogruzkaIM_2').DataTable({
+    $('#pogruzkaIK, #pogruzkaIK_2, #pogruzkaIM, #pogruzkaIM_2, #pogruzkaMPN, #pogruzkaMPN_2').DataTable({
         "language": {
             "lengthMenu": "Показывать _MENU_ записей на странице",
             "zeroRecords": "Нет записей",

@@ -15,4 +15,6 @@ public interface PogruzkaIMService {
     public void savePogruzkaIM(PogruzkaIM pogruzkaIM);
 
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date);
+
+    public Boolean searchPogruzkaIMMKR(Vagon vagon);
 }
