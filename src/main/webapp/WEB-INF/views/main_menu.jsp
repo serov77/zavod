@@ -18,7 +18,7 @@
     <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="nav navbar-nav main-menu-a-1">
             <li id="li1"><a href="${pageContext.request.contextPath}/sbit">Сбыт</a></li>
-            <li id="li2"><a href="#">Пункт 2</a></li>
+            <li id="li2"><a href="/zavod/report">Пункт 2</a></li>
             <li id="li3"><a href="#">Пункт 3</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

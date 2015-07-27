@@ -9,6 +9,7 @@
 	
 	<annotation-driven />
 	<beans:import resource="../db/db-config.xml" />
+	<beans:import resource="jasper-views.xml"/>
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

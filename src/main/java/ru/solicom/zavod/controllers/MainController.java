@@ -1,17 +1,26 @@
 package ru.solicom.zavod.controllers;
 
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import ru.solicom.zavod.domain.User;
+import ru.solicom.zavod.domain.Vagon;
 import ru.solicom.zavod.fasade.PogruzkaService;
 import ru.solicom.zavod.service.*;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -136,5 +145,15 @@ public class MainController {
             x = true;
         }
         return "{ \"valid\": " + x + " }";
+    }
+
+    @RequestMapping(method = RequestMethod.GET , value = "/report")
+    public String generatePDFReport(Model model) throws JRException, FileNotFoundException {
+        //Map<String,Object> parameterMap = new HashMap<String,Object>();
+        List<Vagon> vagonList = vagonService.vagonList();
+        JRDataSource JRdataSource = new JRBeanCollectionDataSource(vagonList);
+        model.addAttribute("datasource", JRdataSource);
+        //ModelAndView modelAndView = new ModelAndView("pdfReport", parameterMap);
+        return "pdfReport";
     }
 }
