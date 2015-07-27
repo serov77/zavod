@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.solicom.zavod.domain.User;
+import ru.solicom.zavod.fasade.PogruzkaService;
 import ru.solicom.zavod.service.*;
 
 import java.text.ParseException;
@@ -30,7 +31,7 @@ public class MainController {
     @Autowired
     private SertificatMPNService sertificatMPNService;
     @Autowired
-    private PogruzkaIKService pogruzkaIKService;
+    private PogruzkaService pogruzkaService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String listRodVagona(Model model) {
@@ -106,6 +107,22 @@ public class MainController {
     public String validNetto(@RequestParam float taraVag, @RequestParam float brutto, @RequestParam float gruzopodyomnost) {
         Boolean x = false;
         if ((brutto - taraVag) > 0 && (gruzopodyomnost - (brutto - taraVag)) > 0) {
+            x = true;
+        }
+        return "{ \"valid\": " + x + " }";
+    }
+
+    @RequestMapping(value = "/valid_pogruzka_mkr", method = RequestMethod.GET)
+    @ResponseBody
+    public String validMKR(@RequestParam int id, @RequestParam int idRV, @RequestParam int idRV_2) {
+        Boolean x = false;
+        if (idRV == 2) {
+            if (idRV == idRV_2) {
+                x = true;
+            } else if (pogruzkaService.searchPogruzkaMKR(id)) {
+                x = true;
+            }
+        } else {
             x = true;
         }
         return "{ \"valid\": " + x + " }";

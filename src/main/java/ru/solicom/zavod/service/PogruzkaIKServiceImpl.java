@@ -38,7 +38,7 @@ public class PogruzkaIKServiceImpl implements PogruzkaIKService {
     }
 
     @Override
-    public Boolean searchPogruzkaIKMKR(Vagon vagon) {
-        return pogruzkaIKDAO.searchPogruzkaIKMKR(vagon);
+    public Boolean searchPogruzkaIKMKR(int id) {
+        return pogruzkaIKDAO.searchPogruzkaIKMKR(id);
     }
 }

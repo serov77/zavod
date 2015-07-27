@@ -46,9 +46,9 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     }
 
     @Override
-    public Boolean searchPogruzkaIMMKR(Vagon vagon) {
-        List<PogruzkaIM> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("tara.name", "МКР")).list();
-        if (list == null) {
+    public Boolean searchPogruzkaIMMKR(int id) {
+        List<PogruzkaIM> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("vagon.id", id)).add(Restrictions.eq("tara.id", 2)).list();
+        if (list.size() == 0) {
             return true;
         }
         return false;

@@ -47,9 +47,9 @@ public class PogruzkaMPNDAOImpl implements PogruzkaMPNDAO {
     }
 
     @Override
-    public Boolean searchPogruzkaMPNMKR(Vagon vagon) {
-        List<PogruzkaMPN> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("tara.name", "МКР")).list();
-        if (list == null) {
+    public Boolean searchPogruzkaMPNMKR(int id) {
+        List<PogruzkaMPN> list = sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.eq("vagon.id", id)).add(Restrictions.eq("tara.id", 2)).list();
+        if (list.size() == 0) {
             return true;
         }
         return false;

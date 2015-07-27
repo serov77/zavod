@@ -31,6 +31,7 @@ $(document).ready(function () {
     });
 
     function editVagon(url) {
+        $('input#idRV').text($('select#rodVagona option:selected').val());
         $.ajax({
             url: url,
             //type: 'POST',
@@ -52,6 +53,7 @@ $(document).ready(function () {
 
     $('body').on('click','.butt_edit', function () {
         var x = $(this).attr("rel");
+
         var url = "vagon/edit/" + x;
         editVagon(url);
         $("#myModal").modal();

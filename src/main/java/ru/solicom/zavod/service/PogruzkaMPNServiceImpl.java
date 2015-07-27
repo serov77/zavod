@@ -37,7 +37,7 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
     }
 
     @Override
-    public Boolean searchPogruzkaMPNMKR(Vagon vagon) {
-        return pogruzkaMPNDAO.searchPogruzkaMPNMKR(vagon);
+    public Boolean searchPogruzkaMPNMKR(int id) {
+        return pogruzkaMPNDAO.searchPogruzkaMPNMKR(id);
     }
 }

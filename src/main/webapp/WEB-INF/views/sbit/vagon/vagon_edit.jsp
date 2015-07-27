@@ -15,6 +15,7 @@
         <div class="modal-body" id="mesto_body">
             <h3>${title_modal}</h3>
             </br>
+            <input type="hidden" id="idRV" name="idRV" value="${vagon.rodVagona.id}">
             <form:hidden path="id" />
             <div class="form-group">
                 <form:label path="nomerVagona" class="col-xs-4 control-label">Номер вагона</form:label>

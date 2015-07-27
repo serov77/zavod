@@ -45,4 +45,15 @@ public class PogruzkaServiceimpl implements PogruzkaService {
         return ok;
     }
 
+    @Override
+    public Boolean searchPogruzkaMKR(int id) {
+        Boolean im = pogruzkaIKService.searchPogruzkaIKMKR(id);
+        Boolean ik = pogruzkaIMService.searchPogruzkaIMMKR(id);
+        Boolean mpn = pogruzkaMPNService.searchPogruzkaMPNMKR(id);
+        if (ik == true && im == true && mpn == true){
+            return true;
+        }
+        return false;
+    }
+
 }

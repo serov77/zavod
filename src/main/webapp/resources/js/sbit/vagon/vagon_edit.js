@@ -25,6 +25,18 @@ $(document).ready(function () {
                     greaterThan: {
                         value: 1,
                         message: 'Поле не может быть пустым!'
+                    },
+                    remote: {
+                        url: 'valid_pogruzka_mkr',
+                        data: function (validator) {
+                            return {
+                                id: validator.getFieldElements('id').val(),
+                                idRV: validator.getFieldElements('idRV').val(),
+                                idRV_2: validator.getFieldElements("rodVagona.id").val()
+                            };
+                        },
+                        message: '"Этот Вагон был погоружен МКР!',
+                        type: 'GET'
                     }
                 }
             },
