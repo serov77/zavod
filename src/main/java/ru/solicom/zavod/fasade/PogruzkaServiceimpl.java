@@ -57,8 +57,14 @@ public class PogruzkaServiceimpl implements PogruzkaService {
     }
 
     @Override
-    public Boolean searchPogruzka(int id) {
-        return null;
+    public Boolean searchPogruzka(int id, float gruzopodyomnost, float tara) {
+        Boolean im = pogruzkaIKService.searchPogruzkaIK(id,gruzopodyomnost,tara);
+        Boolean ik = pogruzkaIMService.searchPogruzkaIM(id,gruzopodyomnost,tara);
+        Boolean mpn = pogruzkaMPNService.searchPogruzkaMPN(id,gruzopodyomnost,tara);
+        if (ik == true && im == true && mpn == true){
+            return true;
+        }
+        return false;
     }
 
 }

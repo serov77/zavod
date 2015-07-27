@@ -131,10 +131,10 @@ public class MainController {
     @RequestMapping(value = "/valid_vagon_tara", method = RequestMethod.GET)
     @ResponseBody
     public String validVagonTara(@RequestParam int id, @RequestParam float gruzopodyomnost, @RequestParam float tara) {
-        //pogruzkaService.
-
         Boolean x = false;
-
+        if (pogruzkaService.searchPogruzka(id, gruzopodyomnost, tara)) {
+            x = true;
+        }
         return "{ \"valid\": " + x + " }";
     }
 }
