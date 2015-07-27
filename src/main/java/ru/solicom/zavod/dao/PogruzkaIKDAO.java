@@ -18,4 +18,6 @@ public interface PogruzkaIKDAO {
     public StatusVaiona searchPogruzkaIKVagonaZaDen(Vagon vagon, Date date);
 
     public Boolean searchPogruzkaIKMKR(int id);
+
+    public List<PogruzkaIK> searchPogruzkaIK(int id);
 }

@@ -127,4 +127,14 @@ public class MainController {
         }
         return "{ \"valid\": " + x + " }";
     }
+
+    @RequestMapping(value = "/valid_vagon_tara", method = RequestMethod.GET)
+    @ResponseBody
+    public String validVagonTara(@RequestParam int id, @RequestParam float gruzopodyomnost, @RequestParam float tara) {
+        //pogruzkaService.
+
+        Boolean x = false;
+
+        return "{ \"valid\": " + x + " }";
+    }
 }

@@ -17,4 +17,6 @@ public interface PogruzkaIMDAO {
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date);
 
     public Boolean searchPogruzkaIMMKR(int id);
+
+    public List<PogruzkaIM> searchPogruzkaIM(int id);
 }

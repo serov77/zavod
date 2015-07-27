@@ -54,4 +54,9 @@ public class PogruzkaMPNDAOImpl implements PogruzkaMPNDAO {
         }
         return false;
     }
+
+    @Override
+    public List<PogruzkaMPN> searchPogruzkaMPN(int id) {
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaMPN.class).add(Restrictions.eq("vagon.id", id)).list();
+    }
 }

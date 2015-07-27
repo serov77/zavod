@@ -53,4 +53,9 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
         return false;
     }
 
+    @Override
+    public List<PogruzkaIK> searchPogruzkaIK(int id) {
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("vagon.id", id)).list();
+    }
+
 }

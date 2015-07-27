@@ -41,4 +41,15 @@ public class PogruzkaIMServiceImpl implements PogruzkaIMService {
     public Boolean searchPogruzkaIMMKR(int id) {
         return pogruzkaIMDAO.searchPogruzkaIMMKR(id);
     }
+
+    @Override
+    public Boolean searchPogruzkaIM(int id, float gruzopodyomnost, float tara) {
+        List<PogruzkaIM> list = pogruzkaIMDAO.searchPogruzkaIM(id);
+        for(PogruzkaIM p: list){
+            if (p.getBrutto() - tara > gruzopodyomnost) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

@@ -16,4 +16,6 @@ public interface PogruzkaService {
     public StatusVaiona searchPogruzka(Vagon vagon);
 
     public Boolean searchPogruzkaMKR(int id);
+
+    public Boolean searchPogruzka(int id);
 }

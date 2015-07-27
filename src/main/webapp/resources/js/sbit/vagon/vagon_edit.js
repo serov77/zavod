@@ -51,6 +51,17 @@ $(document).ready(function () {
                     greaterThan: {
                         value: 0.0001,
                         message: 'Введенное число должно быть больше 0!'
+                    },
+                    remote: {
+                        url: 'valid_vagon_tara',
+                        data: function (validator) {
+                            return {
+                                id: validator.getFieldElements('id').val(),
+                                gruzopodyomnost: validator.getFieldElements('gruzopodyomnost').val()
+                            }
+                        },
+                        message: 'Тара не может быть изменена',
+                        type: 'GET'
                     }
                 }
             },

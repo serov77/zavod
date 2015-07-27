@@ -17,4 +17,6 @@ public interface PogruzkaIMService {
     public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date);
 
     public Boolean searchPogruzkaIMMKR(int id);
+
+    public Boolean searchPogruzkaIM(int id, float gruzopodyomnost, float tara);
 }

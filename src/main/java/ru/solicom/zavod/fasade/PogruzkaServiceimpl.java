@@ -56,4 +56,9 @@ public class PogruzkaServiceimpl implements PogruzkaService {
         return false;
     }
 
+    @Override
+    public Boolean searchPogruzka(int id) {
+        return null;
+    }
+
 }

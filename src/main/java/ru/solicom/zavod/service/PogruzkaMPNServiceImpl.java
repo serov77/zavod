@@ -40,4 +40,17 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
     public Boolean searchPogruzkaMPNMKR(int id) {
         return pogruzkaMPNDAO.searchPogruzkaMPNMKR(id);
     }
+
+    @Override
+    public Boolean searchPogruzkaMPN(int id, float gruzopodyomnost, float tara) {
+        List<PogruzkaMPN> list = pogruzkaMPNDAO.searchPogruzkaMPN(id);
+        for(PogruzkaMPN p: list){
+            if (p.getBrutto() - tara > gruzopodyomnost) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }
