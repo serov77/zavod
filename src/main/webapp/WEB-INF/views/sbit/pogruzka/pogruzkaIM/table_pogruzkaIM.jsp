@@ -102,6 +102,9 @@
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
+                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
+                                        <span class="glyphicon glyphicon-road"></span>
+                                    </button>
                                 </td>
                             </tr>
                         </c:forEach>

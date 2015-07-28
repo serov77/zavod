@@ -29,6 +29,7 @@
                             <th>Погружен</th>
                             <th>Отправлен</th>
                             <th>Тара</th>
+                            <th>№ Серт.</th>
                             <th>Получатель</th>
                             <th>Отметки</th>
                             <th>Опции</th>
@@ -44,6 +45,7 @@
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td><fmt:formatDate value="${pogr.dataOtpravleniya}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
+                                <td>${pogr.sertificatIK.nomer}</td>
                                 <td>${pogr.sertificatIK.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
@@ -104,6 +106,9 @@
                                 <td>
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
+                                        <span class="glyphicon glyphicon-road"></span>
                                     </button>
                                 </td>
                             </tr>

@@ -33,9 +33,9 @@
     <![endif]-->
 
 </head>
-
+<body>
 <div class="modal fade bs-example-modal-sm" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+           aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
 
@@ -65,6 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="j_password" class="col-xs-4 control-label">Пароль: </label>
+
                         <div class="col-xs-8">
                             <input id="j_password" name="j_password" class="form-control" type="password"/>
                         </div>
@@ -79,26 +80,24 @@
     </div>
 </div>
 
-<body>
+<div role="navigation" class="navbar navbar-default navbar-static-top">
+    <tiles:insertAttribute name="header"/>
+</div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <tiles:insertAttribute name="header"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2">
+        <div class="col-lg-2">
             <tiles:insertAttribute name="menu"/>
         </div>
-        <div id="content" class="col-xs-10">
+        <div id="content" class="col-lg-10">
             <tiles:insertAttribute name="body"/>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-lg-12">
             <tiles:insertAttribute name="footer"/>
         </div>
     </div>
 </div>
+
 </body>
 </html>
