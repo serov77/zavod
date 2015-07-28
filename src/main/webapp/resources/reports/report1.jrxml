@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.1.0.final using JasperReports Library version 6.1.0  -->
-<!-- 2015-07-27T18:25:38 -->
+<!-- Created with Jaspersoft Studio version 6.0.1.final using JasperReports Library version 6.0.0  -->
+<!-- 2015-07-28T09:29:23 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="AircraftReportColumnIndex" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="30" bottomMargin="30" uuid="6e843fe2-ce72-4257-a4c3-1df03728dc95">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<field name="nomerVagona" class="java.lang.String"/>
 	<title>
 		<band height="53">
 			<staticText>
@@ -23,6 +24,15 @@
 		</band>
 	</title>
 	<detail>
-		<band height="21" splitType="Stretch"/>
+		<band height="153" splitType="Stretch">
+			<textField>
+				<reportElement x="174" y="54" width="100" height="30" uuid="76e73d8b-743b-4cfa-9f4d-37fcdb2e6c16"/>
+				<textFieldExpression><![CDATA[$F{nomerVagona}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="74" y="54" width="100" height="30" uuid="0d47dd57-a39f-4a6e-9fec-6fb75c7dd2ca"/>
+				<text><![CDATA[nomerVagona]]></text>
+			</staticText>
+		</band>
 	</detail>
 </jasperReport>

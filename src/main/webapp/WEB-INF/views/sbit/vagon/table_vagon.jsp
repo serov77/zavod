@@ -31,10 +31,10 @@
             <td><fmt:formatDate value="${vagon.dataDobavleniya}" pattern="dd.MM.yyyy"/></td>
             <td>
                 <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
-                    <button class="btn btn-default btn-xs butt_edit" rel="${vagon.id}" type="button">
+                    <button class="btn btn-default btn-xs butt_edit" rel="${vagon.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Вагона">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                    <button class="btn btn-default btn-xs butt_pogr" rel="${vagon.id}" type="button">
+                    <button class="btn btn-default btn-xs butt_pogr" rel="${vagon.id}" type="button" data-toggle="tooltip" data-placement="right" title="Взвешивание Вагона">
                         <span class="glyphicon glyphicon-download-alt"></span>
                     </button>
                 </sec:authorize>
@@ -43,7 +43,6 @@
     </c:forEach>
     </tbody>
 </table>
-
 
 
 

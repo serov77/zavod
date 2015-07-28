@@ -140,5 +140,4 @@ function editVagon(url) {
             $('#mesto').html(html);
         }
     });
-
 }

@@ -49,4 +49,8 @@ $(document).ready(function () {
         $(this).toggleClass('selected');
     });
 
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+
 });

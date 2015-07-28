@@ -70,4 +70,9 @@
         </div>
         </form:form>
     </div>
+<c:if test="${empty sertificat.pogruzkaMPNs}">
     <script src="<c:url value="/resources/js/sbit/sertificat/sertificatMPN/sertificatMPN_edit.js"/>"></script>
+</c:if>
+<c:if test="${!empty sertificat.pogruzkaMPNs}">
+    <script src="<c:url value="/resources/js/sbit/sertificat/sertificatMPN/sertificatMPN_edit_isp.js"/>"></script>
+</c:if>

@@ -25,7 +25,7 @@
                 <td>${pokupatel.okpo}</td>
                 <td>${pokupatel.station.name}</td>
                 <td>
-                    <button class="btn btn-default btn-xs butt_pokupatel" rel="${pokupatel.id}" type="button">
+                    <button class="btn btn-default btn-xs butt_pokupatel" rel="${pokupatel.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Покупателя">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
                 </td>
