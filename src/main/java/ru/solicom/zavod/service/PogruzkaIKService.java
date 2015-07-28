@@ -19,4 +19,6 @@ public interface PogruzkaIKService {
     public Boolean searchPogruzkaIKMKR(int id);
 
     public Boolean searchPogruzkaIK(int id, float gruzopodyomnost, float tara);
+
+    public PogruzkaIK retrivePogruzkaIK(int id);
 }

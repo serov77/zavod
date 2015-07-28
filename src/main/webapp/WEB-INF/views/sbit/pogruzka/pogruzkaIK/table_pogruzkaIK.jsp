@@ -91,7 +91,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <c:forEach items="${pogruzkaIKNaLiniiList}" var="pogr">
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
@@ -107,7 +106,7 @@
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_otpr" rel="IK/${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-road"></span>
                                     </button>
                                 </td>

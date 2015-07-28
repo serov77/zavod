@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface SertificatIKService {
 
+    public List<SertificatIK> sertificatIKListDlyaOformleniya();
+
     public List<SertificatIK> sertificatIKList();
 
     public List<SertificatIK> sertificatIKNeIspList();

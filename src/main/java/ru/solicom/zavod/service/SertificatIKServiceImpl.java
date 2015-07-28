@@ -22,6 +22,12 @@ public class SertificatIKServiceImpl implements SertificatIKService {
 
     @Transactional
     @Override
+    public List<SertificatIK> sertificatIKListDlyaOformleniya() {
+        return sertificatIKDAO.sertificatIKList();
+    }
+
+    @Transactional
+    @Override
     public List<SertificatIK> sertificatIKList() {
         sertificatIKList.clear();
         sertificatIKNeIspList.clear();

@@ -20,4 +20,7 @@ public interface PogruzkaIKDAO {
     public Boolean searchPogruzkaIKMKR(int id);
 
     public List<PogruzkaIK> searchPogruzkaIK(int id);
+
+    public PogruzkaIK retrivePogruzkaIK(int id);
+
 }

@@ -8,7 +8,6 @@ import ru.solicom.zavod.domain.*;
 import ru.solicom.zavod.fasade.PogruzkaService;
 import ru.solicom.zavod.fasade.SertificatService;
 import ru.solicom.zavod.service.GruzService;
-import ru.solicom.zavod.service.SertificatIKService;
 import ru.solicom.zavod.service.TaraService;
 import ru.solicom.zavod.service.VagonService;
 import ru.solicom.zavod.util.Pogruzka;
@@ -106,5 +105,22 @@ public class PogruzkaController {
                 pogruzkaService.getPogruzkaMPNService().savePogruzkaMPN(pogruzkaMPN);
         }
         return "Изминения успешно внесены!";
+    }
+
+    @RequestMapping(value = "/otpravka/{gruz}/{id}", method = RequestMethod.GET)
+    public String pogruzkaOtpr(@PathVariable String gruz, @PathVariable int id, Model model) {
+        Pogruzka pogruzka = new Pogruzka();
+        switch (gruz) {
+            case "IK":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
+                model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
+                break;
+            case "IM":
+                break;
+            case "MPN":
+                break;
+        }
+        model.addAttribute("title_modal", "Оформление документов!");
+        return "pogruzka_otpr";
     }
 }

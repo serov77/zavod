@@ -20,16 +20,17 @@ $(document).ready(function () {
     $('body').on('click', '.butt', function () {
         var x = $(this).attr("rel");
         var url = "pogruzka/edit/" + x;
-        editSertificat(url);
+        editPogruzka()(url);
         $("#myModal").modal();
     });
 
-    $('body').on('click', '.butt_add', function () {
+    $('body').on('click', '.butt_otpr', function () {
         var x = $(this).attr("rel");
-        var url = 'pogruzka/' + x + '/add';
+        var url = "pogruzka/otpravka/" + x;
         editPogruzka(url);
         $("#myModal").modal();
     });
+
 
     function editPogruzka(url) {
         $.ajax({
