@@ -21,6 +21,19 @@
                 </div>
             </div>
             <div class="form-group">
+                <label path="sertificat" class="col-xs-4 control-label">Дата Сертификата</label>
+
+                <div class="col-xs-8">
+                    <div class="input-group date" id="datetimepicker1">
+                        <input type="text" class="form-control"/>
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
 
                 <div class="col-xs-8">

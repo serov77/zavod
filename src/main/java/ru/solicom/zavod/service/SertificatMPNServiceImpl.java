@@ -18,6 +18,11 @@ public class SertificatMPNServiceImpl implements SertificatMPNService {
     private List<SertificatMPN> sertificatMPNList = new ArrayList<>();
 
 
+    @Override
+    public List<SertificatMPN> sertificatMPNListDlyaOformleniya() {
+        return sertificatMPNDAO.sertificatMPNList();
+    }
+
     @Transactional
     @Override
     public List<SertificatMPN> sertificatMPNList() {

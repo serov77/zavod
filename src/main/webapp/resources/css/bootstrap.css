@@ -3433,7 +3433,7 @@ tbody.collapse.in {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index: 2000;
   display: none;
   float: left;
   min-width: 160px;
@@ -5726,7 +5726,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 900;
   display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
@@ -5774,7 +5774,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 890;
   background-color: #000;
 }
 .modal-backdrop.fade {
@@ -5826,7 +5826,7 @@ button.close {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    margin: 30px auto;
+    margin: 70px auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

@@ -52,4 +52,9 @@ public class PogruzkaIMServiceImpl implements PogruzkaIMService {
         }
         return true;
     }
+
+    @Override
+    public PogruzkaIM retrivePogruzkaIM(int id) {
+        return pogruzkaIMDAO.retrivePogruzkaIK(id);
+    }
 }

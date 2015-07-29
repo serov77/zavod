@@ -27,6 +27,12 @@ public class SertificatIMServiceImpl implements SertificatIMService {
 
     @Transactional
     @Override
+    public List<SertificatIM> sertificatIMListDlyaOformleniya() {
+        return sertificatIMDAO.sertificatIMList();
+    }
+
+    @Transactional
+    @Override
     public List<SertificatIM> sertificatIMList() {
         sertificatIMList.clear();
         sertificatIMNeIspList.clear();

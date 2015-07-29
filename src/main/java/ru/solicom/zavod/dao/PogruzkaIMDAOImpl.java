@@ -58,4 +58,9 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     public List<PogruzkaIM> searchPogruzkaIM(int id) {
         return sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("vagon.id", id)).list();
     }
+
+    @Override
+    public PogruzkaIM retrivePogruzkaIK(int id) {
+        return (PogruzkaIM)sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("id", id)).uniqueResult();
+    }
 }

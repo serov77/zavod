@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public interface SertificatIMService {
+    public List<SertificatIM> sertificatIMListDlyaOformleniya();
+
     public List<SertificatIM> sertificatIMList();
 
     public List<SertificatIM> sertificatIMNeIspList();

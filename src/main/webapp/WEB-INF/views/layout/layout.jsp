@@ -13,17 +13,22 @@
 
     <!-- Bootstrap -->
     <script src="<c:url value="/resources/js/bootstrap_base/jquery.js"/>"></script>
-    <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
-    <link href="<c:url value="/resources/css/bootstrapValidator.css"/>" rel="stylesheet">
-
+    <script src="<c:url value="/resources/js/bootstrap_base/moment-with-locales.min.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap_base/bootstrap.js"/>"></script>
+    <script src="<c:url value="/resources/js/bootstrap_base/bootstrap-datetimepicker.min.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap_base/dataTables.bootstrap.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap_base/jquery.dataTables.min.js"/>"></script>
     <script src="<c:url value="/resources/js/main.js"/>"></script>
     <script src="<c:url value="/resources/js/bootstrap_base/bootstrapValidator.js"/>"></script>
     <script src="<c:url value="/resources/js/json.js"/>"></script>
+    <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrapValidator.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/bootstrap-datetimepicker.min.css"/>" rel="stylesheet">
+
+
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,7 +55,7 @@
 </div>
 
 <div class="modal fade bs-example-modal-sm" id="myModal_3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+     aria-hidden="true" >
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <form class="form-horizontal login-form" method="post"

@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 public interface SertificatMPNService {
+    public List<SertificatMPN> sertificatMPNListDlyaOformleniya();
+
     public List<SertificatMPN> sertificatMPNList();
 
     public List<SertificatMPN> sertificatMPNNeIspList();

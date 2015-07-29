@@ -67,7 +67,7 @@
         <!-- Заголовок 2 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Вагоны извести комовой на линии</a>
+                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Вагоны извести молотой на линии</a>
             </h4>
         </div>
         <div id="collapseOne_5" class="panel-collapse collapse">
@@ -89,7 +89,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${pogruzkaIKNaLiniiList}" var="pogr">
+                        <c:forEach items="${pogruzkaIMNaLiniiList}" var="pogr">
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
@@ -102,7 +102,7 @@
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button class="btn btn-default btn-xs butt_pogrIM_otpr" rel="${pogr.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_otpr" rel="IM/${pogr.id}" type="button">
                                         <span class="glyphicon glyphicon-road"></span>
                                     </button>
                                 </td>

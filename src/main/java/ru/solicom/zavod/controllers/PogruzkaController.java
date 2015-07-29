@@ -109,13 +109,14 @@ public class PogruzkaController {
 
     @RequestMapping(value = "/otpravka/{gruz}/{id}", method = RequestMethod.GET)
     public String pogruzkaOtpr(@PathVariable String gruz, @PathVariable int id, Model model) {
-        Pogruzka pogruzka = new Pogruzka();
         switch (gruz) {
             case "IK":
                 model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
                 model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
                 break;
             case "IM":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id));
+                model.addAttribute("sertificatList", sertificatService.getSertificatIMService().sertificatIMListDlyaOformleniya());
                 break;
             case "MPN":
                 break;
