@@ -33,16 +33,12 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div  class="form-group">
                 <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
+                <div class="col-xs-8" id="sertif_data">
 
-                <div class="col-xs-8">
-                    <select class="form-control">
-                        <option value="0"></option>
-                        <c:forEach items="${sertificatList}" var="sert">
-                            <option value="${sert.id}">${sert.nomer}</option>
-                        </c:forEach>
-                    </select>
+                    <jsp:include page="pogr_sertif_data.jsp"/>
+
                 </div>
             </div>
             <div class="modal-footer">

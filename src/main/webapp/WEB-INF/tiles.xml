@@ -67,4 +67,7 @@
     <definition name="pogruzka_otpr" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka_otpr.jsp"/>
     </definition>
+    <definition name="pogr_sert_data" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogr_sertif_data.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -124,4 +124,10 @@ public class PogruzkaController {
         model.addAttribute("title_modal", "Оформление документов!");
         return "pogruzka_otpr";
     }
+
+    @RequestMapping(value = "/setDate/{x}")
+    public String setDate(@PathVariable String x) {
+
+        return "pogr_sert_data";
+    }
 }
