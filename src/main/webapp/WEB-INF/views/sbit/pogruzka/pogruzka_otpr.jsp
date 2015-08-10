@@ -25,7 +25,7 @@
 
                 <div class="col-xs-8">
                     <div class="input-group date" id="datetimepicker1">
-                        <input type="text" class="form-control"/>
+                        <input type="text" class="form-control" id="dtqqq"/>
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span>

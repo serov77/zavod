@@ -4,12 +4,18 @@ $(function () {
     );
 });
 
-$("#datetimepicker1").on("dp.change",function (e) {
-    var x = $(this).data("DateTimePicker").getDate();
-    var y = x.getFullYear();
+$("#datetimepicker1").on("dp.hide", function (e) {
+    var x = $('#datetimepicker1').data("DateTimePicker").getDate();
     alert(x);
+    //var y = x.replace(".", "-");
+    //alert(y);
+    var d = new Date();
+    d.setTime(Date.parse(x));
+    //var w = Date.parse($('#datetimepicker1').data("DateTimePicker").getDate());
+var y = d.getDate()+"-"+ d.getMonth()+"-"+ d.getFullYear();
+alert(y);
     $.ajax({
-        url: "pogruzka/setDate/"+y,
+        url: "pogruzka/setDate/" + y,
         success: function (html) {
             $('#sertif_data').html(html);
         }
