@@ -73,6 +73,7 @@ public class SertificatMPNServiceImpl implements SertificatMPNService {
         return sertificatMPNDAO.searchSertificatMPNByNomerAndGod(id, nomer, data);
     }
 
+    @Transactional
     @Override
     public List<SertificatMPN> searchSertificatMPNByData(Date date) {
         return sertificatMPNDAO.searchSertificatMPNByData(date);

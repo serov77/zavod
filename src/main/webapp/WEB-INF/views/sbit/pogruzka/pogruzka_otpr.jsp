@@ -9,7 +9,7 @@
         <h4 class="modal-title" id="myModalLabel">Оформление</h4>
     </div>
     <form:form id="edit_form" class="form-horizontal" method="post"
-               action="javascript: edit();"
+               action="javascript: otpravka();"
                commandName="pogruzka">
         <div class="modal-body" id="mesto_body">
             <h3>${title_modal}</h3>
@@ -33,8 +33,9 @@
                 </div>
             </div>
 
-            <div  class="form-group">
+            <div class="form-group">
                 <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
+
                 <div class="col-xs-8" id="sertif_data">
 
                     <jsp:include page="pogr_sertif_data.jsp"/>
@@ -47,6 +48,8 @@
             </div>
         </div>
     </form:form>
-<input type="hidden" id="gruz" value="${gruz}">
+    <input type="hidden" id="gruz" value="${gruz}">
+    <input type="hidden" id="pogrId" value="${pogruzka.id}">
 </div>
 <script src="<c:url value="/resources/js/sbit/pogruzka/pogruzka_otpr.js"/>"></script>
+
