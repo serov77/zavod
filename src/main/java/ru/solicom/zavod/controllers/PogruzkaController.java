@@ -112,7 +112,7 @@ public class PogruzkaController {
         switch (gruz) {
             case "IK":
                 model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
-                model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
+                //model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
                 break;
             case "IM":
                 model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id));
@@ -126,8 +126,8 @@ public class PogruzkaController {
     }
 
     @RequestMapping(value = "/setDate/{x}")
-    public String setDate(@PathVariable String x) {
-
+    public String setDate(@PathVariable String x, Model model) {
+        model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
         return "pogr_sert_data";
     }
 }
