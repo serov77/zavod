@@ -74,4 +74,10 @@ public class SertificatIKServiceImpl implements SertificatIKService {
     public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data) {
         return sertificatIKDAO.searchSertificatIKByNomerAndGod(id, nomer, data);
     }
+
+    @Transactional
+    @Override
+    public List<SertificatIK> searchSertificatIKByData(Date date) {
+        return sertificatIKDAO.searchSertificatIKByData(date);
+    }
 }

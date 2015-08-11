@@ -25,7 +25,7 @@
 
                 <div class="col-xs-8">
                     <div class="input-group date" id="datetimepicker1">
-                        <input type="text" class="form-control" id="dtqqq"/>
+                        <input type="text" class="form-control" id="dtqqq" readonly="readonly"/>
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -47,6 +47,6 @@
             </div>
         </div>
     </form:form>
-
+<input type="hidden" id="gruz" value="${gruz}">
 </div>
 <script src="<c:url value="/resources/js/sbit/pogruzka/pogruzka_otpr.js"/>"></script>

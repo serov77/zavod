@@ -16,4 +16,6 @@ public interface SertificatIKDAO {
     public void saveSertificatIK(SertificatIK sertificatIK);
 
     public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data);
+
+    public List<SertificatIK> searchSertificatIKByData(Date date);
 }

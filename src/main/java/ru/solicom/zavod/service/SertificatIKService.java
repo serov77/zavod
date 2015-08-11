@@ -20,4 +20,6 @@ public interface SertificatIKService {
     public void saveSertficatIK(SertificatIK sertificatIK);
 
     public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data);
+
+    public List<SertificatIK> searchSertificatIKByData(Date date);
 }

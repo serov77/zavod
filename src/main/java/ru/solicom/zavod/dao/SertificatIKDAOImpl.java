@@ -40,7 +40,6 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
     @Override
     public void saveSertificatIK(SertificatIK sertificatIK) {
         sessionFactory.getCurrentSession().saveOrUpdate(sertificatIK);
-        int id = 2;
     }
 
     @Override
@@ -55,5 +54,10 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public List<SertificatIK> searchSertificatIKByData(Date date) {
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
     }
 }
