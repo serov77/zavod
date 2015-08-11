@@ -60,7 +60,7 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     }
 
     @Override
-    public PogruzkaIM retrivePogruzkaIK(int id) {
+    public PogruzkaIM retrivePogruzkaIM(int id) {
         return (PogruzkaIM)sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("id", id)).uniqueResult();
     }
 }

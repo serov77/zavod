@@ -74,4 +74,9 @@ public class SertificatIMServiceImpl implements SertificatIMService {
     public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data) {
         return sertificatIMDAO.searchSertificatIMByNomerAndGod(id, nomer, data);
     }
+
+    @Override
+    public List<SertificatIM> searchSertificatIMByData(Date date) {
+        return sertificatIMDAO.searchSertificatIMByData(date);
+    }
 }

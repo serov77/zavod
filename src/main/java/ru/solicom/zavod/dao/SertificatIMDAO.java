@@ -15,4 +15,6 @@ public interface SertificatIMDAO {
     void saveSertificatIM(SertificatIM sertificatIM);
 
     public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data);
+
+    public List<SertificatIM> searchSertificatIMByData(Date date);
 }

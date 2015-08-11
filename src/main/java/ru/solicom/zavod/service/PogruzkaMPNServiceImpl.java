@@ -52,5 +52,10 @@ public class PogruzkaMPNServiceImpl implements PogruzkaMPNService{
         return true;
     }
 
+    @Override
+    public PogruzkaMPN retrivePogruzkaMPN(int id) {
+        return pogruzkaMPNDAO.retrivePogruzkaMPN(id);
+    }
+
 
 }

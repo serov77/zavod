@@ -19,4 +19,6 @@ public interface SertificatMPNService {
     void saveSertificatMPN(SertificatMPN sertificatMPN);
 
     public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data);
+
+    public List<SertificatMPN> searchSertificatMPNByData(Date date);
 }

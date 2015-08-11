@@ -20,5 +20,5 @@ public interface PogruzkaIMDAO {
 
     public List<PogruzkaIM> searchPogruzkaIM(int id);
 
-    public PogruzkaIM retrivePogruzkaIK(int id);
+    public PogruzkaIM retrivePogruzkaIM(int id);
 }

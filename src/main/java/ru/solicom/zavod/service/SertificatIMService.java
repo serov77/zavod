@@ -19,4 +19,6 @@ public interface SertificatIMService {
     public void saveSertficatIM(SertificatIM sertificatIM);
 
     public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data);
+
+    public List<SertificatIM> searchSertificatIMByData(Date date);
 }

@@ -51,4 +51,9 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
         }
         return false;
     }
+
+    @Override
+    public List<SertificatMPN> searchSertificatMPNByData(Date date) {
+        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
+    }
 }

@@ -112,16 +112,15 @@ public class PogruzkaController {
         switch (gruz) {
             case "IK":
                 model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
-                //model.addAttribute("sertificatList", sertificatService.getSertificatIKService().sertificatIKListDlyaOformleniya());
-                model.addAttribute("gruz", gruz);
                 break;
             case "IM":
                 model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id));
-                model.addAttribute("sertificatList", sertificatService.getSertificatIMService().sertificatIMListDlyaOformleniya());
                 break;
             case "MPN":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id));
                 break;
         }
+        model.addAttribute("gruz", gruz);
         model.addAttribute("title_modal", "Оформление документов!");
         return "pogruzka_otpr";
     }
@@ -129,8 +128,17 @@ public class PogruzkaController {
     @RequestMapping(value = "/setDate/{gruz}/{x}/{y}/{z}")
     public String setDate(@PathVariable String gruz, @PathVariable int x, @PathVariable int y, @PathVariable int z, Model model) {
         Date date = new Date((z - 1900), y, x);
-
-        model.addAttribute("sertificatList", sertificatService.getSertificatIKService().searchSertificatIKByData(date));
+        switch (gruz) {
+            case "IK":
+                model.addAttribute("sertificatList", sertificatService.getSertificatIKService().searchSertificatIKByData(date));
+                break;
+            case "IM":
+                model.addAttribute("sertificatList", sertificatService.getSertificatIMService().searchSertificatIMByData(date));
+                break;
+            case "MPN":
+                model.addAttribute("sertificatList", sertificatService.getSertificatMPNService().searchSertificatMPNByData(date));
+                break;
+        }
         return "pogr_sert_data";
     }
 }

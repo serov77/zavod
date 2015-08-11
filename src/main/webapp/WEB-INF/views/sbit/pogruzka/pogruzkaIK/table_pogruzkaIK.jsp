@@ -106,7 +106,7 @@
                                     <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button class="btn btn-default btn-xs butt_otpr" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Ожормление Отправки">
+                                    <button class="btn btn-default btn-xs butt_otpr" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Оформление Отправки">
                                         <span class="glyphicon glyphicon-road"></span>
                                     </button>
                                 </td>

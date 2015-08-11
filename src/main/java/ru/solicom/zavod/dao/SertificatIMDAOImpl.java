@@ -54,4 +54,9 @@ public class SertificatIMDAOImpl implements SertificatIMDAO {
         }
         return false;
     }
+
+    @Override
+    public List<SertificatIM> searchSertificatIMByData(Date date) {
+        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
+    }
 }

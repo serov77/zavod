@@ -19,4 +19,6 @@ public interface PogruzkaMPNDAO {
     public Boolean searchPogruzkaMPNMKR(int id);
 
     public List<PogruzkaMPN> searchPogruzkaMPN(int id);
+
+    public PogruzkaMPN retrivePogruzkaMPN(int id);
 }

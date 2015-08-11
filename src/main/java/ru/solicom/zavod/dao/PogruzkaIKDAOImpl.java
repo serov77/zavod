@@ -61,7 +61,6 @@ public class PogruzkaIKDAOImpl implements PogruzkaIKDAO {
     @Override
     public PogruzkaIK retrivePogruzkaIK(int id) {
         return (PogruzkaIK)sessionFactory.getCurrentSession().createCriteria(PogruzkaIK.class).add(Restrictions.eq("id", id)).uniqueResult();
-
     }
 
 }

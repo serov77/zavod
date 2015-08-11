@@ -72,4 +72,9 @@ public class SertificatMPNServiceImpl implements SertificatMPNService {
     public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data) {
         return sertificatMPNDAO.searchSertificatMPNByNomerAndGod(id, nomer, data);
     }
+
+    @Override
+    public List<SertificatMPN> searchSertificatMPNByData(Date date) {
+        return sertificatMPNDAO.searchSertificatMPNByData(date);
+    }
 }
