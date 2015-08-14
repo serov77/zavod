@@ -3,9 +3,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<select class="form-control">
-  <option value="0"></option>
-  <c:forEach items="${sertificatList}" var="sert">
-    <option value="${sert.id}">${sert.nomer}</option>
-  </c:forEach>
-</select>
+    <c:if test="${!empty sertificatList}">
+        <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
+
+        <div class="col-xs-8">
+            <select class="form-control" name="n" id="n">
+                <c:forEach items="${sertificatList}" var="sert">
+                    <option value="${sert.id}">${sert.nomer}</option>
+                </c:forEach>
+            </select>
+        </div>
+    </c:if>

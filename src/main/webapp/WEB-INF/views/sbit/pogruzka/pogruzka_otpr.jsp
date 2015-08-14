@@ -8,7 +8,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Оформление</h4>
     </div>
-    <form:form id="edit_form" class="form-horizontal" method="post"
+    <form:form id="edit_form_dobSert" class="form-horizontal" method="post"
                action="pogruzka/save"
                commandName="pogruzka">
         <div class="modal-body" id="mesto_body">
@@ -32,15 +32,8 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
-
-                <div class="col-xs-8" id="sertif_data">
-
-                    <jsp:include page="pogr_sertif_data.jsp"/>
-
-                </div>
+            <div class="form-group" id="sertif_data">
+                <jsp:include page="pogr_sertif_data.jsp"/>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
