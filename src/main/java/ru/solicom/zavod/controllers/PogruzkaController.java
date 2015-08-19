@@ -153,6 +153,7 @@ public class PogruzkaController {
                 PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id);
                 SertificatIK sertificatIK = sertificatService.getSertificatIKService().retriveSertificatIK(sertId);
                 pogruzkaIK.setSertificatIK(sertificatIK);
+                pogruzkaIK.setDataOtpravleniya(new Date());
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
             case "IM":
