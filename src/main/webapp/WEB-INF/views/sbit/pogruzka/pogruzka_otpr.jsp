@@ -9,7 +9,7 @@
         <h4 class="modal-title" id="myModalLabel">Оформление</h4>
     </div>
     <form:form id="edit_form_dobSert" class="form-horizontal" method="post"
-               action="pogruzka/save"
+               action="javascript: otpravka();"
                commandName="pogruzka">
         <div class="modal-body" id="mesto_body">
             <h3>${title_modal}</h3>

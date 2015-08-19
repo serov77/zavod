@@ -7,7 +7,7 @@
         <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
 
         <div class="col-xs-8">
-            <select class="form-control" name="n" id="n">
+            <select class="form-control" name="sertId" id="sertId">
                 <c:forEach items="${sertificatList}" var="sert">
                     <option value="${sert.id}">${sert.nomer}</option>
                 </c:forEach>

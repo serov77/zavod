@@ -141,4 +141,26 @@ public class PogruzkaController {
         }
         return "pogr_sert_data";
     }
+
+    @RequestMapping(value = "/otpr/save/{gruz}/{id}/{sertId}")
+    @ResponseBody
+    public String pogruzkaOtprSave(@PathVariable String gruz, @PathVariable int id, @PathVariable int sertId) {
+        //Vagon vagon = vagonService.retriveVagon(pogruzka.getIdVagon());
+        //pogruzka.setVagon(vagon);
+        //pogruzka.setDataPogruzki(new Date());
+        switch (gruz) {
+            case "IK":
+                PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id);
+                SertificatIK sertificatIK = sertificatService.getSertificatIKService().retriveSertificatIK(sertId);
+                pogruzkaIK.setSertificatIK(sertificatIK);
+                pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
+                break;
+            case "IM":
+
+                break;
+            case "MPN":
+                break;
+        }
+        return "Изминения успешно внесены!";
+    }
 }
