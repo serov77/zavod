@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
+<div class="form-group" >
     <c:if test="${!empty sertificatList}">
         <label path="sertificat" class="col-xs-4 control-label">Номер Сертификата</label>
 
@@ -14,3 +15,14 @@
             </select>
         </div>
     </c:if>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+    <c:if test="${!empty sertificatList}">
+        <button class="btn btn-default" id="button_submit" type="submit">Сохранить изменения</button>
+    </c:if>
+    <c:if test="${empty sertificatList}">
+        <button class="btn btn-default disabled" id="button_submit" type="submit">Сохранить изменения
+        </button>
+    </c:if>
+</div>

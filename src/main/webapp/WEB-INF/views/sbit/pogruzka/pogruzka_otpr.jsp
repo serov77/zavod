@@ -32,12 +32,10 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group" id="sertif_data">
-                <jsp:include page="pogr_sertif_data.jsp"/>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                <button class="btn btn-default" id="button_submit" type="submit">Сохранить изменения</button>
+            <div id="sertif_data">
+
+                    <jsp:include page="pogr_sertif_data.jsp"/>
+
             </div>
         </div>
     </form:form>
