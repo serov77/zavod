@@ -17,6 +17,8 @@ public class BaseDomainSertificat extends BaseDomain{
     @ManyToOne
     @JoinColumn(name = "id_pokupatel")
     protected Pokupatel pokupatel;
+    @Column(name = "otmetki")
+    private String otmetki;
 
     public String getNomer() {
         return nomer;
@@ -40,5 +42,14 @@ public class BaseDomainSertificat extends BaseDomain{
 
     public void setPokupatel(Pokupatel pokupatel) {
         this.pokupatel = pokupatel;
+    }
+
+
+    public String getOtmetki() {
+        return otmetki;
+    }
+
+    public void setOtmetki(String otmetki) {
+        this.otmetki = otmetki;
     }
 }

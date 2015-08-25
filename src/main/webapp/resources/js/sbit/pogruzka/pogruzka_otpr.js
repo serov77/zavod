@@ -16,15 +16,6 @@ $("#datetimepicker1").on("dp.hide", function (e) {
             $('#sertif_data').html(html);
         }
     });
-    $.ajax({
-        url: "pogruzka/pogrButtSubmit/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
-        success: function (html) {
-            $('#sertif_data').html(html);
-        },
-        complete: function (html) {
-            $('#pogr_butt').html(html);
-        }
-    });
 });
 function otpravka() {
     var id = $('input#pogrId').val();

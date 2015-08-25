@@ -157,9 +157,18 @@ public class PogruzkaController {
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
             case "IM":
-
+                PogruzkaIM pogruzkaIM = pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id);
+                SertificatIM sertificatIM = sertificatService.getSertificatIMService().retriveSertificatIM(sertId);
+                pogruzkaIM.setSertificatIM(sertificatIM);
+                pogruzkaIM.setDataOtpravleniya(new Date());
+                pogruzkaService.getPogruzkaIMService().savePogruzkaIM(pogruzkaIM);
                 break;
             case "MPN":
+                PogruzkaMPN pogruzkaMPN = pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id);
+                SertificatMPN sertificatMPN = sertificatService.getSertificatMPNService().retriveSertificatMPN(sertId);
+                pogruzkaMPN.setSertificatMPN(sertificatMPN);
+                pogruzkaMPN.setDataOtpravleniya(new Date());
+                pogruzkaService.getPogruzkaMPNService().savePogruzkaMPN(pogruzkaMPN);
                 break;
         }
         return "Изминения успешно внесены!";

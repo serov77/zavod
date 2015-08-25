@@ -109,6 +109,7 @@ function edit() {
     var soderNepogZeren = $('input#soderNepogZeren').val();
     var soderUglekisloti = $('input#soderUglekisloti').val();
     var data = $('input#data').val();
+    var otmetki = $('input#otmetki').val();
     var sertifikatIK = {
         id: id,
         nomer: nomer,
@@ -118,7 +119,8 @@ function edit() {
         vremyaGascheniya: vremyaGascheniya,
         temperaturaGascheniya: temperaturaGascheniya,
         soderUglekisloti: soderUglekisloti,
-        soderNepogZeren: soderNepogZeren
+        soderNepogZeren: soderNepogZeren,
+        otmetki: otmetki
     }
     $.ajax({
         url: '/zavod/sertificat/ik/save',

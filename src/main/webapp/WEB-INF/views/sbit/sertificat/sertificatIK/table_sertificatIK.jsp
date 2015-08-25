@@ -31,6 +31,7 @@
                             <th>Темп. гашения</th>
                             <th>Непог. зерна, %</th>
                             <th>Угл., %</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -46,6 +47,7 @@
                                 <td>${sertificat.temperaturaGascheniya}</td>
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
@@ -87,6 +89,7 @@
                             <th>Темп. гашения</th>
                             <th>Непог. зерна, %</th>
                             <th>Угл., %</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -102,6 +105,7 @@
                                 <td>${sertificat.temperaturaGascheniya}</td>
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
@@ -142,6 +146,7 @@
                             <th>Темп. гашения</th>
                             <th>Непог. зерна, %</th>
                             <th>Угл., %</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -156,6 +161,7 @@
                                 <td>${sertificat.temperaturaGascheniya}</td>
                                 <td>${sertificat.soderNepogZeren}</td>
                                 <td>${sertificat.soderUglekisloti}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IK/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>

@@ -124,6 +124,7 @@ function edit() {
     var sito02 = $('input#sito02').val();
     var sito008 = $('input#sito008').val();
     var data = $('input#data').val();
+    var otmetki = $('input#otmetki').val();
     var sertifikatIM = {
         id: id,
         nomer: nomer,
@@ -134,7 +135,8 @@ function edit() {
         temperaturaGascheniya: temperaturaGascheniya,
         soderUglekisloti: soderUglekisloti,
         sito02: sito02,
-        sito008: sito008
+        sito008: sito008,
+        otmetki: otmetki
     }
     $.ajax({
         url: '/zavod/sertificat/im/save',

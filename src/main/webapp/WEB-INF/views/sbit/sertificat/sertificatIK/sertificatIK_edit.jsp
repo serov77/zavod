@@ -70,6 +70,12 @@
             </div>
         </div>
     </c:if>
+    <div class="form-group">
+        <form:label path="otmetki" class="col-xs-4 control-label">Прим.</form:label>
+        <div class="col-xs-8">
+            <form:input path="otmetki" class="form-control"/>
+        </div>
+    </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
         <button class="btn btn-default" id="button_submit" type="submit">Сохранить изменения</button>

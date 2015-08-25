@@ -94,6 +94,7 @@ function edit() {
     var zerovoySostav0315 = $('input#zerovoySostav0315').val();
     var zerovoySostav0071 = $('input#zerovoySostav0071').val();
     var data = $('input#data').val();
+    var otmetki = $('input#otmetki').val();
     var sertifikatMPN = {
         id: id,
         nomer: nomer,
@@ -102,7 +103,8 @@ function edit() {
         massovayaDolyaVlagi: massovayaDolyaVlagi,
         zerovoySostav1250: zerovoySostav1250,
         zerovoySostav0315: zerovoySostav0315,
-        zerovoySostav0071: zerovoySostav0071
+        zerovoySostav0071: zerovoySostav0071,
+        otmetki: otmetki
     }
     $.ajax({
         url: '/zavod/sertificat/mpn/save',

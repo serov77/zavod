@@ -29,6 +29,7 @@
                             <th>Сито 1.25 мм</th>
                             <th>Сито 0.315 мм</th>
                             <th>Сито 0.071 мм</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -43,6 +44,7 @@
                                 <td>${sertificat.zerovoySostav1250}</td>
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">
@@ -84,6 +86,7 @@
                             <th>Сито 1.25 мм</th>
                             <th>Сито 0.315 мм</th>
                             <th>Сито 0.071 мм</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -98,6 +101,7 @@
                                 <td>${sertificat.zerovoySostav1250}</td>
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">
@@ -138,6 +142,7 @@
                             <th>Сито 1.25 мм</th>
                             <th>Сито 0.315 мм</th>
                             <th>Сито 0.071 мм</th>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -151,6 +156,7 @@
                                 <td>${sertificat.zerovoySostav1250}</td>
                                 <td>${sertificat.zerovoySostav0315}</td>
                                 <td>${sertificat.zerovoySostav0071}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="MPN/${sertificat.id}"
                                             type="button">

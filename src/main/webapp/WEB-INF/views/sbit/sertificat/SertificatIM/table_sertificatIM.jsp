@@ -32,6 +32,7 @@
                             <th>Угл., %</th>
                             <td>Сито 0.2 мм</td>
                             <td>Сито 0.08 мм</td>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -48,6 +49,7 @@
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
@@ -90,6 +92,7 @@
                             <th>Угл., %</th>
                             <td>Сито 0.2 мм</td>
                             <td>Сито 0.08 мм</td>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -106,6 +109,7 @@
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
@@ -147,6 +151,7 @@
                             <th>Угл., %</th>
                             <td>Сито 0.2 мм</td>
                             <td>Сито 0.08 мм</td>
+                            <th>Прим.</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -162,6 +167,7 @@
                                 <td>${sertificat.soderUglekisloti}</td>
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
+                                <td>${sertificat.otmetki}</td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
