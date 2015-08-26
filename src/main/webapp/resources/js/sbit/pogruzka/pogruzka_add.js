@@ -75,6 +75,18 @@ function edit() {
     });
 }
 
+function editIK() {
+    $.ajax({
+        url: '/zavod/pogruzka/saveIK',
+        type: 'POST',
+        success: function (html) {
+            $('.modal-backdrop').hide(700);
+            $('#myModal_2').modal().fadeIn(1000);
+            showSbit('pogruzka/all');
+        }
+    });
+}
+
 function editVagon(url) {
     $.ajax({
         url: url,

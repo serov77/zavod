@@ -107,6 +107,12 @@ public class PogruzkaController {
         return "Изминения успешно внесены!";
     }
 
+    @RequestMapping(value = "/saveIK", method = RequestMethod.POST)
+    @ResponseBody
+    public String pogruzkaIKSave(@ModelAttribute("pogruzka") PogruzkaIK pogruzka){
+        return "Изминения успешно внесены!";
+    }
+
     @RequestMapping(value = "/otpravka/{gruz}/{id}", method = RequestMethod.GET)
     public String pogruzkaOtpr(@PathVariable String gruz, @PathVariable int id, Model model) {
         switch (gruz) {

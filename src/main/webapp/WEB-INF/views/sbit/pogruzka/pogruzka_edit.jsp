@@ -11,7 +11,7 @@
         <h4 class="modal-title" id="myModalLabel">Погрузка</h4>
     </div>
     <form:form id="edit_form" class="form-horizontal" method="post"
-               action="javascript: edit();"
+               action="javascript: editIK();"
                commandName="pogruzka">
         <div class="modal-body" id="mesto_body">
             <h3>${title_modal}</h3>
