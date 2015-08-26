@@ -125,6 +125,24 @@ public class PogruzkaController {
         return "pogruzka_otpr";
     }
 
+    @RequestMapping(value = "/edit/{gruz}/{id}", method = RequestMethod.GET)
+    public String pogruzkaEdit(@PathVariable String gruz, @PathVariable int id, Model model) {
+        switch (gruz) {
+            case "IK":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
+                break;
+            case "IM":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id));
+                break;
+            case "MPN":
+                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id));
+                break;
+        }
+        model.addAttribute("gruz", gruz);
+        model.addAttribute("title_modal", "Оформление документов!");
+        return "pogruzka_edit";
+    }
+
     @RequestMapping(value = "/setDate/{gruz}/{x}/{y}/{z}")
     public String setDate(@PathVariable String gruz, @PathVariable int x, @PathVariable int y, @PathVariable int z, Model model) {
         Date date = new Date((z - 1900), y, x);

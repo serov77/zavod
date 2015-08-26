@@ -17,10 +17,10 @@ $(document).ready(function () {
         },
         "order": [[0, "desc"]]
     });
-    $('body').on('click', '.butt', function () {
+    $('body').on('click', '.butt_edit', function () {
         var x = $(this).attr("rel");
         var url = "pogruzka/edit/" + x;
-        editPogruzka()(url);
+        editPogruzka(url);
         $("#myModal").modal();
     });
 

@@ -49,7 +49,7 @@
                                 <td>${pogr.sertificatIK.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -103,7 +103,7 @@
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                     <button class="btn btn-default btn-xs butt_otpr" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Оформление Отправки">
