@@ -127,17 +127,31 @@ public class PogruzkaController {
 
     @RequestMapping(value = "/edit/{gruz}/{id}", method = RequestMethod.GET)
     public String pogruzkaEdit(@PathVariable String gruz, @PathVariable int id, Model model) {
+        Vagon vagon = new Vagon();
         switch (gruz) {
             case "IK":
-                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id));
+                PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id);
+                model.addAttribute("pogruzka", pogruzkaIK);
+                vagon = pogruzkaIK.getVagon();
                 break;
             case "IM":
-                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id));
+                PogruzkaIM pogruzkaIM = pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id);
+                model.addAttribute("pogruzka", pogruzkaIM);
+                vagon = pogruzkaIM.getVagon();
                 break;
             case "MPN":
-                model.addAttribute("pogruzka", pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id));
+                PogruzkaMPN pogruzkaMPN = pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id);
+                model.addAttribute("pogruzka", pogruzkaMPN);
+                vagon = pogruzkaMPN.getVagon();
                 break;
         }
+        List<Tara> taraList;
+        if (vagon.getRodVagona().getName().equals("полувагон")) {
+            taraList = taraService.taraList();
+        } else {
+            taraList = taraService.taraBezMKRList();
+        }
+        model.addAttribute("taraList", taraList);
         model.addAttribute("gruz", gruz);
         model.addAttribute("title_modal", "Оформление документов!");
         return "pogruzka_edit";

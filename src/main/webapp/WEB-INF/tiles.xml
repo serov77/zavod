@@ -61,6 +61,9 @@
     <definition name="pogruzka_add" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka_add.jsp"/>
     </definition>
+    <definition name="pogruzka_edit" extends="one">
+        <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka_edit.jsp"/>
+    </definition>
     <definition name="pogruzka_lost" extends="one">
         <put-attribute name="body" value="/WEB-INF/views/sbit/pogruzka/pogruzka_lost.jsp"/>
     </definition>
