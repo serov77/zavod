@@ -113,6 +113,9 @@ public class PogruzkaController {
         switch (pogruzka.getGruz().getId()) {
             case 1:
                 PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(pogruzka.getId());
+                pogruzkaIK.setDopolneniya(pogruzka.getDopolneniya());
+                pogruzkaIK.setBrutto(pogruzka.getBrutto());
+                pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
             case 2:
 
@@ -170,7 +173,7 @@ public class PogruzkaController {
         }
         model.addAttribute("taraList", taraList);
         model.addAttribute("gruz", gruz);
-        model.addAttribute("title_modal", "Оформление документов!");
+        model.addAttribute("title_modal", "Редактирование погрузки!");
         return "pogruzka_edit";
     }
 

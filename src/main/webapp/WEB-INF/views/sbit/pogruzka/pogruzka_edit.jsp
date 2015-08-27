@@ -95,8 +95,10 @@
         obj.lang = obj.value;
         this.ST = null;
         var tara = $("input#taraVag").val();
-        var brutto = $("input#brutto").val()
-        $("input#netto").val(brutto - tara);
+        var brutto = $("input#brutto").val();
+        var x = brutto-tara;
+        var y = x.toFixed(1);
+        $("input#netto").val(y);
     }
 
     function Fshowerror(obj) {

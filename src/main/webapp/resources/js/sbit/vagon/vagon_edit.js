@@ -35,7 +35,7 @@ $(document).ready(function () {
                                 idRV_2: validator.getFieldElements("rodVagona.id").val()
                             };
                         },
-                        message: '"Этот Вагон был погоружен МКР!',
+                        message: 'Этот Вагон был погоружен МКР!',
                         type: 'GET'
                     }
                 }
