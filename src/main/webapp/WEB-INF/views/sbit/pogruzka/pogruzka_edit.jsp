@@ -11,7 +11,7 @@
         <h4 class="modal-title" id="myModalLabel">Погрузка</h4>
     </div>
     <form:form id="edit_form" class="form-horizontal" method="post"
-               action="javascript: editIK();"
+               action="javascript: edit_2();"
                commandName="pogruzka">
         <div class="modal-body" id="mesto_body">
             <h3>${title_modal}</h3>
@@ -33,6 +33,8 @@
                 <div class="col-xs-8">
                     <form:input id="taraVag" path="vagon.tara" class="form-control" readonly="true"/>
                     <form:hidden id="idVag" path="vagon.id" class="form-control"/>
+                    <form:hidden id="idOtgr" path="id" class="form-control"/>
+                    <input type="hidden" id="gruz" value="${gruz}"/>
                 </div>
             </div>
             <div class="form-group">
@@ -58,8 +60,10 @@
             </div>
             <div class="form-group">
                 <label path="netto" class="col-xs-4 control-label">Вес нетто, т.</label>
+
                 <div class="col-xs-8">
-                    <input id="netto" path="netto" class="form-control" readonly="true" value="<fmt:formatNumber value="${pogruzka.brutto - pogruzka.vagon.tara}" type="number" pattern="0.0"/>"/>
+                    <input id="netto" path="netto" class="form-control" readonly="true"
+                           value="<fmt:formatNumber value="${pogruzka.brutto - pogruzka.vagon.tara}" type="number" pattern="0.0"/>"/>
                 </div>
             </div>
             <div class="form-group">

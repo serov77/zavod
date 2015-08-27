@@ -55,7 +55,7 @@ function edit() {
     var dopolneniya = $('#dopolneniya').val();
     var pogruzka = {
         brutto: brutto,
-        netto : netto,
+        netto: netto,
         idVagon: idVagon,
         gruz: gruz,
         tara: tara,
@@ -75,10 +75,40 @@ function edit() {
     });
 }
 
-function editIK() {
+function edit_2() {
+    var id = $('input#idOtgr').val();
+    var brutto = $('input#brutto').val();
+    var idVagon = $('input#idVag').val();
+
+    var gruzId;
+    switch ($('input#gruz').val()) {
+        case "IK":
+            gruzId = "1";
+            break;
+    }
+    var gruzq = {
+        id: gruzId,
+        name: "",
+    };
+    var tara = {
+        id: $('select#tara option:selected').val(),
+        name: $('select#tara option:selected').text()
+    };
+    var dopolneniya = $('#dopolneniya').val();
+    var pogruzka = {
+        id: id,
+        gruz: gruzq,
+        brutto: brutto,
+        idVagon: idVagon,
+        tara: tara,
+        dopolneniya: dopolneniya
+    }
+
     $.ajax({
-        url: '/zavod/pogruzka/saveIK',
+        url: '/zavod/pogruzka/saveEdit',
+        contentType: 'application/json; charset=utf-8',
         type: 'POST',
+        data: JSON.stringify(pogruzka),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);

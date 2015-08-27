@@ -107,9 +107,20 @@ public class PogruzkaController {
         return "Изминения успешно внесены!";
     }
 
-    @RequestMapping(value = "/saveIK", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveEdit", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String pogruzkaIKSave(@ModelAttribute("pogruzka") PogruzkaIK pogruzka){
+    public String pogruzkaEditSave(@RequestBody Pogruzka pogruzka){
+        switch (pogruzka.getGruz().getId()) {
+            case 1:
+                PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(pogruzka.getId());
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+        }
         return "Изминения успешно внесены!";
     }
 
