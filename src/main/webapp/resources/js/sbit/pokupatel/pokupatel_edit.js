@@ -48,29 +48,23 @@ $(document).ready(function () {
     });
 });
 function edit() {
-    var id = $('input#id').val();
-    var name = $('input#name').val();
-    var kod = $('input#kod').val();
-    var okpo = $('input#okpo').val();
+    alert(pokupatelJSON.name);
+    pokupatelJSON.name = $('input#name').val();
+    pokupatelJSON.kod = $('input#kod').val();
+    pokupatelJSON.okpo = $('input#okpo').val();
     var station_id = $('select#station option:selected').val();
     var station = {
         id: station_id,
         name: '',
         kod: ''
     };
-    var pokupatel = {
-        id: id,
-        name: name,
-        kod: kod,
-        okpo: okpo,
-        station: station
-    };
+    pokupatelJSON.station = station;
 
     $.ajax({
         url: '/zavod/pokupatel/save',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
-        data: JSON.stringify(pokupatel),
+        data: JSON.stringify(pokupatelJSON),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);

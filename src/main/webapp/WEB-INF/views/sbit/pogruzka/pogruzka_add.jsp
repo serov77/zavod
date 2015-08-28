@@ -75,6 +75,17 @@
                     <form:textarea path="dopolneniya" class="form-control"/>
                 </div>
             </div>
+            <div class="form-group">
+                <label path="dataPribitiyaVagona" class="col-xs-4 control-label">Дата прибытия вагона</label>
+                <div class="col-xs-8">
+                    <div class="input-group date" id="datetimepicker1">
+                        <input type="text" class="form-control" id="dtqqq" readonly="readonly"/>
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    </div>
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                 <button class="btn btn-default" id="button_submit" type="submit">Сохранить изменения</button>

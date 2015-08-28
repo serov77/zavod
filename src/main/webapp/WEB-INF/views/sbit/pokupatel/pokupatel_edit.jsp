@@ -38,7 +38,7 @@
                     <div class="col-xs-8">
                     <form:select path="station.id" id="station" class="form-control">
                         <form:option value="1" label="" />
-                        <form:options items="${stationList}" itemValue="id" itemLabel="name"/>
+                        <form:options items="${stationList}" itemValue="id"  itemLabel="name"/>
                     </form:select>
                 </div>
             </div>    
@@ -49,3 +49,40 @@
         </form:form>
     </div>
     <script src="<c:url value="/resources/js/sbit/pokupatel/pokupatel_edit.js"/>"></script>
+    <script type="text/javascript">
+        var pokupatelJSON = ${pokupatelJSON};
+        function Ftest(obj) {
+            if (this.ST) return;
+            var ov = obj.value;
+            var ovrl = ov.replace(/\d*\.?\d*/, '').length;
+            this.ST = true;
+            if (ovrl > 0) {
+                obj.value = obj.lang;
+                Fshowerror(obj);
+                return
+            }
+            obj.lang = obj.value;
+            this.ST = null;
+            var tara = $("input#taraVag").val();
+            var brutto = $("input#brutto").val();
+            var x = brutto-tara;
+            var y = x.toFixed(1);
+            $("input#netto").val(y);
+        }
+
+        function Fshowerror(obj) {
+            if (!this.OBJ) {
+                this.OBJ = obj;
+                obj.style.backgroundColor = 'pink';
+                this.TIM = setTimeout(Fshowerror, 50)
+            }
+            else {
+                this.OBJ.style.backgroundColor = '';
+                clearTimeout(this.TIM);
+                this.ST = null;
+                Ftest(this.OBJ);
+                this.OBJ = null
+            }
+        }
+    </script>
+

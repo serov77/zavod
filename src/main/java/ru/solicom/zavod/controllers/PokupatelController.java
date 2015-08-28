@@ -1,5 +1,7 @@
 package ru.solicom.zavod.controllers;
 
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import ru.solicom.zavod.domain.Station;
 import ru.solicom.zavod.service.PokupatelService;
 import ru.solicom.zavod.service.StationService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -87,10 +90,14 @@ public class PokupatelController {
     }
 
     @RequestMapping("/edit/{pokupatelId}")
-    public String editPokupatel(@PathVariable("pokupatelId") int pokupatelId, Model model) {
-        model.addAttribute("pokupatel", pokupatelService.retrivePokupatel(pokupatelId));
+    public String editPokupatel(@PathVariable("pokupatelId") int pokupatelId, Model model) throws IOException {
+        Pokupatel pokupatel = pokupatelService.retrivePokupatel(pokupatelId);
+        model.addAttribute("pokupatel", pokupatel);
         model.addAttribute("stationList", stationService.stationList());
         model.addAttribute("title_modal", "Редактирование Покупателя");
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(pokupatel);
+        model.addAttribute("pokupatelJSON", json);
         return "pokupatel_edit";
     }
 }

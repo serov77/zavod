@@ -16,6 +16,8 @@ import ru.solicom.zavod.util.Pogruzka;
 import ru.solicom.zavod.util.StatusVaiona;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -69,10 +71,13 @@ public class PogruzkaController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String pogruzkaSave(@RequestBody Pogruzka pogruzka) {
+    public String pogruzkaSave(@RequestBody Pogruzka pogruzka) throws ParseException {
         Vagon vagon = vagonService.retriveVagon(pogruzka.getIdVagon());
         pogruzka.setVagon(vagon);
         pogruzka.setDataPogruzki(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        String sdate = pogruzka.getDataPribitiyaVagona();
+        Date date = sdf.parse(sdate);
         switch (pogruzka.getGruz().getId()) {
             case 1:
                 PogruzkaIK pogruzkaIK = new PogruzkaIK();
@@ -83,6 +88,7 @@ public class PogruzkaController {
                 pogruzkaIK.setTara(pogruzka.getTara());
                 SertificatIK sertificatIK = sertificatService.getSertificatIKService().retriveSertificatIK(1);
                 pogruzkaIK.setSertificatIK(sertificatIK);
+                pogruzkaIK.setDataPribitiyaVagona(date);
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
             case 2:
@@ -94,6 +100,7 @@ public class PogruzkaController {
                 pogruzkaIM.setTara(pogruzka.getTara());
                 SertificatIM sertificatIM = sertificatService.getSertificatIMService().retriveSertificatIM(1);
                 pogruzkaIM.setSertificatIM(sertificatIM);
+                pogruzkaIM.setDataPribitiyaVagona(date);
                 pogruzkaService.getPogruzkaIMService().savePogruzkaIM(pogruzkaIM);
                 break;
             case 3:
@@ -105,6 +112,7 @@ public class PogruzkaController {
                 pogruzkaMPN.setTara(pogruzka.getTara());
                 SertificatMPN sertificatMPN = sertificatService.getSertificatMPNService().retriveSertificatMPN(1);
                 pogruzkaMPN.setSertificatMPN(sertificatMPN);
+                pogruzkaMPN.setDataPribitiyaVagona(date);
                 pogruzkaService.getPogruzkaMPNService().savePogruzkaMPN(pogruzkaMPN);
         }
         return "Изминения успешно внесены!";

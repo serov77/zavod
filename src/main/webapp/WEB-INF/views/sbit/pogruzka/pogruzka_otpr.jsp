@@ -21,17 +21,17 @@
                 </div>
             </div>
             <div class="form-group">
-                <label path="sertificat" class="col-xs-4 control-label">Дата Сертификата</label>
+            <label path="sertificat" class="col-xs-4 control-label">Дата Сертификата</label>
 
-                <div class="col-xs-8">
-                    <div class="input-group date" id="datetimepicker1">
-                        <input type="text" class="form-control" id="dtqqq" readonly="readonly"/>
+            <div class="col-xs-8">
+                <div class="input-group date" id="datetimepicker1">
+                    <input type="text" class="form-control" id="dtqqq" readonly="readonly"/>
                     <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                    </div>
                 </div>
             </div>
+        </div>
             <div id="sertif_data">
 
                     <jsp:include page="pogr_sertif_data.jsp"/>

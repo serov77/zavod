@@ -55,13 +55,15 @@ function edit() {
         name: $('select#tara option:selected').text(),
     };
     var dopolneniya = $('#dopolneniya').val();
+    var dataPribitiyaVagona = $('input#dtqqq').val()
     var pogruzka = {
         brutto: brutto,
         netto: netto,
         idVagon: idVagon,
         gruz: gruz,
         tara: tara,
-        dopolneniya: dopolneniya
+        dopolneniya: dopolneniya,
+        dataPribitiyaVagona: dataPribitiyaVagona
     };
 
     $.ajax({
@@ -117,4 +119,24 @@ function editVagon(url) {
     });
 
 }
+
+$(function () {
+    $('#datetimepicker1').datetimepicker(
+        {pickTime: false, language: 'ru'}
+    );
+});
+
+$("#datetimepicker2").on("dp.hide", function (e) {
+    var x = $('#datetimepicker1').data("DateTimePicker").getDate();
+    var d = new Date();
+    d.setTime(Date.parse(x));
+    var y = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
+    var z = $("input#gruz").val();
+    $.ajax({
+        url: "pogruzka/setDate/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
+        success: function (html) {
+            $('#sertif_data').html(html);
+        }
+    });
+});
 

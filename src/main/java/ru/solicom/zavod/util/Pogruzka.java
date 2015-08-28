@@ -17,6 +17,7 @@ public class Pogruzka {
     private Date dataOtpravleniya;
     private Tara tara;
     private String dopolneniya;
+    private String dataPribitiyaVagona;
 
     public int getId() {
         return id;
@@ -96,5 +97,13 @@ public class Pogruzka {
 
     public void setIdVagon(int idVagon) {
         this.idVagon = idVagon;
+    }
+
+    public String getDataPribitiyaVagona() {
+        return dataPribitiyaVagona;
+    }
+
+    public void setDataPribitiyaVagona(String dataPribitiyaVagona) {
+        this.dataPribitiyaVagona = dataPribitiyaVagona;
     }
 }
