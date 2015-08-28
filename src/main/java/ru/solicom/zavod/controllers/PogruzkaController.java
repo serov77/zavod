@@ -1,5 +1,6 @@
 package ru.solicom.zavod.controllers;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import ru.solicom.zavod.service.VagonService;
 import ru.solicom.zavod.util.Pogruzka;
 import ru.solicom.zavod.util.StatusVaiona;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -109,7 +111,7 @@ public class PogruzkaController {
 
     @RequestMapping(value = "/saveEdit", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String pogruzkaEditSave(@RequestBody Pogruzka pogruzka){
+    public String pogruzkaEditSave(@RequestBody Pogruzka pogruzka) {
         switch (pogruzka.getGruz().getId()) {
             case 1:
                 PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(pogruzka.getId());
@@ -146,13 +148,16 @@ public class PogruzkaController {
     }
 
     @RequestMapping(value = "/edit/{gruz}/{id}", method = RequestMethod.GET)
-    public String pogruzkaEdit(@PathVariable String gruz, @PathVariable int id, Model model) {
+    public String pogruzkaEdit(@PathVariable String gruz, @PathVariable int id, Model model) throws IOException {
         Vagon vagon = new Vagon();
         switch (gruz) {
             case "IK":
                 PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id);
                 model.addAttribute("pogruzka", pogruzkaIK);
                 vagon = pogruzkaIK.getVagon();
+                ObjectMapper mapper = new ObjectMapper();
+                String json = mapper.writeValueAsString(pogruzkaIK);
+                model.addAttribute("pogruzkaJSON", json);
                 break;
             case "IM":
                 PogruzkaIM pogruzkaIM = pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id);

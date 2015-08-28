@@ -18,7 +18,7 @@ public class BaseDomainSertificat extends BaseDomain{
     @JoinColumn(name = "id_pokupatel")
     protected Pokupatel pokupatel;
     @Column(name = "otmetki")
-    private String otmetki;
+    protected String otmetki;
 
     public String getNomer() {
         return nomer;

@@ -82,6 +82,7 @@
 </div>
 <script src="<c:url value="/resources/js/sbit/pogruzka/pogruzka_add.js"/>"></script>
 <script type="text/javascript">
+    var pogruzkaJSON = ${pogruzkaJSON};
     function Ftest(obj) {
         if (this.ST) return;
         var ov = obj.value;

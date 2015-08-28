@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+
     var x = $('#id').val();
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
@@ -76,39 +78,26 @@ function edit() {
 }
 
 function edit_2() {
-    var id = $('input#idOtgr').val();
-    var brutto = $('input#brutto').val();
-    var idVagon = $('input#idVag').val();
-
-    var gruzId;
+    var brutto = $("input#brutto");
     switch ($('input#gruz').val()) {
         case "IK":
             gruzId = "1";
             break;
     }
-    var gruzq = {
-        id: gruzId,
-        name: "",
-    };
     var tara = {
         id: $('select#tara option:selected').val(),
         name: $('select#tara option:selected').text()
     };
     var dopolneniya = $('#dopolneniya').val();
-    var pogruzka = {
-        id: id,
-        gruz: gruzq,
-        brutto: brutto,
-        idVagon: idVagon,
-        tara: tara,
-        dopolneniya: dopolneniya
-    }
+    pogruzkaJSON.tara=tara;
+    pogruzkaJSON.brutto=brutto;
+    pogruzkaJSON.dopolneniya=dopolneniya;
 
     $.ajax({
         url: '/zavod/pogruzka/saveEdit',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
-        data: JSON.stringify(pogruzka),
+        data: JSON.stringify(pogruzkaJSON),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);

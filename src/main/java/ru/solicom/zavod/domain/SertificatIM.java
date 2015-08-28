@@ -1,5 +1,6 @@
 package ru.solicom.zavod.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 import ru.solicom.zavod.domain.base.BaseDomainSertificatIzvest;
 
@@ -20,6 +21,7 @@ public class SertificatIM extends BaseDomainSertificatIzvest implements Serializ
     @Column(name = "sito_008", nullable = false)
     @DecimalMin("0.001")
     private float sito008;
+    @JsonIgnore
     @OneToMany(mappedBy = "sertificatIM", fetch = FetchType.EAGER)
     private Set<PogruzkaIM> pogruzkaIMs = new HashSet<>();
 

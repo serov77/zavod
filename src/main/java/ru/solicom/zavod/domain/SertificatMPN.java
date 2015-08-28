@@ -1,5 +1,6 @@
 package ru.solicom.zavod.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import ru.solicom.zavod.domain.base.BaseDomainSertificat;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class SertificatMPN extends BaseDomainSertificat implements Serializable 
     @Column(name = "zern_sost_0071", nullable = false)
     @DecimalMin("0.001")
     private float zerovoySostav0071;
+    @JsonIgnore
     @OneToMany(mappedBy = "sertificatMPN", fetch = FetchType.EAGER)
     private Set<PogruzkaMPN> pogruzkaMPNs = new HashSet<>();
 
