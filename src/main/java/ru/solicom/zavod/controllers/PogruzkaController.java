@@ -1,5 +1,6 @@
 package ru.solicom.zavod.controllers;
 
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -109,20 +110,22 @@ public class PogruzkaController {
         return "Изминения успешно внесены!";
     }
 
-    @RequestMapping(value = "/saveEdit", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+    @RequestMapping(value = "/saveEdit/{gruz}", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
-    public String pogruzkaEditSave(@RequestBody Pogruzka pogruzka) {
-        switch (pogruzka.getGruz().getId()) {
-            case 1:
-                PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(pogruzka.getId());
-                pogruzkaIK.setDopolneniya(pogruzka.getDopolneniya());
-                pogruzkaIK.setBrutto(pogruzka.getBrutto());
+    public String pogruzkaEditSave(@RequestBody String pogruzkaJSON, @PathVariable String gruz) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        switch (gruz) {
+            case "IK":
+                PogruzkaIK pogruzkaIK = mapper.readValue(pogruzkaJSON, PogruzkaIK.class);
+                //PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(pogruzka.getId());
+                //pogruzkaIK.setDopolneniya(pogruzka.getDopolneniya());
+                //pogruzkaIK.setBrutto(pogruzka.getBrutto());
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
-            case 2:
+            case "IM":
 
                 break;
-            case 3:
+            case "MPN":
 
                 break;
         }

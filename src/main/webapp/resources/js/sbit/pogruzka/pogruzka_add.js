@@ -78,23 +78,19 @@ function edit() {
 }
 
 function edit_2() {
-    var brutto = $("input#brutto");
-    switch ($('input#gruz').val()) {
-        case "IK":
-            gruzId = "1";
-            break;
-    }
+    var brutto = $("input#brutto").val();
+    var gruz = $('input#gruz').val();
     var tara = {
         id: $('select#tara option:selected').val(),
         name: $('select#tara option:selected').text()
     };
     var dopolneniya = $('#dopolneniya').val();
-    pogruzkaJSON.tara=tara;
-    pogruzkaJSON.brutto=brutto;
-    pogruzkaJSON.dopolneniya=dopolneniya;
+    pogruzkaJSON.tara = tara;
+    pogruzkaJSON.brutto = brutto;
+    pogruzkaJSON.dopolneniya = dopolneniya;
 
     $.ajax({
-        url: '/zavod/pogruzka/saveEdit',
+        url: '/zavod/pogruzka/saveEdit/' + gruz,
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
         data: JSON.stringify(pogruzkaJSON),
