@@ -31,7 +31,7 @@
                             <th>Тара</th>
                             <th>№ Серт.</th>
                             <th>Получатель</th>
-                            <th>Отметки</th>
+                            <th>Прибыл</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -87,6 +87,7 @@
                             <th>Погружен</th>
                             <th>Тара</th>
                             <th>Отметки</th>
+                            <th>Прибыл</th>
                             <th>Опции</th>
                         </tr>
                         </thead>
@@ -102,6 +103,7 @@
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.dopolneniya}</td>
+                                <td><fmt:formatDate value="${pogr.dataPribitiyaVagona}" pattern="dd.MM.yyyy"/></td>
                                 <td>
                                     <button class="btn btn-default btn-xs butt_edit" rel="IK/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>

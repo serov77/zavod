@@ -26,6 +26,9 @@ public class BaseDomainPogruzka extends BaseDomain{
     protected Tara tara;
     @Column(name = "dopolneniya")
     protected String dopolneniya;
+    @Column(name = "data_pribitiya_vagona")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    protected Date dataPribitiyaVagona;
 
     public float getBrutto() {
         return brutto;
@@ -73,5 +76,13 @@ public class BaseDomainPogruzka extends BaseDomain{
 
     public void setVagon(Vagon vagon) {
         this.vagon = vagon;
+    }
+
+    public Date getDataPribitiyaVagona() {
+        return dataPribitiyaVagona;
+    }
+
+    public void setDataPribitiyaVagona(Date dataPribitiyaVagona) {
+        this.dataPribitiyaVagona = dataPribitiyaVagona;
     }
 }
