@@ -56,7 +56,7 @@
                         </tbody>
                     </table>
                 </c:if>
-                <c:if test="${empty sertificatIMList}">
+                <c:if test="${empty sertificatMPNList}">
                     <h3>Нет Данных</h3>
                 </c:if>
             </div>

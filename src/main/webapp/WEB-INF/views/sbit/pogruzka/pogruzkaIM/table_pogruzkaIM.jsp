@@ -47,7 +47,7 @@
                                 <td>${pogr.sertificatIM.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -101,7 +101,7 @@
                                 <td>${pogr.dopolneniya}</td>
                                 <td><fmt:formatDate value="${pogr.dataPribitiyaVagona}" pattern="dd.MM.yyyy"/></td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                     <button class="btn btn-default btn-xs butt_otpr" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Оформление Отправки">

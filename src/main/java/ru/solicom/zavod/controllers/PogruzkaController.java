@@ -1,6 +1,5 @@
 package ru.solicom.zavod.controllers;
 
-import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -161,24 +160,27 @@ public class PogruzkaController {
     @RequestMapping(value = "/edit/{gruz}/{id}", method = RequestMethod.GET)
     public String pogruzkaEdit(@PathVariable String gruz, @PathVariable int id, Model model) throws IOException {
         Vagon vagon = new Vagon();
+        String json = "";
+        ObjectMapper mapper = new ObjectMapper();
+        ;
         switch (gruz) {
             case "IK":
                 PogruzkaIK pogruzkaIK = pogruzkaService.getPogruzkaIKService().retrivePogruzkaIK(id);
                 model.addAttribute("pogruzka", pogruzkaIK);
                 vagon = pogruzkaIK.getVagon();
-                ObjectMapper mapper = new ObjectMapper();
-                String json = mapper.writeValueAsString(pogruzkaIK);
-                model.addAttribute("pogruzkaJSON", json);
+                json = mapper.writeValueAsString(pogruzkaIK);
                 break;
             case "IM":
                 PogruzkaIM pogruzkaIM = pogruzkaService.getPogruzkaIMService().retrivePogruzkaIM(id);
                 model.addAttribute("pogruzka", pogruzkaIM);
                 vagon = pogruzkaIM.getVagon();
+                json = mapper.writeValueAsString(pogruzkaIM);
                 break;
             case "MPN":
                 PogruzkaMPN pogruzkaMPN = pogruzkaService.getPogruzkaMPNService().retrivePogruzkaMPN(id);
                 model.addAttribute("pogruzka", pogruzkaMPN);
                 vagon = pogruzkaMPN.getVagon();
+                json = mapper.writeValueAsString(pogruzkaMPN);
                 break;
         }
         List<Tara> taraList;
@@ -187,6 +189,7 @@ public class PogruzkaController {
         } else {
             taraList = taraService.taraBezMKRList();
         }
+        model.addAttribute("pogruzkaJSON", json);
         model.addAttribute("taraList", taraList);
         model.addAttribute("gruz", gruz);
         model.addAttribute("title_modal", "Редактирование погрузки!");
