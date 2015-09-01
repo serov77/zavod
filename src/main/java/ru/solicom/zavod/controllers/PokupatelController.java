@@ -98,6 +98,6 @@ public class PokupatelController {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(pokupatel);
         model.addAttribute("pokupatelJSON", json);
-        return "pokupatel_edit";
+        return "pokupatel_edit" ;
     }
 }
