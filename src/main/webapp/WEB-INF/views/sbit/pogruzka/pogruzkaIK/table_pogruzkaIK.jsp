@@ -40,8 +40,9 @@
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
-                                <td><fmt:formatNumber value="${pogr.brutto}" type="number"  pattern="0.0" /></td>
-                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" /></td>
+                                <td><fmt:formatNumber value="${pogr.brutto}" type="number" pattern="0.0"/></td>
+                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"
+                                                      pattern="0.0"/></td>
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td><fmt:formatDate value="${pogr.dataOtpravleniya}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>

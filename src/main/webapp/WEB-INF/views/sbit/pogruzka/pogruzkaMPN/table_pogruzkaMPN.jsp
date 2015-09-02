@@ -35,19 +35,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach items="${pogruzkaIMList}" var="pogr">
+                        <c:forEach items="${pogruzkaMPNList}" var="pogr">
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
-                                <td>${pogr.brutto}</td>
-                                <td>${pogr.brutto - pogr.vagon.tara}</td>
+                                <td><fmt:formatNumber value="${pogr.brutto}" type="number"  pattern="0.0" /></td>
+                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" /></td>
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td><fmt:formatDate value="${pogr.dataOtpravleniya}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.sertificatMPN.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt_edit" rel="${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="MPN/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>

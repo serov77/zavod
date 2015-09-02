@@ -15,7 +15,7 @@
     <div class="modal-body" id="mesto_body">
         <h3>${title_modal}</h3>
         </br>
-        <form:hidden path="id" />
+        <form:hidden path="id"/>
         <div class="form-group">
             <form:label path="nomer" class="col-xs-4 control-label">Номер Сертификата</form:label>
             <div class="col-xs-8">
@@ -88,9 +88,5 @@
         </div>
         </form:form>
     </div>
-<c:if test="${empty sertificat.pogruzkaIMs}">
-    <script src="<c:url value="/resources/js/sbit/sertificat/sertificatIM/sertificatIM_edit.js"/>"></script>
-</c:if>
-<c:if test="${!empty sertificat.pogruzkaIMs}">
-    <script src="<c:url value="/resources/js/sbit/sertificat/sertificatIM/sertificatIM_edit_isp.js"/>"></script>
-</c:if>
+</div>
+<script src="<c:url value="/resources/js/sbit/sertificat/sertificatIM/sertificatIM_edit.js"/>"></script>

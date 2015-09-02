@@ -11,7 +11,8 @@
         <!-- Заголовок 1 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4">Вагоны извести молотой отправленные</a>
+                <a data-toggle="collapse" data-parent="#accordion_4" href="#collapseOne_4">Вагоны извести молотой
+                    отправленные</a>
             </h4>
         </div>
         <div id="collapseOne_4" class="panel-collapse collapse">
@@ -39,15 +40,18 @@
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
-                                <td><fmt:formatNumber value="${pogr.brutto}" type="number"  pattern="0.0" /></td>
-                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" /></td>
+                                <td><fmt:formatNumber value="${pogr.brutto}" type="number" pattern="0.0"/></td>
+                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"
+                                                      pattern="0.0"/></td>
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td><fmt:formatDate value="${pogr.dataOtpravleniya}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.sertificatIM.pokupatel.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button"
+                                            data-toggle="tooltip" data-placement="right"
+                                            title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -67,7 +71,8 @@
         <!-- Заголовок 2 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Вагоны извести молотой на линии</a>
+                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Вагоны извести молотой на
+                    линии</a>
             </h4>
         </div>
         <div id="collapseOne_5" class="panel-collapse collapse">
@@ -94,17 +99,21 @@
                             <tr class="t_${pogr.id}">
                                 <td>${pogr.id}</td>
                                 <td>${pogr.vagon.nomerVagona}</td>
-                                <td><fmt:formatNumber value="${pogr.brutto}" type="number"  pattern="0.0" /></td>
-                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"  pattern="0.0" /></td>
+                                <td><fmt:formatNumber value="${pogr.brutto}" type="number" pattern="0.0"/></td>
+                                <td><fmt:formatNumber value="${pogr.brutto - pogr.vagon.tara}" type="number"
+                                                      pattern="0.0"/></td>
                                 <td><fmt:formatDate value="${pogr.dataPogruzki}" pattern="dd.MM.yyyy"/></td>
                                 <td>${pogr.tara.name}</td>
                                 <td>${pogr.dopolneniya}</td>
                                 <td><fmt:formatDate value="${pogr.dataPribitiyaVagona}" pattern="dd.MM.yyyy"/></td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Погрузки">
+                                    <button class="btn btn-default btn-xs butt_edit" rel="IM/${pogr.id}" type="button"
+                                            data-toggle="tooltip" data-placement="right"
+                                            title="Редактирование Погрузки">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
-                                    <button class="btn btn-default btn-xs butt_otpr" rel="IM/${pogr.id}" type="button" data-toggle="tooltip" data-placement="right" title="Оформление Отправки">
+                                    <button class="btn btn-default btn-xs butt_otpr" rel="IM/${pogr.id}" type="button"
+                                            data-toggle="tooltip" data-placement="right" title="Оформление Отправки">
                                         <span class="glyphicon glyphicon-road"></span>
                                     </button>
                                 </td>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //    Настройка и запуск таблицы Вагоны
-    $('#sertificatsIK, #sertificatsIM, #sertificatsMPN, #sertificatsIKNeIsp, #sertificatIKBezPol, #sertificatsIMBezPol, #sertificatsIMNeIsp').DataTable({
+    $('#sertificatsIK, #sertificatsIM, #sertificatsMPN, #sertificatsIKNeIsp, #sertificatIKBezPol, #sertificatsIMBezPol, #sertificatsMPNNeIsp, #sertificatsMPNBezPol').DataTable({
         "language": {
             "lengthMenu": "Показывать _MENU_ записей на странице",
             "zeroRecords": "Нет записей",

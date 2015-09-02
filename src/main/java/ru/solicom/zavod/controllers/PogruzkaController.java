@@ -130,10 +130,12 @@ public class PogruzkaController {
                 pogruzkaService.getPogruzkaIKService().savePogruzkaIK(pogruzkaIK);
                 break;
             case "IM":
-
+                PogruzkaIM pogruzkaIM = mapper.readValue(pogruzkaJSON, PogruzkaIM.class);
+                pogruzkaService.getPogruzkaIMService().savePogruzkaIM(pogruzkaIM);
                 break;
             case "MPN":
-
+                PogruzkaMPN pogruzkaMPN = mapper.readValue(pogruzkaJSON, PogruzkaMPN.class);
+                pogruzkaService.getPogruzkaMPNService().savePogruzkaMPN(pogruzkaMPN);
                 break;
         }
         return "Изминения успешно внесены!";
