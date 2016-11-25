@@ -1,5 +1,6 @@
 package ru.solicom.zavod.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class RoleUser implements Serializable {
     @Column(name = "name")
     @NotBlank
     private String name;
+
 
     @ManyToMany(targetEntity = User.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "roles")
     private Set<User> users = new HashSet<User>(0);
@@ -39,11 +41,11 @@ public class RoleUser implements Serializable {
         this.name = name;
     }
 
-
+    @JsonIgnore
     public Set<User> getUsers() {
         return users;
     }
-
+    @JsonIgnore
     public void setUsers(Set<User> users) {
         this.users = users;
     }

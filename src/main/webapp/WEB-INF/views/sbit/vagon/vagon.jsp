@@ -23,3 +23,4 @@
 </sec:authorize>
 <script src="<c:url value="/resources/js/sbit/vagon/table_vagon.js"/>"></script>
 
+

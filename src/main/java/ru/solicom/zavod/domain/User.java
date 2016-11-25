@@ -1,5 +1,6 @@
 package ru.solicom.zavod.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,6 +33,17 @@ public class User implements Serializable, UserDetails {
     @NotBlank
     private String lastName;
 
+    @Column(name = "ot")
+    private String otchestvo;
+
+    @Column(name = "obr")
+    @NotBlank
+    private String obrashenie;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = RoleUser.class)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleUser> roles = new HashSet<RoleUser>(0);
@@ -39,7 +51,6 @@ public class User implements Serializable, UserDetails {
     public User() {
 
     }
-
 
     public int getId() {
         return id;
@@ -71,7 +82,7 @@ public class User implements Serializable, UserDetails {
         return firstName;
     }
 
-    public void setFirsName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -84,15 +95,34 @@ public class User implements Serializable, UserDetails {
         this.lastName = lastName;
     }
 
+    public String getOtchestvo() {
+        return otchestvo;
+    }
 
+    public void setOtchestvo(String otchestvo) {
+        this.otchestvo = otchestvo;
+    }
+
+    public String getObrashenie() {
+        return obrashenie;
+    }
+
+    public void setObrashenie(String obrashenie) {
+        this.obrashenie = obrashenie;
+    }
+    @JsonIgnore
     public Set<RoleUser> getRoles() {
         return roles;
     }
-
+    @JsonIgnore
     public void setRoles(Set<RoleUser> roles) {
         this.roles = roles;
     }
 
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> result = new ArrayList<>();
@@ -101,27 +131,27 @@ public class User implements Serializable, UserDetails {
         }
         return result;
     }
-
+    @JsonIgnore
     @Override
     public String getUsername() {
         return getLogin();
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
-
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

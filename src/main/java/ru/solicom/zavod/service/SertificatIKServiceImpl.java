@@ -1,5 +1,6 @@
 package ru.solicom.zavod.service;
 
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,8 @@ public class SertificatIKServiceImpl implements SertificatIKService {
     private SertificatIKDAO sertificatIKDAO;
     @Autowired
     private PokupatelService pokupatelService;
+    @Autowired
+    private StationService stationService;
     private List<SertificatIK> sertificatIKNeIspList = new ArrayList<>();
     private List<SertificatIK> sertificatIKList = new ArrayList<>();
 
@@ -62,22 +65,23 @@ public class SertificatIKServiceImpl implements SertificatIKService {
     @Override
     public void saveSertficatIK(SertificatIK sertificatIK) {
         if (sertificatIK.getData() == null) {
-            Date today = new Date();
+            LocalDate today = LocalDate.now();
             sertificatIK.setData(today);
         }
         sertificatIK.setPokupatel(pokupatelService.retrivePokupatel(sertificatIK.getPokupatel().getId()));
+        sertificatIK.setStation(stationService.retriveStation(sertificatIK.getStation().getId()));
         sertificatIKDAO.saveSertificatIK(sertificatIK);
     }
 
     @Transactional
     @Override
-    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data) {
+    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, LocalDate data) {
         return sertificatIKDAO.searchSertificatIKByNomerAndGod(id, nomer, data);
     }
 
     @Transactional
     @Override
-    public List<SertificatIK> searchSertificatIKByData(Date date) {
+    public List<SertificatIK> searchSertificatIKByData(LocalDate date) {
         return sertificatIKDAO.searchSertificatIKByData(date);
     }
 }

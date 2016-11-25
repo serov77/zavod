@@ -1,7 +1,12 @@
 package ru.solicom.zavod.domain.base;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
+import org.joda.time.LocalDate;
 import ru.solicom.zavod.domain.Pokupatel;
+import ru.solicom.zavod.domain.Station;
+import ru.solicom.zavod.util.JsonDateDeserializer;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,13 +17,17 @@ public class BaseDomainSertificat extends BaseDomain{
     @NotBlank
     protected String nomer;
     @Column(name = "data", nullable = false)
-    @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date data;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    protected LocalDate data;
     @ManyToOne
     @JoinColumn(name = "id_pokupatel")
     protected Pokupatel pokupatel;
     @Column(name = "otmetki")
     protected String otmetki;
+    @ManyToOne
+    @JoinColumn(name = "id_station")
+    protected Station station;
 
     public String getNomer() {
         return nomer;
@@ -28,11 +37,11 @@ public class BaseDomainSertificat extends BaseDomain{
         this.nomer = nomer;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -51,5 +60,13 @@ public class BaseDomainSertificat extends BaseDomain{
 
     public void setOtmetki(String otmetki) {
         this.otmetki = otmetki;
+    }
+
+    public Station getStation() {
+        return station;
+    }
+
+    public void setStation(Station station) {
+        this.station = station;
     }
 }

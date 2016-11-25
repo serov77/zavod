@@ -2,13 +2,12 @@ package ru.solicom.zavod.dao;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.SertificatMPN;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -18,13 +17,14 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
 
     @Override
     public List<SertificatMPN> sertificatMPNList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatMPN s where s.id != 1 and s.pokupatel.id != 1 order by s.id");
+        return q.list();
     }
 
     @Override
     public List<SertificatMPN> sertificatMPNBezPoluchatelyaList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).add(Restrictions.eq("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
-
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatMPN s where s.id != 1 and s.pokupatel.id = 1 order by s.id");
+        return q.list();
     }
 
     @Override
@@ -39,10 +39,10 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
     }
 
     @Override
-    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data) {
-        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatMPN s where s.nomer = :nomer and year(s.data) = year(:data)");
+    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, LocalDate data) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatMPN s where s.nomer = :nomer and year(s.data) = :data order by s.id");
         q.setString("nomer", nomer);
-        q.setDate("data", data);
+        q.setInteger("data", data.getYear());
         SertificatMPN s = (SertificatMPN) q.uniqueResult();
         if (s == null) {
             return true;
@@ -53,7 +53,9 @@ public class SertificatMPNDAOImpl implements SertificatMPNDAO {
     }
 
     @Override
-    public List<SertificatMPN> searchSertificatMPNByData(Date date) {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatMPN.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
+    public List<SertificatMPN> searchSertificatMPNByData(LocalDate date) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatMPN s where s.id != 1 and s.pokupatel.id != 1 and s.data = :date");
+        q.setDate("date", date.toDate());
+        return q.list();
     }
 }

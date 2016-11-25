@@ -13,11 +13,17 @@
         <mapping class="ru.solicom.zavod.domain.SertificatIK"/>
         <mapping class="ru.solicom.zavod.domain.SertificatIM"/>
         <mapping class="ru.solicom.zavod.domain.SertificatMPN"/>
+        <mapping class="ru.solicom.zavod.domain.SertificatMPA"/>
         <mapping class="ru.solicom.zavod.domain.RoleUser"/>
         <mapping class="ru.solicom.zavod.domain.User"/>
         <mapping class="ru.solicom.zavod.domain.Tara"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaIK"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaIM"/>
         <mapping class="ru.solicom.zavod.domain.PogruzkaMPN"/>
+        <mapping class="ru.solicom.zavod.domain.PogruzkaMPA"/>
+        <mapping class="ru.solicom.zavod.domain.NomeraOtpravki"/>
+        <mapping class="ru.solicom.zavod.util.PechatDokumentovIK"/>
+        <mapping class="ru.solicom.zavod.domain.VagoniPoroznie"/>
+        <mapping class="ru.solicom.zavod.domain.Zayavka"/>
     </session-factory>
 </hibernate-configuration>

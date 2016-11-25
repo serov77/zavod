@@ -1,6 +1,5 @@
 package ru.solicom.zavod.domain;
 
-import com.google.gson.annotations.Expose;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import ru.solicom.zavod.domain.base.BaseDomainSertificatIzvest;
 
@@ -18,7 +17,8 @@ public class SertificatIK extends BaseDomainSertificatIzvest implements Serializ
     @Column(name = "soder_nepog_zeren", nullable = false)
     @DecimalMin("0.001")
     private float soderNepogZeren;
-    @JsonIgnore
+
+
     @OneToMany(mappedBy = "sertificatIK", fetch = FetchType.EAGER)
     private Set<PogruzkaIK> pogruzkaIKs = new HashSet<>();
 
@@ -33,10 +33,11 @@ public class SertificatIK extends BaseDomainSertificatIzvest implements Serializ
         this.soderNepogZeren = soderNepogZeren;
     }
 
+    @JsonIgnore
     public Set<PogruzkaIK> getPogruzkaIKs() {
         return pogruzkaIKs;
     }
-
+    @JsonIgnore
     public void setPogruzkaIKs(Set<PogruzkaIK> pogruzkaIKs) {
         this.pogruzkaIKs = pogruzkaIKs;
     }

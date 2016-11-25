@@ -1,5 +1,6 @@
 package ru.solicom.zavod.dao;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -9,6 +10,7 @@ import ru.solicom.zavod.domain.PogruzkaIM;
 import ru.solicom.zavod.domain.Vagon;
 import ru.solicom.zavod.util.StatusVaiona;
 
+import org.joda.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,13 +21,17 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
 
     @Override
     public List<PogruzkaIM> pogruzkaIMList() {
-        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.ne("sertificatIM.id", 1)).addOrder(Order.asc("id")).list();
-    }
+        Query q = sessionFactory.getCurrentSession().createQuery("from PogruzkaIM s where s.sertificatIM.id <> :id order by id asc");
+        q.setInteger("id", 1);
+        List<PogruzkaIM> l = q.list();
+        return l;    }
 
     @Override
     public List<PogruzkaIM> pogruzkaIMNaLiniiList() {
-        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("sertificatIM.id", 1)).addOrder(Order.asc("id")).list();
-
+        Query q = sessionFactory.getCurrentSession().createQuery("from PogruzkaIM s where s.sertificatIM.id = :id order by id asc");
+        q.setInteger("id", 1);
+        List<PogruzkaIM> l = q.list();
+        return l;
     }
 
     @Override
@@ -34,7 +40,7 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
     }
 
     @Override
-    public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, Date date) {
+    public StatusVaiona searchPogruzkaIMVagonaZaDen(Vagon vagon, LocalDate date) {
         PogruzkaIM ik = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.ne("sertificatIM.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).add(Restrictions.eq("dataPogruzki", date)).uniqueResult();
         PogruzkaIM ik_2 = (PogruzkaIM) sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("sertificatIM.id", 1)).add(Restrictions.eq("vagon.id", vagon.getId())).uniqueResult();
         if (ik != null) {
@@ -61,6 +67,23 @@ public class PogruzkaIMDAOImpl implements PogruzkaIMDAO {
 
     @Override
     public PogruzkaIM retrivePogruzkaIM(int id) {
-        return (PogruzkaIM)sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("id", id)).uniqueResult();
+        Query q = sessionFactory.getCurrentSession().createQuery("from PogruzkaIM s where s.id = :id");
+        q.setInteger("id", id);
+        return (PogruzkaIM)q.uniqueResult();
+        //return (PogruzkaIM)sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.eq("id", id)).uniqueResult();
+    }
+
+    @Override
+    public List<PogruzkaIM> searchPogruzkaIMBySertificat(int id) {
+        LocalDate date=LocalDate.now();
+        return sessionFactory.getCurrentSession().createCriteria(PogruzkaIM.class).add(Restrictions.lt("dataOtpravleniya", date)).add(Restrictions.eq("sertificatIM.id", id)).list();
+    }
+
+    @Override
+    public List<PogruzkaIM> searchPogruzkaIMMesyac(LocalDate x1, LocalDate x2) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from PogruzkaIM s where s.dataOtpravleniya >= :x1 and s.dataOtpravleniya<=:x2 and sertificatIM.id>1 order by s.sertificatIM.pokupatel.name");
+        q.setParameter("x1", x1);
+        q.setParameter("x2", x2);
+        return q.list();
     }
 }

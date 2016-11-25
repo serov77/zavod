@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
         fields: {
-            nameStation: {
+            name: {
                 validators: {
                     notEmpty: {
                         message: 'Поле не может быть пустым'
@@ -16,7 +16,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым'
                     },
                     remote: {
-                        url: 'valid_station',
+                        url: '/zavod/valid_station',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val()
@@ -48,7 +48,7 @@ function edit() {
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('station/all');
+            showSbit('/zavod/station/all');
         }
     });
 }

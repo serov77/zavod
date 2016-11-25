@@ -19,13 +19,13 @@ $(document).ready(function () {
     });
     $('body').on('click', '.butt_station', function () {
         var x = $(this).attr("rel");
-        var url = "station/edit/" + x;
+        var url = "/zavod/station/edit/" + x;
         editVagon(url);
         $("#myModal").modal();
     });
 
-    $('.butt_add').click(function () {
-        editVagon('station/add');
+    $('.butt_add_station').click(function () {
+        editVagon('/zavod/station/add');
         $("#myModal").modal();
     });
 

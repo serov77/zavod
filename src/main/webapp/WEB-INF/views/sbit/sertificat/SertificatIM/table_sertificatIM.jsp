@@ -1,6 +1,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 <h3>Таблица "Сертификаты на Известь Молотую"</h3>
@@ -11,7 +13,8 @@
         <!-- Заголовок 1 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_5" href="#collapseOne_5">Сетрификаты использованые</a>
+                <a id="sert_im_2" data-toggle="collapse" data-parent="" href="#collapseOne_5">Сетрификаты
+                    использованые</a>
             </h4>
         </div>
         <div id="collapseOne_5" class="panel-collapse collapse">
@@ -33,7 +36,9 @@
                             <td>Сито 0.2 мм</td>
                             <td>Сито 0.08 мм</td>
                             <th>Прим.</th>
-                            <th>Опции</th>
+                            <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
+                                <th>Опции</th>
+                            </sec:authorize>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,8 +46,8 @@
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
-                                <td>${sertificat.pokupatel.name}</td>
-                                <td><fmt:formatDate value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
+                                <td>${sertificat.pokupatel.name}, ${sertificat.station.name}</td>
+                                <td><joda:format value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
                                 <td>${sertificat.aktivnost}</td>
                                 <td>${sertificat.vremyaGascheniya}</td>
                                 <td>${sertificat.temperaturaGascheniya}</td>
@@ -50,11 +55,26 @@
                                 <td>${sertificat.sito02}</td>
                                 <td>${sertificat.sito008}</td>
                                 <td>${sertificat.otmetki}</td>
-                                <td>
-                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                </td>
+                                <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
+                                    <td>
+                                        <c:if test="${sertificat.data==data}">
+                                            <button class="btn btn-default btn-xs butt_sertifikat"
+                                                    rel="IM/${sertificat.id}"
+                                                    type="button">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${sertificat.data!=data}">
+                                            <sec:authorize access="hasAnyRole('ROLE_ADMIN')">
+                                                <button class="btn btn-default btn-xs butt_sertifikat"
+                                                        rel="IM/${sertificat.id}"
+                                                        type="button">
+                                                    <span class="glyphicon glyphicon-pencil"></span>
+                                                </button>
+                                            </sec:authorize>
+                                        </c:if>
+                                    </td>
+                                </sec:authorize>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -71,7 +91,8 @@
         <!-- Заголовок 2 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_6" href="#collapseOne_6">Сетрификаты не использованые</a>
+                <a id="sert_im_3" data-toggle="collapse" data-parent="" href="#collapseOne_6">Сетрификаты не
+                    использованые</a>
             </h4>
         </div>
         <div id="collapseOne_6" class="panel-collapse collapse">
@@ -101,8 +122,8 @@
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
-                                <td>${sertificat.pokupatel.name}</td>
-                                <td><fmt:formatDate value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
+                                <td>${sertificat.pokupatel.name}, ${sertificat.station.name}</td>
+                                <td><joda:format value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
                                 <td>${sertificat.aktivnost}</td>
                                 <td>${sertificat.vremyaGascheniya}</td>
                                 <td>${sertificat.temperaturaGascheniya}</td>
@@ -111,7 +132,8 @@
                                 <td>${sertificat.sito008}</td>
                                 <td>${sertificat.otmetki}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}"
+                                            type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>
@@ -131,7 +153,8 @@
         <!-- Заголовок 3 панели -->
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion_7" href="#collapseOne_7">Сетрификаты без получателя</a>
+                <a id="sert_im_4" data-toggle="collapse" data-parent="" href="#collapseOne_7">Сетрификаты без
+                    получателя</a>
             </h4>
         </div>
         <div id="collapseOne_7" class="panel-collapse collapse">
@@ -160,7 +183,7 @@
                             <tr class="t_${sertificat.id}">
                                 <td>${sertificat.id}</td>
                                 <td>${sertificat.nomer}</td>
-                                <td><fmt:formatDate value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
+                                <td><joda:format value="${sertificat.data}" pattern="dd.MM.yyyy"/></td>
                                 <td>${sertificat.aktivnost}</td>
                                 <td>${sertificat.vremyaGascheniya}</td>
                                 <td>${sertificat.temperaturaGascheniya}</td>
@@ -169,7 +192,8 @@
                                 <td>${sertificat.sito008}</td>
                                 <td>${sertificat.otmetki}</td>
                                 <td>
-                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}" type="button">
+                                    <button class="btn btn-default btn-xs butt_sertifikat" rel="IM/${sertificat.id}"
+                                            type="button">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </button>
                                 </td>

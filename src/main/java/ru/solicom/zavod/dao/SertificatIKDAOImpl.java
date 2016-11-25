@@ -4,11 +4,11 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.SertificatIK;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -23,13 +23,14 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
 
     @Override
     public List<SertificatIK> sertificatIKList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIK s where s.id != 1 and s.pokupatel.id != 1 order by s.id");
+        return q.list();
     }
 
     @Override
     public List<SertificatIK> sertificatIKBezPoluchatelyaList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.eq("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
-
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIK s where s.id != 1 and s.pokupatel.id = 1 order by s.id");
+        return q.list();
     }
 
     @Override
@@ -43,10 +44,11 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
     }
 
     @Override
-    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data) {
-        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIK s where s.nomer = :nomer and year(s.data) = year(:data)");
+    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, LocalDate data) {
+        int data1 = data.getYear();
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIK s where s.nomer = :nomer and year(s.data) = :data order by s.id");
         q.setString("nomer", nomer);
-        q.setDate("data", data);
+        q.setInteger("data", data1);
         SertificatIK s = (SertificatIK) q.uniqueResult();
         if (s == null) {
             return true;
@@ -57,7 +59,9 @@ public class SertificatIKDAOImpl implements SertificatIKDAO {
     }
 
     @Override
-    public List<SertificatIK> searchSertificatIKByData(Date date) {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIK.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
+    public List<SertificatIK> searchSertificatIKByData(LocalDate date) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIK s where s.id != 1 and s.pokupatel.id != 1 and s.data = :date order by s.id desc");
+        q.setDate("date", date.toDate());
+        return q.list();
     }
 }

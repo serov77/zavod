@@ -18,13 +18,13 @@ $(document).ready(function () {
     });
     $('body').on('click','.butt_pokupatel',function () {
         var x = $(this).attr("rel");
-        var url = "pokupatel/edit/" + x;
+        var url = "/zavod/pokupatel/edit/" + x;
         editVagon(url);
         $("#myModal").modal();
     });
 
-    $('.butt_add').click(function () {
-        editVagon('pokupatel/add');
+    $('.butt_add_pokupatel').click(function () {
+        editVagon('/zavod/pokupatel/add');
         $("#myModal").modal();
     });
 

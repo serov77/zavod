@@ -1,16 +1,13 @@
 package ru.solicom.zavod.domain;
 
-import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 import ru.solicom.zavod.domain.base.BaseDomainEntity;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pokupatel")
@@ -22,9 +19,13 @@ public class Pokupatel extends BaseDomainEntity implements Serializable {
     @Column(name = "okpo")
     @NotBlank
     private String okpo;
-    @ManyToOne
-    @JoinColumn(name = "id_station")
-    private Station station;
+
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Station.class)
+    @JoinTable(name = "pokupatel_station", joinColumns = @JoinColumn(name = "id_pokupatel"), inverseJoinColumns = @JoinColumn(name = "id_station"))
+    private Set<Station> stations = new HashSet<Station>(0);
+    //@ManyToOne
+    //@JoinColumn(name = "id_station")
+    //private Station station;
 
     public Pokupatel() {
 
@@ -46,11 +47,34 @@ public class Pokupatel extends BaseDomainEntity implements Serializable {
         this.okpo = okpo;
     }
 
-    public Station getStation() {
-        return station;
+    //@JsonIgnore
+    public Set<Station> getStations() {
+        return stations;
     }
 
-    public void setStation(Station station) {
-        this.station = station;
+    //@JsonIgnore
+    public void setStations(Set<Station> stations) {
+        this.stations = stations;
+    }
+
+    //public Station getStation() {
+    //    return station;
+    //}
+
+    //public void setStation(Station station) {
+    //    this.station = station;
+    //}
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Pokupatel && ((Pokupatel) o).getId() == this.getId()) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }

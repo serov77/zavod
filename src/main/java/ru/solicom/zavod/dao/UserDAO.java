@@ -7,4 +7,5 @@ import ru.solicom.zavod.domain.User;
 
 public interface UserDAO  {
     public UserDetails loadUserByUsername(String login);
+    public User getNullUser();
 }

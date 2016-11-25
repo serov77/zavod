@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes"/>
     <title><tiles:insertAttribute name="title" ignore="true"/></title>
 
     <!-- Bootstrap -->
@@ -24,10 +24,9 @@
     <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/jquery.dataTables.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/css/demo.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrapValidator.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrap-datetimepicker.min.css"/>" rel="stylesheet">
-
-
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -37,13 +36,20 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+        $(function () {
+            $('nav#menu').mmenu({
+                extensions: ['effect-slide-menu', 'pageshadow', 'pagedim-black']
+            });
+        });
+    </script>
+
 </head>
 <body>
 <div class="modal fade bs-example-modal-sm" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-           aria-hidden="true">
+     aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-
             <div class="modal-body">
                 <p>Изменения успешно внесены</p>
             </div>
@@ -55,11 +61,11 @@
 </div>
 
 <div class="modal fade bs-example-modal-sm" id="myModal_3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true" >
+     aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <form class="form-horizontal login-form" method="post"
-                  action="zavod/j_spring_security_check">
+                  action="/zavod/j_spring_security_check">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="j_username" class="col-xs-4 control-label">Логин: </label>
@@ -103,6 +109,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

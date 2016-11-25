@@ -7,6 +7,8 @@ public interface PokupatelService {
 
     public List<Pokupatel> pokupatelList();
 
+    public List<Pokupatel> pokupatelListBezPustogo();
+
     public List<Pokupatel> searchPokupatelList(String s);
 
     public Boolean searchPokupatelByName(String name, int id);

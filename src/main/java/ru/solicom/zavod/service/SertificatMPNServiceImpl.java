@@ -1,5 +1,6 @@
 package ru.solicom.zavod.service;
 
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,10 @@ import java.util.List;
 public class SertificatMPNServiceImpl implements SertificatMPNService {
     @Autowired
     private SertificatMPNDAO sertificatMPNDAO;
+    @Autowired
+    private PokupatelService pokupatelService;
+    @Autowired
+    private StationService stationService;
     private List<SertificatMPN> sertificatMPNNeIspList = new ArrayList<>();
     private List<SertificatMPN> sertificatMPNList = new ArrayList<>();
 
@@ -61,21 +66,23 @@ public class SertificatMPNServiceImpl implements SertificatMPNService {
     @Override
     public void saveSertificatMPN(SertificatMPN sertificatMPN) {
         if (sertificatMPN.getData() == null) {
-            Date today = new Date();
+            LocalDate today = LocalDate.now();
             sertificatMPN.setData(today);
         }
+        sertificatMPN.setPokupatel(pokupatelService.retrivePokupatel(sertificatMPN.getPokupatel().getId()));
+        sertificatMPN.setStation(stationService.retriveStation(sertificatMPN.getStation().getId()));
         sertificatMPNDAO.saveSertificatMPN(sertificatMPN);
     }
 
     @Transactional
     @Override
-    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data) {
+    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, LocalDate data) {
         return sertificatMPNDAO.searchSertificatMPNByNomerAndGod(id, nomer, data);
     }
 
     @Transactional
     @Override
-    public List<SertificatMPN> searchSertificatMPNByData(Date date) {
+    public List<SertificatMPN> searchSertificatMPNByData(LocalDate date) {
         return sertificatMPNDAO.searchSertificatMPNByData(date);
     }
 }

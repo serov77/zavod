@@ -12,7 +12,9 @@
         <th>ID</th>
         <th>Название станции</th>
         <th>Код</th>
-        <th>Операции</th>
+        <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
+            <th>Операции</th>
+        </sec:authorize>
     </tr>
     </thead>
     <tbody>
@@ -21,13 +23,14 @@
             <td>${station.id}</td>
             <td>${station.name}</td>
             <td>${station.kod}</td>
-            <td>
-                <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
-                    <button class="btn btn-default btn-xs butt_station" rel="${station.id}" type="button" data-toggle="tooltip" data-placement="right" title="Редактирование Станции">
+            <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
+                <td>
+                    <button class="btn btn-default btn-xs butt_station" rel="${station.id}" type="button"
+                            data-toggle="tooltip" data-placement="right" title="Редактирование Станции">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </button>
-                </sec:authorize>
-            </td>
+                </td>
+            </sec:authorize>
         </tr>
     </c:forEach>
     </tbody>

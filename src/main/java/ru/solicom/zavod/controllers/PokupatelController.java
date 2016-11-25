@@ -12,7 +12,10 @@ import ru.solicom.zavod.service.PokupatelService;
 import ru.solicom.zavod.service.StationService;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/pokupatel")
@@ -25,7 +28,7 @@ public class PokupatelController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String listPokupatel(Model model) {
-        List<Pokupatel> l = pokupatelService.pokupatelList();
+        List<Pokupatel> l = pokupatelService.pokupatelListBezPustogo();
         model.addAttribute("pokupatelList", l);
         model.addAttribute("searchPokupatel", new Pokupatel());
         return "pokupatel";
@@ -39,10 +42,13 @@ public class PokupatelController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addPokupatel(Model model) {
+    public String addPokupatel(Model model) throws IOException {
         model.addAttribute("pokupatel", new Pokupatel());
         model.addAttribute("stationList", stationService.stationList());
         model.addAttribute("title_modal", "Добавление Покупателя");
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(new Pokupatel());
+        model.addAttribute("pokupatelJSON", json);
         return "pokupatel_edit";
     }
 
@@ -83,8 +89,14 @@ public class PokupatelController {
     @RequestMapping(value = "/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
     @ResponseBody
     public String pokupatelSave(@RequestBody Pokupatel pokupatel) {
-        Station station = stationService.retriveStation(pokupatel.getStation().getId());
-        pokupatel.setStation(station);
+        Set<Station> stationMap = pokupatel.getStations();
+        Set<Station> stations = new HashSet<Station>(0);
+        for (Station station: stationMap) {
+            stations.add(stationService.retriveStation(station.getId()));
+        }
+        pokupatel.setStations(stations);
+        //Station station = stationService.retriveStation(pokupatel.getStation().getId());
+        //pokupatel.setStation(station);
         pokupatelService.savePokupatel(pokupatel);
         return "Изминения успешно внесены!";
     }

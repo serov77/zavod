@@ -1,10 +1,7 @@
 package ru.solicom.zavod.util;
 
-import ru.solicom.zavod.domain.Gruz;
-import ru.solicom.zavod.domain.Tara;
-import ru.solicom.zavod.domain.Vagon;
-
-import java.util.Date;
+import org.joda.time.LocalDate;
+import ru.solicom.zavod.domain.*;
 
 public class Pogruzka {
     private int id;
@@ -13,11 +10,13 @@ public class Pogruzka {
     private Gruz gruz;
     private float brutto;
     private float netto;
-    private Date dataPogruzki;
-    private Date dataOtpravleniya;
+    private LocalDate dataPogruzki;
+    private LocalDate dataOtpravleniya;
     private Tara tara;
     private String dopolneniya;
     private String dataPribitiyaVagona;
+    private VagoniPoroznie vagonPorozniy;
+    private User pogruzil;
 
     public int getId() {
         return id;
@@ -59,19 +58,19 @@ public class Pogruzka {
         this.netto = netto;
     }
 
-    public Date getDataPogruzki() {
+    public LocalDate getDataPogruzki() {
         return dataPogruzki;
     }
 
-    public void setDataPogruzki(Date dataPogruzki) {
+    public void setDataPogruzki(LocalDate dataPogruzki) {
         this.dataPogruzki = dataPogruzki;
     }
 
-    public Date getDataOtpravleniya() {
+    public LocalDate getDataOtpravleniya() {
         return dataOtpravleniya;
     }
 
-    public void setDataOtpravleniya(Date dataOtpravleniya) {
+    public void setDataOtpravleniya(LocalDate dataOtpravleniya) {
         this.dataOtpravleniya = dataOtpravleniya;
     }
 
@@ -105,5 +104,21 @@ public class Pogruzka {
 
     public void setDataPribitiyaVagona(String dataPribitiyaVagona) {
         this.dataPribitiyaVagona = dataPribitiyaVagona;
+    }
+
+    public VagoniPoroznie getVagonPorozniy() {
+        return vagonPorozniy;
+    }
+
+    public void setVagonPorozniy(VagoniPoroznie vagonPorozniy) {
+        this.vagonPorozniy = vagonPorozniy;
+    }
+
+    public User getPogruzil() {
+        return pogruzil;
+    }
+
+    public void setPogruzil(User pogruzil) {
+        this.pogruzil = pogruzil;
     }
 }

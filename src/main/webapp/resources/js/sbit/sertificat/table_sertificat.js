@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //    Настройка и запуск таблицы Вагоны
-    $('#sertificatsIK, #sertificatsIM, #sertificatsMPN, #sertificatsIKNeIsp, #sertificatIKBezPol, #sertificatsIMBezPol, #sertificatsMPNNeIsp, #sertificatsMPNBezPol').DataTable({
+    /*$('#sertificatsIK, #sertificatsIM, #sertificatsMPN, #sertificatsIKNeIsp, #sertificatIKBezPol, #sertificatsIMBezPol, #sertificatsMPNNeIsp, #sertificatsMPNBezPol').DataTable({
         "language": {
             "lengthMenu": "Показывать _MENU_ записей на странице",
             "zeroRecords": "Нет записей",
@@ -19,14 +19,14 @@ $(document).ready(function () {
     });
     $('body').on('click', '.butt_sertifikat', function () {
         var x = $(this).attr("rel");
-        var url = "sertificat/edit/" + x;
+        var url = "/zavod/sertificat/edit/" + x;
         editSertificat(url);
         $("#myModal").modal();
     });
 
-    $('body').on('click', '.butt_add', function () {
+    $('body').on('click', '.butt_add_sert', function () {
         var x = $(this).attr("rel");
-        var url = 'sertificat/' + x + '/add';
+        var url = '/zavod/sertificat/' + x + '/add';
         editSertificat(url);
         $("#myModal").modal();
     });
@@ -48,6 +48,10 @@ $(document).ready(function () {
 
     $('tbody').on('click', 'tr', function () {
         $(this).toggleClass('selected');
-    });
+    });*/
 
+});
+
+$('.selectpicker').selectpicker({
+    liveSearch: true
 });

@@ -15,7 +15,7 @@
     <h3>Нет Данных</h3>
 </c:if>
 <div class="block">   
-    <button class="btn btn-info btn-lg butt_add" type="button">Добавить Получателя</button>
+    <button class="btn btn-info btn-lg butt_add_pokupatel" type="button">Добавить Получателя</button>
 </div>
 
 <script src="<c:url value="/resources/js/sbit/pokupatel/table_pokupatel.js"/>"></script>

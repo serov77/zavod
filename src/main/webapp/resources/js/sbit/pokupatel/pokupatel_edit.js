@@ -1,5 +1,6 @@
 $(document).ready(function () {
-    var x = $('#id').val();
+    var x;
+    x = $('#id').val();
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
         fields: {
@@ -16,7 +17,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым!'
                     },
                     remote: {
-                        url: 'valid_pokupatel_kod',
+                        url: '/zavod/valid_pokupatel_kod',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val()
@@ -33,7 +34,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым!'
                     },
                     remote: {
-                        url: 'valid_pokupatel_okpo',
+                        url: '/zavod/valid_pokupatel_okpo',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val()
@@ -48,18 +49,27 @@ $(document).ready(function () {
     });
 });
 function edit() {
-    alert(pokupatelJSON.name);
     pokupatelJSON.name = $('input#name').val();
     pokupatelJSON.kod = $('input#kod').val();
     pokupatelJSON.okpo = $('input#okpo').val();
-    var station_id = $('select#station option:selected').val();
-    var station = {
-        id: station_id,
-        name: '',
-        kod: ''
-    };
-    pokupatelJSON.station = station;
-
+    var stations = [];
+    var station_id = [];
+    //station_id = $('select#station option:selected').val();
+    station_id = $('.selectpicker').selectpicker('val');
+    var x = 0;
+    if (station_id.length != null) {
+        x = station_id.length;
+    }
+    for (i = 0; i < x; i++) {
+        var station = {
+            id: '',
+            name: '',
+            kod: ''
+        };
+        station.id = station_id[i];
+        stations.push(station);
+    }
+    pokupatelJSON.stations = stations;
     $.ajax({
         url: '/zavod/pokupatel/save',
         contentType: 'application/json; charset=utf-8',
@@ -68,7 +78,7 @@ function edit() {
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('pokupatel/all');
+            showSbit('/zavod/pokupatel/all');
         }
     });
 }
@@ -88,4 +98,7 @@ function editVagon(url) {
     });
 
 }
+$('.selectpicker').selectpicker({
+    liveSearch: true
+});
 

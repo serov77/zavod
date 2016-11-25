@@ -1,5 +1,7 @@
 package ru.solicom.zavod.service;
 
+import org.joda.time.LocalDate;
+import ru.solicom.zavod.domain.PogruzkaMPN;
 import ru.solicom.zavod.domain.SertificatMPN;
 
 import java.util.Date;
@@ -18,7 +20,7 @@ public interface SertificatMPNService {
 
     void saveSertificatMPN(SertificatMPN sertificatMPN);
 
-    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data);
+    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, LocalDate data);
 
-    public List<SertificatMPN> searchSertificatMPNByData(Date date);
+    public List<SertificatMPN> searchSertificatMPNByData(LocalDate date);
 }

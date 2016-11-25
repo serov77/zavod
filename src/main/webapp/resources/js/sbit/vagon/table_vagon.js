@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //    Настройка и запуск таблицы Вагоны
-    $('#vagons').DataTable({
+    /*$('#vagons').DataTable({
         "language": {
             "lengthMenu": "Показывать _MENU_ записей на странице",
             "zeroRecords": "Нет записей",
@@ -26,11 +26,11 @@ $(document).ready(function () {
     //});
 
     $('.butt_add').click(function () {
-        editVagon('vagon/add');
+        editVagon_1('vagon/add');
         $("#myModal").modal();
-    });
+    });*/
 
-    function editVagon(url) {
+    /*function editVagon_1(url) {
         $('input#idRV').text($('select#rodVagona option:selected').val());
         $.ajax({
             url: url,
@@ -42,29 +42,35 @@ $(document).ready(function () {
                 $('#mesto').show(100);
             },
             success: function (html) {
+                //alert($('#mesto').html());
+                var content = $('#mesto');
+                content.empty();
+                //$('tbody').off('click');
                 $('#mesto').html(html);
             }
         });
+        
     }
 
     $('tbody').on('click', 'tr', function () {
         $(this).toggleClass('selected');
     });
-
-    $('body').on('click','.butt_edit', function () {
+    
+    $('tbody').on('click','.butt_edit', function () {
         var x = $(this).attr("rel");
 
         var url = "vagon/edit/" + x;
-        editVagon(url);
+        editVagon_1(url);
         $("#myModal").modal();
     });
 
-    $('body').on('click','.butt_pogr', function () {
+
+    $('body').on('click','#butt_poroz', function () {
         var x = $(this).attr("rel");
-        var url = "pogruzka/add/" + x;
-        editVagon(url);
+        var url = "vagon/poroznie/" + x;
+        editVagon_1(url);
         $("#myModal").modal();
-    });
+    });*/
 
     function addPogruzka(url) {
         $.ajax({

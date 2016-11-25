@@ -1,6 +1,7 @@
 package ru.solicom.zavod.controllers;
 
 import net.sf.jasperreports.engine.JRException;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -9,18 +10,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ru.solicom.zavod.domain.SertificatIK;
-import ru.solicom.zavod.domain.SertificatIM;
-import ru.solicom.zavod.domain.SertificatMPN;
+import ru.solicom.zavod.domain.*;
 import ru.solicom.zavod.fasade.SertificatService;
-import ru.solicom.zavod.service.GruzService;
-import ru.solicom.zavod.service.PokupatelService;
-import ru.solicom.zavod.service.SertificatIMService;
-import ru.solicom.zavod.service.SertificatMPNService;
+import ru.solicom.zavod.service.*;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 
 @Controller
@@ -32,6 +29,8 @@ public class SertificatController {
     private SertificatIMService sertificatIMService;
     @Autowired
     private SertificatMPNService sertificatMPNService;
+    @Autowired
+    private SertificatMPAService sertificatMPAService;
     @Autowired
     private GruzService gruzService;
     @Autowired
@@ -48,29 +47,35 @@ public class SertificatController {
         model.addAttribute("sertificatMPNList", sertificatMPNService.sertificatMPNList());
         model.addAttribute("sertificatMPNNeIspList", sertificatMPNService.sertificatMPNNeIspList());
         model.addAttribute("sertificatMPNBezPoluchatelyaList", sertificatMPNService.sertificatMPNBezPoluchatelyaList());
+        model.addAttribute("sertificatMPAList", sertificatMPAService.sertificatMPAList());
+        model.addAttribute("sertificatMPANeIspList", sertificatMPAService.sertificatMPANeIspList());
+        model.addAttribute("sertificatMPABezPoluchatelyaList", sertificatMPAService.sertificatMPABezPoluchatelyaList());
+        model.addAttribute("data", LocalDate.now());
         //model.addAttribute("searchSertificat", new SertificatIK());
         //model.addAttribute("v", sertificatService.kolichectvoSertificatov());
         return "sertificat";
     }
 
-    /**@RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addSertificatGet(Model model) {
-        SertificatIK sertificatIK = new SertificatIK();
-        //sertificatIzvestKomovaya.setGruz(new Gruz());
-        sertificatIK.setPokupatel(new Pokupatel());
-        //sertificatIzvestKomovaya.getGruz().setId(-1);
-        sertificatIK.getPokupatel().setId(-1);
-        model.addAttribute("sertificat", sertificatIK);
-        model.addAttribute("gruzList", gruzService.gruzList());
-        model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
-        return "sertificat_add";
-    }**/
+    /**
+     * @RequestMapping(value = "/add", method = RequestMethod.GET)
+     * public String addSertificatGet(Model model) {
+     * SertificatIK sertificatIK = new SertificatIK();
+     * //sertificatIzvestKomovaya.setGruz(new Gruz());
+     * sertificatIK.setPokupatel(new Pokupatel());
+     * //sertificatIzvestKomovaya.getGruz().setId(-1);
+     * sertificatIK.getPokupatel().setId(-1);
+     * model.addAttribute("sertificat", sertificatIK);
+     * model.addAttribute("gruzList", gruzService.gruzList());
+     * model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
+     * return "sertificat_add";
+     * }
+     **/
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveSertificat(@ModelAttribute("sertificatIK") @Valid SertificatIK sertificatIK, BindingResult result, Model model) throws JRException {
         String adress = "";
         if (sertificatIK.getData() == null) {
-            sertificatIK.setData(new Date());
+            sertificatIK.setData(LocalDate.now());
         }
         Boolean x = sertificatService.getSertificatIKService().searchSertificatIKByNomerAndGod(sertificatIK.getId(), sertificatIK.getNomer(), sertificatIK.getData());
 
@@ -120,9 +125,16 @@ public class SertificatController {
         return "Изминения успешно внесены!";
     }
 
+    @RequestMapping(value = "/mpa/save", method = RequestMethod.POST, produces = "text/plain; charset=utf-8")
+    @ResponseBody
+    public String sertificatMPASave(@RequestBody SertificatMPA sertificatMPA) {
+        sertificatMPAService.saveSertificatMPA(sertificatMPA);
+        return "Изминения успешно внесены!";
+    }
+
     @RequestMapping(value = "/ik/add", method = RequestMethod.GET)
     public String addSertificatIK(Model model) {
-        model.addAttribute("title_modal","Добавление Сертификата на известь комовую");
+        model.addAttribute("title_modal", "Добавление Сертификата на известь комовую");
         model.addAttribute("sertificat", new SertificatIK());
         model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
         return "sertificatIK_edit";
@@ -130,7 +142,7 @@ public class SertificatController {
 
     @RequestMapping(value = "/im/add", method = RequestMethod.GET)
     public String addSertificatIM(Model model) {
-        model.addAttribute("title_modal","Добавление Сертификата на известь молотую");
+        model.addAttribute("title_modal", "Добавление Сертификата на известь молотую");
         model.addAttribute("sertificat", new SertificatIM());
         model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
         return "sertificatIM_edit";
@@ -138,10 +150,30 @@ public class SertificatController {
 
     @RequestMapping(value = "/mpn/add", method = RequestMethod.GET)
     public String addSertificatMPN(Model model) {
-        model.addAttribute("title_modal","Добавление Сертификата на минеральный порошок неактивированный");
+        model.addAttribute("title_modal", "Добавление Сертификата на минеральный порошок неактивированный");
         model.addAttribute("sertificat", new SertificatMPN());
         model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
         return "sertificatMPN_edit";
+    }
+
+    @RequestMapping(value = "/mpa/add", method = RequestMethod.GET)
+    public String addSertificatMPA(Model model) {
+        model.addAttribute("title_modal", "Добавление Сертификата на минеральный порошок активированный");
+        SertificatMPA mpa = new SertificatMPA();
+        mpa.setGidrofobnost("гидрофобен");
+        model.addAttribute("sertificat", mpa);
+        model.addAttribute("pokupatelList", pokupatelService.pokupatelList());
+        return "sertificatMPA_edit";
+    }
+
+
+    @RequestMapping(value = "/pokupatel/{id}")
+    public String setPokupatelStations(@PathVariable int id, Model model) {
+        Pokupatel pokupatel = pokupatelService.retrivePokupatel(id);
+        Set<Station> stationList = pokupatel.getStations();
+        model.addAttribute("pokupatelStations", stationList);
+        model.addAttribute("stationSize", stationList.size());
+        return "pokupatel_stations";
     }
 
     @InitBinder

@@ -1,6 +1,5 @@
 package ru.solicom.zavod.dao;
 
-import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -8,6 +7,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.Pokupatel;
+
+import java.util.List;
 
 @Repository
 public class PokupatelDAOImpl implements PokupatelDAO {
@@ -18,7 +19,18 @@ public class PokupatelDAOImpl implements PokupatelDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Pokupatel> pokupatelList() {
-        return sessionFactory.getCurrentSession().createCriteria(Pokupatel.class).add(Restrictions.gt("id", 1)).addOrder(Order.asc("name")).list();
+        Query q = sessionFactory.getCurrentSession().createQuery("from Pokupatel where id > :id");
+        q.setInteger("id", 0);
+        return q.list();
+        //return sessionFactory.getCurrentSession().createCriteria(Pokupatel.class).add(Restrictions.gt("id", 0)).addOrder(Order.asc("name")).list();
+    }
+
+    @Override
+    public List<Pokupatel> pokupatelListBezPustogo() {
+        //return sessionFactory.getCurrentSession().createCriteria(Pokupatel.class).add(Restrictions.gt("id", 1)).addOrder(Order.asc("name")).list();
+        Query q = sessionFactory.getCurrentSession().createQuery("from Pokupatel where id > :id");
+        q.setInteger("id", 1);
+        return q.list();
     }
 
     @SuppressWarnings("unchecked")

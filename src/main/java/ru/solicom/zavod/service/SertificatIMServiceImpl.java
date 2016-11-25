@@ -1,6 +1,7 @@
 package ru.solicom.zavod.service;
 
 
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,10 @@ public class SertificatIMServiceImpl implements SertificatIMService {
 
     @Autowired
     private SertificatIMDAO sertificatIMDAO;
+    @Autowired
+    private PokupatelService pokupatelService;
+    @Autowired
+    private StationService stationService;
     private List<SertificatIM> sertificatIMNeIspList = new ArrayList<>();
     private List<SertificatIM> sertificatIMList = new ArrayList<>();
 
@@ -63,21 +68,23 @@ public class SertificatIMServiceImpl implements SertificatIMService {
     @Override
     public void saveSertficatIM(SertificatIM sertificatIM) {
         if (sertificatIM.getData() == null) {
-            Date today = new Date();
+            LocalDate today = LocalDate.now();
             sertificatIM.setData(today);
         }
+        sertificatIM.setPokupatel(pokupatelService.retrivePokupatel(sertificatIM.getPokupatel().getId()));
+        sertificatIM.setStation(stationService.retriveStation(sertificatIM.getStation().getId()));
         sertificatIMDAO.saveSertificatIM(sertificatIM);
     }
 
     @Transactional
     @Override
-    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data) {
+    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, LocalDate data) {
         return sertificatIMDAO.searchSertificatIMByNomerAndGod(id, nomer, data);
     }
 
     @Transactional
     @Override
-    public List<SertificatIM> searchSertificatIMByData(Date date) {
+    public List<SertificatIM> searchSertificatIMByData(LocalDate date) {
         return sertificatIMDAO.searchSertificatIMByData(date);
     }
 }

@@ -5,13 +5,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="pdfReport"
+    <bean id="dokumentIK"
           class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
-          p:url="resources/reports/report1.jrxml"
-          p:reportDataKey="datasource"/>
+          p:url="resources/reports/dokumentIK.jrxml"/>
 
-    <bean id="htmlReport"
-          class="org.springframework.web.servlet.view.jasperreports.JasperReportsHtmlView"
-          p:url="resources/reports/report1.jrxml"
-          p:reportDataKey="datasource"/>
+    <bean id="dokumentIM"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="resources/reports/dokumentIM.jrxml"/>
+
+    <bean id="dokumentMPN"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="resources/reports/dokumentMPN.jrxml"/>
+
+    <bean id="dokumentMPA"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="resources/reports/dokumentMPA.jrxml"/>
+
+    <bean id="pechat_zayavki"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="resources/reports/pechat_zayavki.jrxml"/>
+
+    <bean id="pechat_nomera_svidetelstv"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsPdfView"
+          p:url="resources/reports/pechat_nomera_svidetelstv.jrxml"/>
+
+    <bean id="dokumentIM1"
+          class="org.springframework.web.servlet.view.jasperreports.JasperReportsXlsxView"
+          p:url="resources/reports/dokumentIM.jrxml"/>
 </beans>

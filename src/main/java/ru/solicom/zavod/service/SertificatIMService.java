@@ -1,5 +1,6 @@
 package ru.solicom.zavod.service;
 
+import org.joda.time.LocalDate;
 import ru.solicom.zavod.domain.SertificatIM;
 
 import java.util.Date;
@@ -18,7 +19,7 @@ public interface SertificatIMService {
 
     public void saveSertficatIM(SertificatIM sertificatIM);
 
-    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data);
+    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, LocalDate data);
 
-    public List<SertificatIM> searchSertificatIMByData(Date date);
+    public List<SertificatIM> searchSertificatIMByData(LocalDate date);
 }

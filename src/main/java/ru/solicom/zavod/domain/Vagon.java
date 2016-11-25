@@ -6,8 +6,23 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
+
+//import org.codehaus.jackson.map.ext.JodaDeserializers;
+//import org.codehaus.jackson.map.ext.JodaDeserializers.LocalDateDeserializer;
+//import org.codehaus.jackson.map.annotate.JsonDeserialize;
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+//import org.codehaus.jackson.map.ext.JodaDeserializers;
+//import org.codehaus.jackson.map.annotate.JsonSerialize;
+//import org.codehaus.jackson.map.ext.JodaDeserializers;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.LocalDate;
 import ru.solicom.zavod.domain.base.BaseDomain;
+import ru.solicom.zavod.util.JsonDateDeserializer;
+import ru.solicom.zavod.util.JsonDateSerializer;
 
 
 @Entity
@@ -29,8 +44,10 @@ public class Vagon extends BaseDomain implements Serializable {
     @Column(name = "kolichestvo_zpu")
     private byte kolichestvoZpu;
     @Column(name = "data_dobavleniya")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataDobavleniya;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    //@JsonDeserialize(using = JsonDateDeserializer.class)
+    //@JsonSerialize(using = JsonDateSerializer.class)
+    private LocalDate dataDobavleniya;
 
     public Vagon() {
 
@@ -84,11 +101,11 @@ public class Vagon extends BaseDomain implements Serializable {
         this.kolichestvoZpu = kolichestvoZpu;
     }
 
-    public Date getDataDobavleniya() {
+    public LocalDate getDataDobavleniya() {
         return dataDobavleniya;
     }
 
-    public void setDataDobavleniya(Date dataDobavleniya) {
+    public void setDataDobavleniya(LocalDate dataDobavleniya) {
         this.dataDobavleniya = dataDobavleniya;
     }
 }

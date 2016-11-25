@@ -1088,7 +1088,7 @@ html {
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.42857143;
   color: #0B0B0B;
   background-color: #fff;
@@ -1590,12 +1590,12 @@ pre code {
 }
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 0px) {
   .container {
-    width: 1250px;
+
   }
 }
 .container-fluid {

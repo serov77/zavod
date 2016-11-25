@@ -26,7 +26,7 @@ $(document).ready(function () {
                         message: 'Введенное число должно быть больше 0!'
                     },
                     remote: {
-                        url: 'valid_pogruzka_netto',
+                        url: '/zavod/valid_pogruzka_netto',
                         data: function (validator) {
                             return {
                                 taraVag: validator.getFieldElements('vagon.tara').val(),
@@ -38,11 +38,18 @@ $(document).ready(function () {
                         type: 'GET'
                     }
                 }
+            },
+            dataPribitiyaVagona: {
+                validators: {
+                    notEmpty: {
+                        message: 'Поле не может быть пустым'
+                    }
+                }
             }
         }
     });
 });
-function edit() {
+function edit_pogr_add() {
     var brutto = $('input#brutto').val();
     var netto = $('input#netto').val();
     var idVagon = $('input#idVag').val();
@@ -55,7 +62,10 @@ function edit() {
         name: $('select#tara option:selected').text(),
     };
     var dopolneniya = $('#dopolneniya').val();
-    var dataPribitiyaVagona = $('input#dtqqq').val()
+    var dataPribitiyaVagona = $('input#dataPribitiyaVagona').val();
+    //var idPorozniy = $('input#idPorozniy').val();
+    var vagonPorozniy = pogruzkaJSON2.vagonPorozniy;
+    var pogruzil = pogruzkaJSON2.pogruzil;
     var pogruzka = {
         brutto: brutto,
         netto: netto,
@@ -63,9 +73,12 @@ function edit() {
         gruz: gruz,
         tara: tara,
         dopolneniya: dopolneniya,
-        dataPribitiyaVagona: dataPribitiyaVagona
+        dataPribitiyaVagona: dataPribitiyaVagona,
+        vagonPorozniy: vagonPorozniy,
+        pogruzil:pogruzil
     };
 
+    //pogruzkaJSON2.brutto=$('input#brutto').val();
     $.ajax({
         url: '/zavod/pogruzka/save',
         contentType: 'application/json; charset=utf-8',
@@ -74,7 +87,7 @@ function edit() {
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('pogruzka/all');
+            showSbit('/zavod/vagon/poroznieAll');
         }
     });
 }
@@ -99,7 +112,7 @@ function edit_2() {
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('pogruzka/all');
+            showSbit('/zavod/pogruzka/all/0');
         }
     });
 }
@@ -120,23 +133,36 @@ function editVagon(url) {
 
 }
 
-$(function () {
+/*$(function () {
     $('#datetimepicker1').datetimepicker(
         {pickTime: false, language: 'ru'}
     );
 });
 
+
 $("#datetimepicker2").on("dp.hide", function (e) {
     var x = $('#datetimepicker1').data("DateTimePicker").getDate();
+    //alert("qweqw")
     var d = new Date();
     d.setTime(Date.parse(x));
     var y = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
     var z = $("input#gruz").val();
     $.ajax({
-        url: "pogruzka/setDate/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
+        url: "/zavod/pogruzka/setDate/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
         success: function (html) {
             $('#sertif_data').html(html);
         }
     });
+});*/
+
+function StrToDate(Dat) {
+    var year = Number(Dat.split(".")[2]);
+    var month = Number(Dat.split(".")[1]);
+    var day = Number(Dat.split(".")[0]);
+    var dat = new Date(year, month, day);
+    return dat
+}
+
+$('.selectpicker').selectpicker({
 });
 

@@ -1,11 +1,15 @@
 package ru.solicom.zavod.domain.base;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.NotBlank;
-import ru.solicom.zavod.domain.SertificatIK;
-import ru.solicom.zavod.domain.Tara;
-import ru.solicom.zavod.domain.Vagon;
+import ru.solicom.zavod.domain.*;
 
 import javax.persistence.*;
+import org.joda.time.LocalDate;
+import ru.solicom.zavod.util.JsonDateDeserializer;
+
 import java.util.Date;
 
 @MappedSuperclass
@@ -15,20 +19,32 @@ public class BaseDomainPogruzka extends BaseDomain{
     protected Vagon vagon;
     @Column(name = "brutto", nullable = false)
     protected float brutto;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @Column(name = "data_pogruzki")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date dataPogruzki;
+    protected LocalDate dataPogruzki;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @Column(name = "data_otpravleniya")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date dataOtpravleniya;
+    protected LocalDate dataOtpravleniya;
     @ManyToOne
     @JoinColumn(name = "id_tara")
     protected Tara tara;
     @Column(name = "dopolneniya")
     protected String dopolneniya;
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @Column(name = "data_pribitiya_vagona")
-    @Temporal(javax.persistence.TemporalType.DATE)
-    protected Date dataPribitiyaVagona;
+    @JsonDeserialize(using = JsonDateDeserializer.class)
+    protected LocalDate dataPribitiyaVagona;
+    @Column(name = "nomer_otpravki")
+    protected int nomerOtpravki;
+    @ManyToOne
+    @JoinColumn(name = "vagon_porozniy_id")
+    protected VagoniPoroznie vagonPorozniy;
+    @ManyToOne
+    @JoinColumn(name = "id_pogruzil")
+    protected User pogruzil;
+    @ManyToOne
+    @JoinColumn(name = "id_otpravil")
+    protected User otpravil;
 
     public float getBrutto() {
         return brutto;
@@ -42,11 +58,11 @@ public class BaseDomainPogruzka extends BaseDomain{
         return tara;
     }
 
-    public Date getDataOtpravleniya() {
+    public LocalDate getDataOtpravleniya() {
         return dataOtpravleniya;
     }
 
-    public Date getDataPogruzki() {
+    public LocalDate getDataPogruzki() {
         return dataPogruzki;
     }
 
@@ -62,11 +78,11 @@ public class BaseDomainPogruzka extends BaseDomain{
         this.tara = tara;
     }
 
-    public void setDataOtpravleniya(Date dataOtpravleniya) {
+    public void setDataOtpravleniya(LocalDate dataOtpravleniya) {
         this.dataOtpravleniya = dataOtpravleniya;
     }
 
-    public void setDataPogruzki(Date dataPogruzki) {
+    public void setDataPogruzki(LocalDate dataPogruzki) {
         this.dataPogruzki = dataPogruzki;
     }
 
@@ -78,11 +94,43 @@ public class BaseDomainPogruzka extends BaseDomain{
         this.vagon = vagon;
     }
 
-    public Date getDataPribitiyaVagona() {
+    public LocalDate getDataPribitiyaVagona() {
         return dataPribitiyaVagona;
     }
 
-    public void setDataPribitiyaVagona(Date dataPribitiyaVagona) {
+    public void setDataPribitiyaVagona(LocalDate dataPribitiyaVagona) {
         this.dataPribitiyaVagona = dataPribitiyaVagona;
+    }
+
+    public int getNomerOtpravki() {
+        return nomerOtpravki;
+    }
+
+    public void setNomerOtpravki(int nomerOtpravki) {
+        this.nomerOtpravki = nomerOtpravki;
+    }
+
+    public VagoniPoroznie getVagonPorozniy() {
+        return vagonPorozniy;
+    }
+
+    public void setVagonPorozniy(VagoniPoroznie vagonPorozniy) {
+        this.vagonPorozniy = vagonPorozniy;
+    }
+
+    public User getPogruzil() {
+        return pogruzil;
+    }
+
+    public void setPogruzil(User pogruzil) {
+        this.pogruzil = pogruzil;
+    }
+
+    public User getOtpravil() {
+        return otpravil;
+    }
+
+    public void setOtpravil(User otpravil) {
+        this.otpravil = otpravil;
     }
 }

@@ -47,7 +47,7 @@
             <div class="form-group">
                 <form:label path="tara" class="col-xs-4 control-label">Упаковка</form:label>
                 <div class="col-xs-8">
-                    <form:select path="tara.id" id="tara" class="form-control">
+                    <form:select path="tara.id" id="tara" class="form-control selectpicker show-tick">
                         <form:options items="${taraList}" itemValue="id" itemLabel="name"/>
                     </form:select>
                 </div>
@@ -55,7 +55,7 @@
             <div class="form-group">
                 <form:label path="brutto" class="col-xs-4 control-label">Вес брутто, т.</form:label>
                 <div class="col-xs-8">
-                    <form:input path="brutto" class="form-control" oninput="Ftest (this)"/>
+                    <form:input path="brutto" class="form-control" oninput="Ftest_pogr (this)"/>
                 </div>
             </div>
             <div class="form-group">
@@ -83,7 +83,7 @@
 <script src="<c:url value="/resources/js/sbit/pogruzka/pogruzka_add.js"/>"></script>
 <script type="text/javascript">
     var pogruzkaJSON = ${pogruzkaJSON};
-    function Ftest(obj) {
+    function Ftest_pogr(obj) {
         if (this.ST) return;
         var ov = obj.value;
         var ovrl = ov.replace(/\d*\.?\d*/, '').length;

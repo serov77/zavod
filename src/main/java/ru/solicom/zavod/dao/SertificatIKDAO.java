@@ -1,5 +1,6 @@
 package ru.solicom.zavod.dao;
 
+import org.joda.time.LocalDate;
 import ru.solicom.zavod.domain.SertificatIK;
 
 import java.util.Date;
@@ -15,7 +16,7 @@ public interface SertificatIKDAO {
 
     public void saveSertificatIK(SertificatIK sertificatIK);
 
-    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, Date data);
+    public Boolean searchSertificatIKByNomerAndGod(int id, String nomer, LocalDate data);
 
-    public List<SertificatIK> searchSertificatIKByData(Date date);
+    public List<SertificatIK> searchSertificatIKByData(LocalDate date);
 }

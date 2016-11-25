@@ -20,4 +20,22 @@ public class GruzServiceImpl implements GruzService {
         return gruzDAO.gruzList();
     }
 
+    @Transactional
+    @Override
+    public Gruz retriveGruz(int id) {
+        return gruzDAO.retriveGruz(id);
+    }
+
+    @Transactional
+    @Override
+    public List<Gruz> opasniyGrusList() {
+        return gruzDAO.opasniyGrusList();
+    }
+
+    @Transactional
+    @Override
+    public List<Gruz> neOpasniyGrusList() {
+        return gruzDAO.neOpasniyGrusList();
+    }
+
 }

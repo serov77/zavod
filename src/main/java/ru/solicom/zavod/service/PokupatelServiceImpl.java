@@ -1,11 +1,12 @@
 package ru.solicom.zavod.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.solicom.zavod.dao.PokupatelDAO;
 import ru.solicom.zavod.domain.Pokupatel;
+
+import java.util.List;
 
 @Service
 public class PokupatelServiceImpl implements PokupatelService {
@@ -17,6 +18,12 @@ public class PokupatelServiceImpl implements PokupatelService {
     @Override
     public List<Pokupatel> pokupatelList() {
         return pokupatelDAO.pokupatelList();
+    }
+
+    @Transactional
+    @Override
+    public List<Pokupatel> pokupatelListBezPustogo() {
+        return pokupatelDAO.pokupatelListBezPustogo();
     }
 
     @Transactional

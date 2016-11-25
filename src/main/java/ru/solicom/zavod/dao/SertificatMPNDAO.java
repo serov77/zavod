@@ -1,5 +1,6 @@
 package ru.solicom.zavod.dao;
 
+import org.joda.time.LocalDate;
 import ru.solicom.zavod.domain.SertificatIM;
 import ru.solicom.zavod.domain.SertificatMPN;
 
@@ -15,7 +16,7 @@ public interface SertificatMPNDAO {
 
     void saveSertificatMPN(SertificatMPN sertificatMPN);
 
-    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, Date data);
+    public Boolean searchSertificatMPNByNomerAndGod(int id, String nomer, LocalDate data);
 
-    public List<SertificatMPN> searchSertificatMPNByData(Date date);
+    public List<SertificatMPN> searchSertificatMPNByData(LocalDate date);
 }

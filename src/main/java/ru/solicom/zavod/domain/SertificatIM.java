@@ -1,13 +1,11 @@
 package ru.solicom.zavod.domain;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
-import org.hibernate.validator.constraints.NotBlank;
 import ru.solicom.zavod.domain.base.BaseDomainSertificatIzvest;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,7 +19,7 @@ public class SertificatIM extends BaseDomainSertificatIzvest implements Serializ
     @Column(name = "sito_008", nullable = false)
     @DecimalMin("0.001")
     private float sito008;
-    @JsonIgnore
+
     @OneToMany(mappedBy = "sertificatIM", fetch = FetchType.EAGER)
     private Set<PogruzkaIM> pogruzkaIMs = new HashSet<>();
 
@@ -42,10 +40,12 @@ public class SertificatIM extends BaseDomainSertificatIzvest implements Serializ
         this.sito008 = sito008;
     }
 
+    @JsonIgnore
     public Set<PogruzkaIM> getPogruzkaIMs() {
         return pogruzkaIMs;
     }
 
+    @JsonIgnore
     public void setPogruzkaIMs(Set<PogruzkaIM> pogruzkaIMs) {
         this.pogruzkaIMs = pogruzkaIMs;
     }

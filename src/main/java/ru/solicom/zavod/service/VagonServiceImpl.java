@@ -2,6 +2,8 @@ package ru.solicom.zavod.service;
 
 import java.util.Date;
 import java.util.List;
+
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,8 +34,8 @@ public class VagonServiceImpl implements VagonService {
         if ("".equals(vagon.getNomerVagona())) {
             vagon.setNomerVagona(null);
         }
-        if (vagon.getDataDobavleniya() == null) {
-            Date today = new Date();
+        if (vagon.getId() == 0) {
+            LocalDate today = LocalDate.now();
             vagon.setDataDobavleniya(today);
         }
         vagonDAO.saveVagon(vagon);

@@ -17,4 +17,9 @@ public class UserDAOImpl implements UserDAO {
     public UserDetails loadUserByUsername(String login) {
         return (UserDetails) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
     }
+
+    @Override
+    public User getNullUser() {
+        return (User) sessionFactory.getCurrentSession().createCriteria(User.class).add(Restrictions.eq("id", 1)).uniqueResult();
+    }
 }

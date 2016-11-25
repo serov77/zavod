@@ -12,7 +12,7 @@ $(document).ready(function () {
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val(),
-                                data: validator.getFieldElements('data').val()
+                                data: validator.getFieldElements('dataDobavleniya').val()
                             };
                         },
                         message: 'Сертификат с таким номером уже есть в этом году!',
@@ -84,28 +84,33 @@ $(document).ready(function () {
     });
 });
 function edit() {
+    //alert(stationID);
     var id = $('input#id').val();
     var nomer = $('input#nomer').val();
     var massovayaDolyaVlagi = $('input#massovayaDolyaVlagi').val();
     var pokupatel = {
         id: $('select#pokupatel option:selected').val()
     };
+    var station = {
+        id: stationID
+    };
     var zerovoySostav1250 = $('input#zerovoySostav1250').val();
     var zerovoySostav0315 = $('input#zerovoySostav0315').val();
     var zerovoySostav0071 = $('input#zerovoySostav0071').val();
-    var data = $('input#data').val();
+    var data = $('input#dataDobavleniya').val();
     var otmetki = $('input#otmetki').val();
     var sertifikatMPN = {
         id: id,
         nomer: nomer,
         data: data,
         pokupatel: pokupatel,
+        station: station,
         massovayaDolyaVlagi: massovayaDolyaVlagi,
         zerovoySostav1250: zerovoySostav1250,
         zerovoySostav0315: zerovoySostav0315,
         zerovoySostav0071: zerovoySostav0071,
         otmetki: otmetki
-    }
+    };
     $.ajax({
         url: '/zavod/sertificat/mpn/save',
         contentType: 'application/json; charset=utf-8',
@@ -114,7 +119,7 @@ function edit() {
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('sertificat/all');
+            showSbit('/zavod/sertificat/all');
         }
     });
 }
@@ -134,4 +139,18 @@ function editVagon(url) {
     });
 
 }
+
+$('.selectpicker').selectpicker({
+    liveSearch: true
+});
+
+$('.selectpicker').on('changed.bs.select', function (e) {
+    var x = $(this).selectpicker('val');
+    $.ajax({
+        url: '/zavod/sertificat/pokupatel/' + x,
+        success: function (html) {
+            $('#pokupatel_stations').html(html);
+        }
+    });
+});
 

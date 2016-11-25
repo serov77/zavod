@@ -1,5 +1,7 @@
 package ru.solicom.zavod.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ru.solicom.zavod.domain.base.BaseDomainPogruzka;
 
 import javax.persistence.Entity;
@@ -12,6 +14,7 @@ import java.io.Serializable;
 @Table(name = "pogruzka_im")
 public class PogruzkaIM extends BaseDomainPogruzka implements Serializable {
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "id_sertificat")
     private SertificatIM sertificatIM;
 

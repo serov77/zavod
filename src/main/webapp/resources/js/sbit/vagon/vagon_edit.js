@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $('.content').off('click');
+
     var x = $('#id').val();
     $('#edit_form').bootstrapValidator({
         message: 'Это значение не подходит',
@@ -9,7 +11,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым'
                     },
                     remote: {
-                        url: 'valid_vagon',
+                        url: '/zavod/valid_vagon',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val()
@@ -27,7 +29,7 @@ $(document).ready(function () {
                         message: 'Поле не может быть пустым!'
                     },
                     remote: {
-                        url: 'valid_pogruzka_mkr',
+                        url: '/zavod/valid_pogruzka_mkr',
                         data: function (validator) {
                             return {
                                 id: validator.getFieldElements('id').val(),
@@ -53,11 +55,15 @@ $(document).ready(function () {
                         message: 'Введенное число должно быть больше 0!'
                     },
                     remote: {
-                        url: 'valid_vagon_tara',
+                        url: '/zavod/valid_vagon_tara',
                         data: function (validator) {
+                            var gruzopodyomnost = validator.getFieldElements('gruzopodyomnost').val();
+                            if (gruzopodyomnost == "") {
+                                gruzopodyomnost = 0;
+                            }
                             return {
                                 id: validator.getFieldElements('id').val(),
-                                gruzopodyomnost: validator.getFieldElements('gruzopodyomnost').val()
+                                gruzopodyomnost: gruzopodyomnost
                             }
                         },
                         message: 'Тара не может быть изменена',
@@ -78,11 +84,15 @@ $(document).ready(function () {
                         message: 'Введенное число должно быть больше 0!'
                     },
                     remote: {
-                        url: 'valid_vagon_tara',
+                        url: '/zavod/valid_vagon_tara',
                         data: function (validator) {
+                            var tara = validator.getFieldElements('tara').val();
+                            if (tara == "") {
+                                tara = 0;
+                            }
                             return {
                                 id: validator.getFieldElements('id').val(),
-                                tara: validator.getFieldElements('tara').val()
+                                tara: tara
                             }
                         },
                         message: 'Грузоподъемность не может быть изменена',
@@ -103,26 +113,33 @@ function edit() {
     var tara = $('input#tara').val();
     var gruzopodyomnost = $('input#gruzopodyomnost').val();
     var kolichestvoZpu = $('select#kolichestvoZpu option:selected').val();
-    var dataDobavleniya = $('input#dataDobavleniya').val();
+    var dataDobavleniya = $('input#dataDobavleniya_2').val();
+    if (dataDobavleniya == "") {
+        dataDobavleniya = null;
+    }
     var vagon = {
         id: id,
-        nomerVagona: nomerVagona,
+        nomerVagona: $.trim(nomerVagona),
         rodVagona: rodVagona,
         tara: tara,
         gruzopodyomnost: gruzopodyomnost,
         kolichestvoZpu: kolichestvoZpu,
         dataDobavleniya: dataDobavleniya
     };
-
+    vagonJSON.nomerVagona = $('input#nomerVagona').val();
+    vagonJSON.rodVagona = rodVagona;
+    vagonJSON.tara = $('input#tara').val();
+    vagonJSON.gruzopodyomnost = $('input#gruzopodyomnost').val();
+    vagonJSON.kolichestvoZpu = $('select#kolichestvoZpu option:selected').val();
     $.ajax({
         url: '/zavod/vagon/save',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
-        data: JSON.stringify(vagon),
+        data: JSON.stringify(vagonJSON),
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('vagon/all');
+            showSbit('/zavod/vagon/all');
         }
     });
 }
@@ -140,4 +157,38 @@ function editVagon(url) {
             $('#mesto').html(html);
         }
     });
+}
+
+$('.selectpicker').selectpicker({});
+
+function Ftest_vagon_edit(obj) {
+    var c = obj.value;
+    c = c.replace(/,/, '.');
+    obj.value = c;
+    if (this.ST) return;
+    var ov = obj.value
+    var ovrl = ov.replace(/\d*\.?\d*/, '').length;
+    this.ST = true;
+    if (ovrl > 0) {
+        obj.value = obj.lang;
+        Fshowerror(obj);
+        return;
+    }
+    obj.lang = obj.value;
+    this.ST = null;
+}
+
+function Fshowerror(obj) {
+    if (!this.OBJ) {
+        this.OBJ = obj;
+        obj.style.backgroundColor = 'pink';
+        this.TIM = setTimeout(Fshowerror, 50)
+    }
+    else {
+        this.OBJ.style.backgroundColor = '';
+        clearTimeout(this.TIM);
+        this.ST = null;
+        Ftest(this.OBJ);
+        this.OBJ = null
+    }
 }

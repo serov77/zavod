@@ -1,4 +1,10 @@
+/*$(document).ready(function () {
+    $('.content').off('click');
+});*/
+
 $(function () {
+    var date;
+    date = new Date();
     $('#datetimepicker1').datetimepicker(
         {pickTime: false, language: 'ru'}
     );
@@ -11,7 +17,7 @@ $("#datetimepicker1").on("dp.hide", function (e) {
     var y = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
     var z = $("input#gruz").val();
     $.ajax({
-        url: "pogruzka/setDate/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
+        url: "/zavod/pogruzka/setDate/" + z + "/" + d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear(),
         success: function (html) {
             $('#sertif_data').html(html);
         }
@@ -23,11 +29,11 @@ function otpravka() {
     var sertId = $('select#sertId option:selected').val();
 
     $.ajax({
-        url: 'pogruzka/otpr/save/' + gruz + '/' + id + '/' + sertId,
+        url: '/zavod/pogruzka/otpr/save/' + gruz + '/' + id + '/' + sertId,
         success: function (html) {
             $('.modal-backdrop').hide(700);
             $('#myModal_2').modal().fadeIn(1000);
-            showSbit('pogruzka/all');
+            showSbit('/zavod/pogruzka/all/0');
         }
     });
 }

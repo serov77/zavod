@@ -18,7 +18,7 @@
 </c:if>
 <sec:authorize access="hasAnyRole('ROLE_ADMIN, MASTER_POGRUZKI')">
     <div class="block">
-        <button class="btn btn-info btn-lg butt_add" type="button">Добавить станцию</button>
+        <button class="btn btn-info btn-lg butt_add_station" type="button">Добавить станцию</button>
     </div>
 </sec:authorize>
 <script src="<c:url value="/resources/js/sbit/station/table_station.js"/>"></script>

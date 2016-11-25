@@ -5,11 +5,11 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.solicom.zavod.domain.SertificatIM;
 
-import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -20,13 +20,14 @@ public class SertificatIMDAOImpl implements SertificatIMDAO {
 
     @Override
     public List<SertificatIM> sertificatIMList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIM s where s.id != 1 and s.pokupatel.id != 1 order by s.id");
+        return q.list();
     }
 
     @Override
     public List<SertificatIM> sertificatIMBezPoluchatelyaList() {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.eq("pokupatel.id", 1)).addOrder(Order.desc("id")).list();
-
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIM s where s.id != 1 and s.pokupatel.id = 1 order by s.id");
+        return q.list();
     }
 
     @Override
@@ -42,10 +43,10 @@ public class SertificatIMDAOImpl implements SertificatIMDAO {
     }
 
     @Override
-    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, Date data) {
-        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIM s where s.nomer = :nomer and year(s.data) = year(:data)");
+    public Boolean searchSertificatIMByNomerAndGod(int id, String nomer, LocalDate data) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIM s where s.nomer = :nomer and year(s.data) = :data order by s.id");
         q.setString("nomer", nomer);
-        q.setDate("data", data);
+        q.setInteger("data", data.getYear());
         SertificatIM s = (SertificatIM) q.uniqueResult();
         if (s == null) {
             return true;
@@ -56,7 +57,9 @@ public class SertificatIMDAOImpl implements SertificatIMDAO {
     }
 
     @Override
-    public List<SertificatIM> searchSertificatIMByData(Date date) {
-        return sessionFactory.getCurrentSession().createCriteria(SertificatIM.class).add(Restrictions.ne("id", 1)).add(Restrictions.ne("pokupatel.id", 1)).add(Restrictions.eq("data", date)).addOrder(Order.desc("id")).list();
+    public List<SertificatIM> searchSertificatIMByData(LocalDate date) {
+        Query q = sessionFactory.getCurrentSession().createQuery("from SertificatIM s where s.id != 1 and s.pokupatel.id != 1 and s.data = :date");
+        q.setDate("date", date.toDate());
+        return q.list();
     }
 }
